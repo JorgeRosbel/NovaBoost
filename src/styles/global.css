@@ -1,3 +1,4 @@
+@import 'tailwindcss';
 
 @font-face {
 	font-family: 'Atkinson';
@@ -12,4 +13,15 @@
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+	--color-light-bg: #fff;
+	--color-light-text: #000;
+	--color-dark-bg: #000;
+	--color-dark-text: #fff;
 }
