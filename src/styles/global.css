@@ -16,7 +16,19 @@
 }
 
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+
+/* global.css, al principio del fichero */
+@custom-variant dark (
+  /* 1) Ancestro con class="dark" o cualquiera de sus descendientes */
+  &:where(.dark, .dark *),
+  /* 2) Ancestro que “:has()” al checkbox marcado */
+  :has(#dark-toggle:checked) &,
+  /* 3) Y todos sus descendientes, para que dark:* funcione dentro */
+  :has(#dark-toggle:checked) & *
+);
+
 
 
 @theme {

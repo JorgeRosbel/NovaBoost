@@ -1,0 +1,35 @@
+---  
+import HeaderLink from './HeaderLink.astro';
+import { Icon } from 'astro-icon/components';
+
+interface LinkItem { href: string; label: string }
+interface Props { submenu_title: string; links: LinkItem[] }
+
+const { submenu_title, links } = Astro.props as Props
+---
+<li>
+  <details class="group">
+    <summary 
+      class="cursor-pointer list-none flex"
+    >
+      {submenu_title}
+      <span 
+        class="transition-transform duration-200 group-open:rotate-180"
+        aria-hidden="true"
+      >
+        <Icon name="mdi:chevron-down" width={24} height={24} />
+      </span>
+    </summary>
+
+    <ul class="mt-1  space-y-1 border-l-2 border-light-text/30">
+      {links.map(link => (
+        <li class="ml-4" >
+          <HeaderLink href={link.href}>
+            {link.label}
+          </HeaderLink>
+        </li>
+      ))}
+    </ul>
+  </details>
+</li>
+
