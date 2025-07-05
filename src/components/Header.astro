@@ -21,7 +21,6 @@ const { title, links, submenu } = Astro.props as Props;
 
 const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 ---
-
 <header
 	class="w-full h-10 dark:text-dark-text flex items-center justify-center px-3 bg-light-bg dark:bg-dark-surface relative"
 >
@@ -43,17 +42,13 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 			aria-expanded="false"
 		/>
 
-		
-
 
 		<div class="flex items-center justify-center gap-4">
 
-			<input type="checkbox" id="dark-toggle" class="hidden" />
-
-			<label for="dark-toggle" class="p-2 cursor-pointer">
+			<button id="dark-toggle"  class="p-2 cursor-pointer">
 				<Icon name="mdi:weather-night" class="hidden dark:block text-2xl" />
 				<Icon name="mdi:weather-sunny" class="dark:hidden text-2xl" />
-			</label>
+			</button>
 			
 			
 			<label class="text-3xl cursor-pointer" for="menu-toggle-checkbox" aria-label="Toggle main menu visibility">
@@ -63,7 +58,7 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 
 		<nav
 			id={navId}
-			class="bg-light-bg dark:bg-dark-bg absolute w-[min(300px,50%)] top-full right-0 hidden
+			class="bg-light-bg dark:bg-dark-surface absolute w-[min(300px,50%)] top-full right-0 hidden
 			peer-checked:flex items-center justify-center px-3 border-l border-l-light-text/30
 			dark:border-l-dark-text/30"
 			aria-label="Main site navigation"
@@ -99,3 +94,11 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 		</nav>
 	</div>
 </header>
+
+
+<script>
+	const D = document.getElementById('dark-toggle') as HTMLButtonElement,e = document.documentElement
+	e.className = localStorage.getItem("theme") || "light"
+	D.onclick = _ => {e.classList.toggle("dark");localStorage.setItem("theme", e.className)}
+</script>
+
