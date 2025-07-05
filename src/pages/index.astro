@@ -4,6 +4,26 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/global.css';
+
+const menuLinks = [
+	{ href: '/', label: 'Home' },
+	{ href: '/blog', label: 'Blog' },
+];
+
+
+const submenuLinks = [
+	{
+		submenu_title: 'Methods',
+		links: [
+			{ href: '/geophysics/gravimetry', label: 'Gravimetry' },
+			{ href: '/geophysics/magnetometry', label: 'Magnetometry' },
+			{ href: '/geophysics/seismology', label: 'Seismology' },
+			{ href: '/geophysics/geodesy', label: 'Geodesy' },
+			{ href: '/geophysics/geoelectrics', label: 'Geoelectrics' },
+		],
+	},
+];
+
 ---
 
 <!doctype html>
@@ -12,10 +32,7 @@ import '../styles/global.css';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body class="w-full">
-		<Header title="Geophysics" links={[
-			{ href: '/', label: 'Home' },
-			{ href: '/blog', label: 'Blog' },
-		]} />
+		<Header title="Geophysics" links={menuLinks} submenu={submenuLinks}/>
 		<main>
 			
 		</main>

@@ -11,18 +11,19 @@ interface LinkItem {
 interface Props {
 	title: string;
 	links: LinkItem[];
+	submenu?: {
+		submenu_title: string;
+		links: LinkItem[];
+	}[];
 }
 
-const { title, links } = Astro.props as Props;
+const { title, links, submenu } = Astro.props as Props;
 
 const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
-// No necesitamos un ID de checkbox separado para el 'for' de label si el input es el target directo
-// Sin embargo, mantenerlo para claridad si quisiéramos un label explícito.
-// Lo más simple para esta estrategia es que el input sea el objetivo del foco.
 ---
 
 <header
-	class="w-full h-10 flex items-center justify-center px-3 bg-light-bg relative"
+	class="w-full h-10 dark:text-dark-text flex items-center justify-center px-3 bg-light-bg dark:bg-dark-surface relative"
 >
 	<div class="flex items-center justify-between gap-4 w-full max-w-[1200px]">
 		<a
@@ -36,7 +37,7 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 		<input
 			id="menu-toggle-checkbox"
 			type="checkbox"
-			class="peer cursor-pointer opacity-0 h-[2rem] w-[2rem] absolute top-1/2 right-0 -translate-y-1/2 z-20"
+			class="peer cursor-pointer hidden  h-[2rem] w-[2rem] absolute top-1/2 right-0 -translate-y-1/2 z-20"
 			aria-label="Toggle main menu visibility"
 			aria-controls={navId}
 			aria-expanded="false"
@@ -55,24 +56,25 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 			</label>
 			
 			
-			<button class="text-3xl">
+			<label class="text-3xl cursor-pointer" for="menu-toggle-checkbox" aria-label="Toggle main menu visibility">
 				<Icon name="mdi:menu" aria-hidden="true" />
-			</button>
+			</label>
 		</div>
 
 		<nav
 			id={navId}
-			class="bg-light-bg absolute w-[min(300px,50%)] top-full right-0 hidden
-			peer-checked:flex items-center justify-center px-3 border-l border-l-light-text/30"
+			class="bg-light-bg dark:bg-dark-bg absolute w-[min(300px,50%)] top-full right-0 hidden
+			peer-checked:flex items-center justify-center px-3 border-l border-l-light-text/30
+			dark:border-l-dark-text/30"
 			aria-label="Main site navigation"
 		>
 			<ul
-				class="flex flex-col items-start justify-start gap-4 min-h-[calc(100vh-40px)] max-h-[calc(100vh-40px)]
+				class="flex flex-col w-full items-center justify-start gap-4 min-h-[calc(100vh-40px)] max-h-[calc(100vh-40px)]
 			overflow-y-auto"
 			>
 				{
 					links.map((link) => (
-						<li>
+						<li class="w-full text-center">
 							<HeaderLink
 								href={link.href}
 								aria-label={`Ir a ${link.label}`}
@@ -84,30 +86,15 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 				}
 
 				<!-- create submenu -->
-				<SubMenu
-					submenu_title="Categories"
-					links={[
-						{ href: "/category/tech", label: "Tech" },
-						{ href: "/category/lifestyle", label: "Lifestyle" },
-						{ href: "/category/travel", label: "Travel" },
-					]}
-				/>
-
-				<SubMenu
-					submenu_title="More"
-					links={[
-						{ href: "/about", label: "About" },
-						{ href: "/contact", label: "Contact" },
-					]}
-				/>
-
-				<SubMenu
-					submenu_title="More"
-					links={[
-						{ href: "/about", label: "About" },
-						{ href: "/contact", label: "Contact" },
-					]}
-				/>
+				{
+					submenu?.map((sub) => (
+						<SubMenu
+							submenu_title={sub.submenu_title}
+							links={sub.links}
+						/>
+					))
+				}
+		
 			</ul>
 		</nav>
 	</div>

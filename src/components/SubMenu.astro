@@ -7,12 +7,14 @@ interface Props { submenu_title: string; links: LinkItem[] }
 
 const { submenu_title, links } = Astro.props as Props
 ---
-<li>
+<li class="w-full text-center">
   <details class="group">
     <summary 
       class="cursor-pointer list-none flex"
     >
-      {submenu_title}
+      <span class="flex-1 text-center">
+        {submenu_title}
+      </span>
       <span 
         class="transition-transform duration-200 group-open:rotate-180"
         aria-hidden="true"
@@ -21,9 +23,9 @@ const { submenu_title, links } = Astro.props as Props
       </span>
     </summary>
 
-    <ul class="mt-1  space-y-1 border-l-2 border-light-text/30">
+    <ul class="mt-1  space-y-3 border-l border-light-text/20 dark:border-dark-text/20  ">
       {links.map(link => (
-        <li class="ml-4" >
+        <li class="ml-4 text-left" >
           <HeaderLink href={link.href}>
             {link.label}
           </HeaderLink>

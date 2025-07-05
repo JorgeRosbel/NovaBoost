@@ -34,6 +34,13 @@
 @theme {
 	--color-light-bg: #fff;
 	--color-light-text: #000;
-	--color-dark-bg: #000;
+	--color-light-surface:#E0E0E0;
+
+
+	--color-dark-bg: #121212;
 	--color-dark-text: #fff;
+	--color-dark-surface: #1E1E1E;
 }
+
+
+
