@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/global.css';
 
@@ -12,17 +13,45 @@ const menuLinks = [
 
 
 const submenuLinks = [
-	{
-		submenu_title: 'Methods',
-		links: [
-			{ href: '/geophysics/gravimetry', label: 'Gravimetry' },
-			{ href: '/geophysics/magnetometry', label: 'Magnetometry' },
-			{ href: '/geophysics/seismology', label: 'Seismology' },
-			{ href: '/geophysics/geodesy', label: 'Geodesy' },
-			{ href: '/geophysics/geoelectrics', label: 'Geoelectrics' },
-		],
-	},
+  {
+    submenu_title: 'Methods',
+    links: [
+      { href: '/geophysics/gravimetry', label: 'Gravimetry' },
+      { href: '/geophysics/magnetometry', label: 'Magnetometry' },
+      { href: '/geophysics/seismology', label: 'Seismology' },
+      { href: '/geophysics/geodesy', label: 'Geodesy' },
+      { href: '/geophysics/geoelectrics', label: 'Geoelectrics' },
+    ],
+  },
+  {
+    submenu_title: 'Applications',
+    links: [
+      { href: '/geophysics/oil-gas', label: 'Oil & Gas Exploration' },
+      { href: '/geophysics/mining', label: 'Mining Surveys' },
+      { href: '/geophysics/environmental', label: 'Environmental Studies' },
+      { href: '/geophysics/archaeology', label: 'Archaeology' },
+    ],
+  },
+  {
+    submenu_title: 'Software',
+    links: [
+      { href: '/geophysics/software/petrel', label: 'Petrel' },
+      { href: '/geophysics/software/oasis', label: 'Oasis montaj' },
+      { href: '/geophysics/software/gmtsar', label: 'GMTSAR' },
+      { href: '/geophysics/software/oq', label: 'OpendTect' },
+    ],
+  },
+  {
+    submenu_title: 'Data Processing',
+    links: [
+      { href: '/geophysics/data/filtering', label: 'Filtering' },
+      { href: '/geophysics/data/inversion', label: 'Inversion' },
+      { href: '/geophysics/data/modeling', label: 'Modeling' },
+      { href: '/geophysics/data/visualization', label: 'Visualization' },
+    ],
+  },
 ];
+
 
 ---
 
@@ -34,7 +63,7 @@ const submenuLinks = [
 	<body class="w-full">
 		<Header title="Geophysics" links={menuLinks} submenu={submenuLinks}/>
 		<main>
-			
+			<Hero />
 		</main>
 	</body>
 </html>

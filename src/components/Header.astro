@@ -58,19 +58,21 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 
 		<nav
 			id={navId}
-			class="bg-light-bg dark:bg-dark-surface absolute w-[min(300px,50%)] top-full right-0 hidden
-			peer-checked:flex items-center justify-center px-3 border-l border-l-light-text/30
+			class="bg-light-bg dark:bg-dark-surface absolute w-[340px] top-full right-0 hidden
+			peer-checked:flex items-center justify-center border-l border-l-light-text/30
 			dark:border-l-dark-text/30"
 			aria-label="Main site navigation"
 		>
 			<ul
 				class="flex flex-col w-full items-center justify-start gap-4 min-h-[calc(100vh-40px)] max-h-[calc(100vh-40px)]
-			overflow-y-auto"
+			overflow-y-scroll overflow-x-hidden pb-3 menu-bar"
 			>
 				{
 					links.map((link) => (
-						<li class="w-full text-center">
+						<li class="w-[80%] text-center rounded py-2 bg-light-surface/15
+						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-light-surface/30 dark:hover:bg-light-bg/10">
 							<HeaderLink
+								class="font-semibold"
 								href={link.href}
 								aria-label={`Ir a ${link.label}`}
 							>

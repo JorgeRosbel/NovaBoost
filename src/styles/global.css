@@ -44,3 +44,11 @@
 
 
 
+.menu-bar {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.gray.300') theme('colors.white');
+}
+
+.dark .menu-bar{
+  scrollbar-color: theme('colors.gray.300') theme('colors.dark.surface');
+}
