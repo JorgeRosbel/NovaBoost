@@ -114,10 +114,48 @@ export const collections = {
       collectionsPattern,
       `collections = {\n  ${schemaName},`
     );
+
   }
+
+  const collectionPath = join(process.cwd(), 'src/collections.ts');
+
+  // 1. Leer el archivo como texto
+  const fileContent = fs.readFileSync(collectionPath, 'utf-8');
+
+  // 2. Extraer la lista de strings entre [ ... ]
+  const match = fileContent.match(/export const collections = \[\s*([\s\S]*?)\s*\]/);
+  let currentCollections: string[] = [];
+
+  if (match) {
+    currentCollections = match[1]
+      .split(',')
+      .map(s => s.trim().replace(/["']/g, ''))
+      .filter(Boolean);
+  }
+
+  // 3. Agregar schemaName si no está presente
+  if (!currentCollections.includes(schemaName)) {
+    currentCollections.push(schemaName);
+  }
+
+  // 4. Reconstruir el archivo
+  const newFileContent = `export const collections = [
+  ${currentCollections.map(c => `  "${c}",`).join('\n')}
+  ] as const;
+
+  export type CollectionName = typeof collections[number];
+  `;
+
+  // 5. Sobrescribir el archivo
+  fs.writeFileSync(collectionPath, newFileContent, 'utf-8');
+
+  console.log(`✅ Collections actualizado con: ${currentCollections.join(', ')}`);
 
 
   
+    
+  
+
   // Write the updated content back to the file
   fs.writeFileSync(configPath, updatedContent);
   
