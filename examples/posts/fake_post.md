@@ -4,7 +4,8 @@ description: "Descubre cómo la gravimetría permite mapear el subsuelo sin perf
 pubDate: 2025-07-05
 updatedDate: 2025-07-05
 heroImage: "../../assets/men.jpg"
-------------------------------------------------
+tags: ["gravimetria", "geociencia", "exploracion"]
+---
 
 # Gravimetría: Una Ventana hacia el Interior de la Tierra
 

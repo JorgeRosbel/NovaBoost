@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
-
 type Posts = Awaited<ReturnType<typeof getCollection>>;
 
 interface Props {
@@ -11,19 +10,20 @@ interface Props {
     title: string;
 }
 
+const slugify = (s: string) =>
+    s
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]/g, "");
 
 const { posts, title }: Props = Astro.props;
-
-
-
 ---
-
 
 <section
     class="w-full flex flex-col items-center max-w-[1200px] mt-20 min-h-screen text-light-text dark:text-dark-text"
 >
     <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1>
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
         {
             posts.length === 0 && (
                 <li class="col-span-full text-center">
@@ -32,30 +32,32 @@ const { posts, title }: Props = Astro.props;
             )
         }
         {
-            posts.map((post:any) => (
-                <li class="group">
+            posts.map((post: any) => (
+                <article class="group">
                     <a
                         class="flex flex-col  gap-3 items-center"
-                        href={"/gravimetry/" + post.id}
+                        href={`/${title}/` + post.id}
                     >
                         {post.data.heroImage && (
                             <div class="overflow-hidden rounded">
                                 <Image
-                                class="group-hover:scale-105 transition-all duration-200"
-                                src={post.data.heroImage}
-                                alt={post.data.title}
-                                width={400}
-                                height={400}
-                                format="webp"
-                                quality={75}
-                                loading="lazy"
-                                decoding="async"
+                                    class="group-hover:scale-105 transition-all duration-200"
+                                    src={post.data.heroImage}
+                                    alt={post.data.title}
+                                    width={400}
+                                    height={400}
+                                    format="webp"
+                                    quality={75}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                         )}
                         <div class="w-full flex flex-col gap-2 max-w-[400px]">
-                            <h3 class="font-semibold text-xl transition-all duration-200
-                            group-hover:text-blue-600  dark:group-hover:text-buttons-bg">
+                            <h3
+                                class="font-semibold text-xl transition-all duration-200
+                            group-hover:text-blue-600  dark:group-hover:text-buttons-bg"
+                            >
                                 {post.data.title}
                             </h3>
                             <div class="flex items-center gap-1 text-sm opacity-70 my-1">
@@ -71,13 +73,31 @@ const { posts, title }: Props = Astro.props;
                                     )}
                                 </p>
                                 <span class="opacity-70">•</span>
-                                <p class="text-sm opacity-70">{title.toLowerCase()}</p>
+                                <p class="text-sm opacity-70">
+                                    {title.toLowerCase()}
+                                </p>
                             </div>
                             <h4 class="opacity-80">{post.data.description}</h4>
                         </div>
+                        <div class="flex flex-wrap items-center justify-center py-2 gap-2 w-full">
+                            {
+                                post.data.tags && post.data.tags.map((tag:string) => {
+                                const tagSlug = slugify(tag);
+                                return (
+                                    <a
+                                        class="px-2 py-1 text-xs rounded bg-blue-100 hover:bg-blue-200
+                                        dark:bg-buttons-bg/30 dark:hover:bg-buttons-bg/50"
+                                        href={`/tags/${tagSlug}/`}
+                                    >
+                                        {tag}
+                                    </a>
+                                );
+                            })
+                            }
+                        </div>
                     </a>
-                </li>
+                </article>
             ))
         }
-    </ul>
+    </div>
 </section>
