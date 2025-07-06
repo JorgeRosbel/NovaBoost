@@ -1,5 +1,4 @@
 export const collections = [
-    "label: Home }",
   "archaeology",
   "environmental",
   "filtering",

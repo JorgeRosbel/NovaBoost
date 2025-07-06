@@ -36,7 +36,7 @@ const { posts, title }: Props = Astro.props;
                 <article class="group">
                     <a
                         class="flex flex-col  gap-3 items-center"
-                        href={`/${title}/` + post.id}
+                        href={`/${post.collection}/` + post.id}
                     >
                         {post.data.heroImage && (
                             <div class="overflow-hidden rounded">
@@ -74,7 +74,7 @@ const { posts, title }: Props = Astro.props;
                                 </p>
                                 <span class="opacity-70">•</span>
                                 <p class="text-sm opacity-70">
-                                    {title.toLowerCase()}
+                                    {post.collection.toLowerCase()}
                                 </p>
                             </div>
                             <h4 class="opacity-80">{post.data.description}</h4>

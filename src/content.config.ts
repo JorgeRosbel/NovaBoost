@@ -4,23 +4,6 @@ import { defineCollection, z } from 'astro:content';
 
 
 
-
-// ', label: 'Home' } collection
-
-
-export const ', label: 'Home' } = defineCollection({
-  loader: glob({ base: './src/content/', label: 'Home' }', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-
 // Collections export
 // archaeology collection
 
@@ -295,5 +278,5 @@ export const collections = {
   filtering,
   environmental,
   archaeology,
-  ', label: 'Home' },
+ 
 };

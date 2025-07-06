@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.0.10",
     "tsx": "^4.20.3"
   }
