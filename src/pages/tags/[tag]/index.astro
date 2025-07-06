@@ -1,0 +1,79 @@
+---
+import { collections, type CollectionName } from "../../../collections";
+import { getCollection } from "astro:content";
+import BaseHead from "../../../components/BaseHead.astro";
+import { SITE_TITLE } from "../../../config/site.consts";
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../../config/header.consts";
+import Header from "../../../components/Header.astro";
+import PreviewPosts from "../../../components/PreviewPosts.astro";
+import Footer from "../../../components/Footer.astro";
+
+// utils/slugify.ts
+export function slugify(s: string) {
+    return s
+        .normalize("NFD") // descompone acentos
+        .replace(/[\u0300-\u036f]/g, "") // quita marcas diacríticas
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]/g, "");
+}
+
+const postsByCollection = await Promise.all(
+    collections.map(async (collection: CollectionName) => {
+        return await getCollection(collection);
+    }),
+);
+
+// 2) Lo aplanas a un solo array de posts:
+const allPosts = postsByCollection.flat();
+
+
+export async function getStaticPaths() {
+    const tagsSet = new Set<string>();
+    const allPosts = await Promise.all(
+        collections.map(async (collection: CollectionName) => {
+            return await getCollection(collection);
+        }),
+    );
+
+    const POST = allPosts.flat();
+
+    for (const post of  POST) {
+        post.data.tags?.forEach((t) => {
+            tagsSet.add(slugify(t));
+        });
+    }
+
+    const paths = Array.from(tagsSet).map((tag) => ({
+        params: { tag },
+    }));
+
+    return paths;
+}
+
+
+const currentTag = Astro.params.tag;
+
+const filteredPosts = allPosts.filter((post) =>
+    post.data.tags?.some((tag) => slugify(tag) === currentTag)
+);
+---
+
+
+<!doctype html>
+  <html lang="en">
+    <head>
+      <BaseHead
+        title={SITE_TITLE +  " | " + currentTag} 
+        description=`Explora los posts relacionados con el tag ${currentTag}.`
+      />
+    </head>
+    <body>
+      <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+      <main class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg">
+        <PreviewPosts posts={filteredPosts} title={currentTag} />
+         
+      </main>
+      <Footer />
+    </body>
+  </html>

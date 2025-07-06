@@ -35,12 +35,21 @@
 	--color-light-bg: #fff;
 	--color-light-text: #000;
 	--color-light-surface:#E0E0E0;
-
-
-	--color-dark-bg: #121212;
-	--color-dark-text: #fff;
-	--color-dark-surface: #1E1E1E;
+	--color-buttons-bg:oklch(0.746 0.16 232.661);
+	--color-buttons-text: #fff;
+	
+	 --color-dark-bg: #0B1D2A;
+  --color-dark-text: #E2E8F0;
+  --color-dark-surface: #15232E;
 }
 
 
 
+.menu-bar {
+  scrollbar-width: thin;
+  scrollbar-color: theme('colors.gray.300') theme('colors.white');
+}
+
+.dark .menu-bar{
+  scrollbar-color: theme('colors.gray.300') theme('colors.dark.surface');
+}

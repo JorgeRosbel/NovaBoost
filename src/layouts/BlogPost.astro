@@ -1,13 +1,17 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
+import { TITLE, MENU_LINKS, SUBMENU_LINKS } from '../config/header.consts';
 
-type Props = CollectionEntry<'blog'>['data'];
+import { getCollection } from "astro:content";
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+type Posts = Awaited<ReturnType<typeof getCollection>>[0]['data'];
+
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props as Posts;
 ---
 
 <html lang="en">
@@ -16,10 +20,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	</head>
 
 	<body>
-		<Header title="Free Blog" links={[
-			{ href: '/', label: 'Home' },
-			{ href: '/blog', label: 'Blog' },
-		]} />
+		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS}/>
 		<main>
 			<article>
 				<div class="hero-image">
