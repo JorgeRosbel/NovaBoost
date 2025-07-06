@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "create-schema": "tsx scripts/createSchema.ts"
+    "create-schema": "tsx scripts/createSchema.ts",
+    "print-routes": "tsx scripts/check_routes.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

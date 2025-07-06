@@ -53,6 +53,9 @@ export const ${schemaName} = defineCollection({
 });
 `;
 
+
+
+
 // Get the current directory in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -111,6 +114,8 @@ export const collections = {
       `collections = {\n  ${schemaName},`
     );
   }
+
+
   
   // Write the updated content back to the file
   fs.writeFileSync(configPath, updatedContent);
@@ -122,14 +127,55 @@ export const collections = {
   }
 
   const pagePath = join(process.cwd(), 'src/pages', schemaName);
+
   if (!fs.existsSync(pagePath)) {
     fs.mkdirSync(pagePath, { recursive: true });
   }
   fs.writeFileSync(join(pagePath, '[...slug].astro'), slugTemplate);
+
+
+  const html_index_blog = `---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../config/site.consts";
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
+import PreviewPosts from "../../components/PreviewPosts.astro";
+import { getCollection } from "astro:content";
+
+
+const posts = (await getCollection("${schemaName}")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE + " | ${schemaName}"} description="super nice description" />
+	</head>
+	<body>
+		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+		<main class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg">
+			<PreviewPosts
+				posts={posts}
+				title ="${schemaName}"
+			/>
+		</main>
+		<Footer />
+	</body>
+</html>`
+
+ fs.writeFileSync(join(pagePath, 'index.astro'), html_index_blog);
+
+
+
+
+
   
   console.log(`✅ Successfully created ${schemaName} schema and updated content.config.ts`);
-  console.log(`📁 Created directory: src/content/${schemaName}`);
-  console.log(`📁 Created directory: src/pages/${schemaName}`);
+  console.log(`✅ Created directory: src/content/${schemaName}`);
+  console.log(`✅ Created directory: src/pages/${schemaName}`);
 
 } catch (error) {
   console.error('Error:', error);

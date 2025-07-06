@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+
+type Posts = Awaited<ReturnType<typeof getCollection>>;
+
+interface Props {
+    posts: Posts;
+    title: string;
+}
+
+
+const { posts, title }: Props = Astro.props;
+
+
+
+---
+
+
+<section
+    class="w-full flex flex-col items-center max-w-[1200px] mt-20 min-h-screen text-light-text dark:text-dark-text"
+>
+    <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1>
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
+        {
+            posts.length === 0 && (
+                <li class="col-span-full text-center">
+                    <p class="font-semibold">No posts found (:</p>
+                </li>
+            )
+        }
+        {
+            posts.map((post:any) => (
+                <li class="group">
+                    <a
+                        class="flex flex-col  gap-3 items-center"
+                        href={"/gravimetry/" + post.id}
+                    >
+                        {post.data.heroImage && (
+                            <div class="overflow-hidden rounded">
+                                <Image
+                                class="group-hover:scale-105 transition-all duration-200"
+                                src={post.data.heroImage}
+                                alt={post.data.title}
+                                width={400}
+                                height={400}
+                                format="webp"
+                                quality={75}
+                                loading="lazy"
+                                decoding="async"
+                                />
+                            </div>
+                        )}
+                        <div class="w-full flex flex-col gap-2 max-w-[400px]">
+                            <h3 class="font-semibold text-xl transition-all duration-200
+                            group-hover:text-blue-600  dark:group-hover:text-buttons-bg">
+                                {post.data.title}
+                            </h3>
+                            <div class="flex items-center gap-1 text-sm opacity-70 my-1">
+                                <p class="text-sm opacity-70 flex items-center justify-center">
+                                    <Icon name="mdi:hourglass" />
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </p>
+                                <span class="opacity-70">•</span>
+                                <p class="text-sm opacity-70">{title.toLowerCase()}</p>
+                            </div>
+                            <h4 class="opacity-80">{post.data.description}</h4>
+                        </div>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</section>

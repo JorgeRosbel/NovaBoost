@@ -3,56 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import '../styles/global.css';
-
-const menuLinks = [
-	{ href: '/', label: 'Home' },
-	{ href: '/blog', label: 'Blog' },
-];
-
-
-const submenuLinks = [
-  {
-    submenu_title: 'Methods',
-    links: [
-      { href: '/geophysics/gravimetry', label: 'Gravimetry' },
-      { href: '/geophysics/magnetometry', label: 'Magnetometry' },
-      { href: '/geophysics/seismology', label: 'Seismology' },
-      { href: '/geophysics/geodesy', label: 'Geodesy' },
-      { href: '/geophysics/geoelectrics', label: 'Geoelectrics' },
-    ],
-  },
-  {
-    submenu_title: 'Applications',
-    links: [
-      { href: '/geophysics/oil-gas', label: 'Oil & Gas Exploration' },
-      { href: '/geophysics/mining', label: 'Mining Surveys' },
-      { href: '/geophysics/environmental', label: 'Environmental Studies' },
-      { href: '/geophysics/archaeology', label: 'Archaeology' },
-    ],
-  },
-  {
-    submenu_title: 'Software',
-    links: [
-      { href: '/geophysics/software/petrel', label: 'Petrel' },
-      { href: '/geophysics/software/oasis', label: 'Oasis montaj' },
-      { href: '/geophysics/software/gmtsar', label: 'GMTSAR' },
-      { href: '/geophysics/software/oq', label: 'OpendTect' },
-    ],
-  },
-  {
-    submenu_title: 'Data Processing',
-    links: [
-      { href: '/geophysics/data/filtering', label: 'Filtering' },
-      { href: '/geophysics/data/inversion', label: 'Inversion' },
-      { href: '/geophysics/data/modeling', label: 'Modeling' },
-      { href: '/geophysics/data/visualization', label: 'Visualization' },
-    ],
-  },
-];
-
-
+import {SITE_TITLE, SITE_DESCRIPTION} from "../config/site.consts"
+import { HERO_CONFIG } from '../config/hero.consts';
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../config/header.consts';
 ---
 
 <!doctype html>
@@ -61,9 +14,14 @@ const submenuLinks = [
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body class="w-full">
-		<Header title="Geophysics" links={menuLinks} submenu={submenuLinks}/>
+		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS}/>
 		<main>
-			<Hero />
+			<Hero 
+      h1={HERO_CONFIG.h1} 
+      h2={HERO_CONFIG.h2} 
+      backgroundImage={HERO_CONFIG.backgroundImage}
+      button_1={HERO_CONFIG.button_1}
+      button_2={HERO_CONFIG.button_2} />
 		</main>
 	</body>
 </html>
