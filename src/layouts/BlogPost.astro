@@ -21,24 +21,50 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props as P
 
 	<body>
 		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS}/>
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+		<main class="flex text-light-text dark:text-dark-text flex-col items-center justify-center w-full min-h-screen px-4 py-8 bg-light-bg dark:bg-dark-bg">
+			<article class="w-full max-w-[900px] prose dark:prose-invert">
+				<div class="hero-image w-full flex justify-center mb-6">
+					{heroImage && <Image 
+						width={400} 
+						height={400}
+						alt={title}
+						src={heroImage}
+						format="webp"
+                        quality={75}
+                    	loading="lazy"
+                        decoding="async" />}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							{pubDate}
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on {updatedDate}
-									</div>
-								)
-							}
+				<div>
+					<div>
+						<div>
+							<span>
+								Published on{" "}
+								{pubDate.toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+							</span>
+
+							{updatedDate && <span>
+								Last updated {" "}
+								{updatedDate.toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+							</span>}
+
+							
+							
+							
 						</div>
-						<h1>{title}</h1>
 						<hr />
 					</div>
 					<slot />

@@ -7,9 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "create-schema": "tsx scripts/createSchema.ts",
+    "create-collection": "tsx scripts/createSchema.ts",
     "print-routes": "tsx scripts/check_routes.ts",
-    "create-all-schemas": "bash scripts/create_all_schemas.bash"
+    "create-all-schemas": "bash scripts/create_all_schemas.bash",
+    "reset-template": "tsx scripts/reset_template.ts",
+    "create-post": "tsx scripts/AI.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
@@ -23,7 +25,12 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.0.10",
-    "tsx": "^4.20.3"
+    "dotenv": "^17.0.1",
+    "inquirer": "^12.7.0",
+    "openai": "^5.8.2",
+    "tsx": "^4.20.3",
+    "zod": "^3.25.75"
   }
 }
