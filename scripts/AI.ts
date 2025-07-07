@@ -102,7 +102,6 @@ const postSchema = z.object({
 
 export type TResponse = z.infer<typeof postSchema>;
 
-//AIzaSyBQ6RObOwHIJCvOpVKh84LrrKa8HeoDd24
 
 const openai = new OpenAI({
     apiKey: process.env.API_KEY,
