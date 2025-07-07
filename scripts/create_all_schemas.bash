@@ -7,6 +7,6 @@
 grep -oP "href:\s*'/\K[^/]+" src/config/header.consts.ts \
   | sort -u \
   | while read -r name; do
-      echo "🏗  create-schema -- $name"
-      npm run create-schema -- "$name"
+      echo "🏗  create-collection -- $name"
+      npm run create-collection -- "$name"
     done
