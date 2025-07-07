@@ -181,7 +181,7 @@ export const collections = {
   import Header from "../../components/Header.astro";
   import Footer from "../../components/Footer.astro";
   import PreviewPosts from "../../components/PreviewPosts.astro";
-  import { SITE_TITLE } from "../../config/site.consts";
+  import { SITE_TITLE, SITE_LANG  } from "../../config/site.consts";
   import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
   import { getCollection } from "astro:content";
   import PaginationPost from '../../components/PaginationPost.astro';
@@ -223,7 +223,7 @@ export const collections = {
   const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
   ---
   <!doctype html>
-  <html lang="en">
+  <html lang={SITE_LANG}>
     <head>
       <BaseHead
         title={SITE_TITLE + " | ${schemaName}" + "Page" + " " + page} 

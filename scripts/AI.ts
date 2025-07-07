@@ -139,7 +139,7 @@ for (const prompt of tasks) {
 title: "${response.title}"
 description: "${response.description}"
 pubDate: "${getDate()}"
-heroImage: "../../assets/blog-placeholder-1.jpg"
+heroImage: "../../assets/post_placeholder.png"
 tags: [${response.tags.slice(0,3).map(tg => '"' + tg.toLocaleLowerCase() + '"')}]
 ---
 
