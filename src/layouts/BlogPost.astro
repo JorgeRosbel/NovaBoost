@@ -65,6 +65,7 @@ const json_ld = heroImage ? {
 			<article class="w-full max-w-[900px] prose dark:prose-invert">
 				<div class="hero-image w-full flex justify-center mb-6">
 					{heroImage && <Image 
+						densities={[1, 2]}
 						width={400} 
 						height={400}
 						alt={title}
