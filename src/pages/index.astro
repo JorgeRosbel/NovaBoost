@@ -3,13 +3,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import {SITE_TITLE, SITE_DESCRIPTION} from "../config/site.consts"
+import {SITE_TITLE, SITE_DESCRIPTION, SITE_LANG} from "../config/site.consts"
 import { HERO_CONFIG } from '../config/hero.consts';
 import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../config/header.consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={SITE_LANG}>
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>

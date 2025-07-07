@@ -6,6 +6,10 @@ import { SITE_TITLE } from '../config/site.consts';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import type { ImageMetadata } from 'astro';
 
+
+
+
+
 interface Props {
 	title: string;
 	description: string;
@@ -14,7 +18,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description,image = FallbackImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -29,6 +33,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+
 
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
