@@ -35,7 +35,7 @@ const { posts, title }: Props = Astro.props;
             posts.map((post: any) => (
                 <article class="group">
                     <a
-                        class="flex flex-col  gap-3 items-center"
+                        class="flex flex-col  gap-3 items-center" aria-label={`Read more about ${post.data.title}`}
                         href={`/${post.collection}/` + post.id}
                     >
                         {post.data.heroImage && (
@@ -44,6 +44,7 @@ const { posts, title }: Props = Astro.props;
                                     class="group-hover:scale-105 transition-all duration-200"
                                     src={post.data.heroImage}
                                     alt={post.data.title}
+                                    densities={[1, 2]}
                                     width={400}
                                     height={400}
                                     format="webp"
@@ -54,14 +55,14 @@ const { posts, title }: Props = Astro.props;
                             </div>
                         )}
                         <div class="w-full flex flex-col gap-2 max-w-[400px]">
-                            <h3
+                            <h2
                                 class="font-semibold text-xl transition-all duration-200
                             group-hover:text-blue-600  dark:group-hover:text-buttons-bg"
                             >
                                 {post.data.title}
-                            </h3>
+                            </h2>
                             <div class="flex items-center gap-1 text-sm opacity-70 my-1">
-                                <p class="text-sm opacity-70 flex items-center justify-center">
+                                <p class="text-sm opacity-90 flex items-center justify-center font-[500]">
                                     <Icon name="mdi:hourglass" />
                                     {post.data.pubDate.toLocaleDateString(
                                         "en-US",
@@ -72,12 +73,12 @@ const { posts, title }: Props = Astro.props;
                                         },
                                     )}
                                 </p>
-                                <span class="opacity-70">•</span>
-                                <p class="text-sm opacity-70">
+                                <span class="opacity-90 font-[500]">•</span>
+                                <p class="text-sm opacity-90 font-[500]">
                                     {post.collection.toLowerCase()}
                                 </p>
                             </div>
-                            <h4 class="opacity-80">{post.data.description}</h4>
+                            <h3 class="opacity-80">{post.data.description}</h3>
                         </div>
                         <div class="flex flex-wrap items-center justify-center py-2 gap-2 w-full">
                             {

@@ -38,17 +38,17 @@ before:min-h-screen before:w-full before:bg-black/60 before:absolute before:z-10
             {h2}
         </h2>
 
-       <div class="w-full flex gap-3 items-center justify-center md:justify-start">
+       <div class="w-full flex-col md:flex-row flex gap-8 items-center justify-center md:justify-start">
     
         <button class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer
-         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20">
+         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[100px]">
             <HeaderLink href={button_1.href}>
                 {button_1.label}
             </HeaderLink>
         </button>
 
         <button class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer
-         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20">
+         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[100px]">
             <HeaderLink href={button_2?.href}>
                 {button_2?.label}
             </HeaderLink>
