@@ -17,6 +17,14 @@ const slugify = (s: string) =>
         .replace(/[^\w-]/g, "");
 
 const { posts, title }: Props = Astro.props;
+
+
+const sortedPosts = [...posts].sort((a, b) => {
+  const da = new Date(a.data.pubDate).getTime();
+  const db = new Date(b.data.pubDate).getTime();
+  return db - da; // newer dates (larger timestamps) come first
+});
+
 ---
 
 <section
@@ -25,14 +33,14 @@ const { posts, title }: Props = Astro.props;
     <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
         {
-            posts.length === 0 && (
+            sortedPosts.length === 0 && (
                 <li class="col-span-full text-center">
                     <p class="font-semibold">No posts found (:</p>
                 </li>
             )
         }
         {
-            posts.map((post: any) => (
+            sortedPosts.map((post: any) => (
                 <article class="group">
                     <a
                         class="flex flex-col  gap-3 items-center" aria-label={`Read more about ${post.data.title}`}
@@ -62,17 +70,17 @@ const { posts, title }: Props = Astro.props;
                                 {post.data.title}
                             </h2>
                             <div class="flex items-center gap-1 text-sm opacity-70 my-1">
-                                <p class="text-sm opacity-90 flex items-center justify-center font-[500]">
+                                <time
+                                    class="text-sm opacity-90 flex items-center justify-center font-[500]"
+                                    datetime="{post.data.pubDate.toISOString()}"
+                                    >
                                     <Icon name="mdi:hourglass" />
-                                    {post.data.pubDate.toLocaleDateString(
-                                        "en-US",
-                                        {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        },
-                                    )}
-                                </p>
+                                    {post.data.pubDate.toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                    </time>
                                 <span class="opacity-90 font-[500]">•</span>
                                 <p class="text-sm opacity-90 font-[500]">
                                     {post.collection.toLowerCase()}

@@ -1,7 +1,7 @@
 ---
 title: "Avance en la Detección Subterránea: Instrumentación y Técnicas Modernas en Levantamientos Gravimétricos"
 description: "Explora cómo la instrumentación moderna y las técnicas avanzadas están revolucionando los levantamientos gravimétricos, mejorando la precisión y eficiencia en la exploración del subsuelo terrestre."
-pubDate: "2025-07-07"
+pubDate: "2025-07-04"
 heroImage: "../../assets/post_placeholder.png"
 tags: ["gravimetria","geofisica","instrumentacion moderna"]
 ---
