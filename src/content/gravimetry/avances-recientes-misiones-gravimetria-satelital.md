@@ -1,7 +1,7 @@
 ---
 title: "Avances Recientes en Misiones de Gravimetría Satelital: Midiendo el Pulso Cambiante de la Tierra"
 description: "Explora los avances recientes en las misiones de gravimetría satelital, como GRACE-FO, y cómo estas tecnologías están revolucionando nuestra comprensión del cambio de masa en la Tierra, desde el derretimiento de los glaciares hasta la hidrología global, con miras a las futuras innovaciones en el campo."
-pubDate: "2025-07-07"
+pubDate: "2025-07-08"
 heroImage: "../../assets/post_placeholder.png"
 tags: ["gravimetria satelital","grace-fo","cambio climatico"]
 ---

@@ -10,7 +10,7 @@ export const HERO_CONFIG:Props  = {
   h1: "Inside the Planet: Cutting‑Edge Insights in Geophysics",
   h2: "How seismic waves, gravity surveys, and magnetics reveal our planet’s secrets",
   button_1: {
-    href: "/methods",
+    href: "/#LATESTS-POSTS",
     label: "Explore Geophysics",
   },
   button_2: {

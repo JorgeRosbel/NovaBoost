@@ -1,0 +1,21 @@
+---
+import { getAllPosts } from "../utils/get_all_posts";
+import PreviewPosts from "./PreviewPosts.astro";
+
+
+const posts = await getAllPosts();
+
+interface Props {
+    amount:number;
+    title:string
+}
+
+const {amount,title} =  Astro.props as Props
+---
+
+<div id="LATESTS-POSTS">
+    <PreviewPosts posts={posts.slice(0,amount)} title={title} />
+</div>
+
+
+

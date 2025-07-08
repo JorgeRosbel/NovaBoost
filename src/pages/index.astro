@@ -6,6 +6,8 @@ import Hero from '../components/Hero.astro';
 import {SITE_TITLE, SITE_DESCRIPTION, SITE_LANG} from "../config/site.consts"
 import { HERO_CONFIG } from '../config/hero.consts';
 import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../config/header.consts';
+import LatestPosts from '../components/LatestPosts.astro';
+import { LATESTS_POSTS_TITLE, AMOUNT} from '../config/latestPosts.consts'
 ---
 
 <!doctype html>
@@ -13,15 +15,17 @@ import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../config/header.consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="w-full">
+	<body class="w-full bg-light-bg dark:bg-dark-bg">
 		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS}/>
-		<main>
+		<main class="flex flex-col items-center justify-center">
 			<Hero 
-      h1={HERO_CONFIG.h1} 
-      h2={HERO_CONFIG.h2} 
-      backgroundImage={HERO_CONFIG.backgroundImage}
-      button_1={HERO_CONFIG.button_1}
-      button_2={HERO_CONFIG.button_2} />
+				h1={HERO_CONFIG.h1} 
+				h2={HERO_CONFIG.h2} 
+				backgroundImage={HERO_CONFIG.backgroundImage}
+				button_1={HERO_CONFIG.button_1}
+				button_2={HERO_CONFIG.button_2} />
+			
+			<LatestPosts amount={AMOUNT} title={LATESTS_POSTS_TITLE} />
 		</main>
 	</body>
 </html>

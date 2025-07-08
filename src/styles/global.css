@@ -54,3 +54,8 @@
 .dark .menu-bar{
   scrollbar-color: theme('colors.gray.300') theme('colors.dark.surface');
 }
+
+
+html{
+	scroll-behavior: smooth;
+}
