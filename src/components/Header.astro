@@ -98,9 +98,5 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 </header>
 
 
-<script>
-	const D = document.getElementById('dark-toggle') as HTMLButtonElement,e = document.documentElement
-	e.className = localStorage.getItem("theme") || "light"
-	D.onclick = _ => {e.classList.toggle("dark");localStorage.setItem("theme", e.className)}
-</script>
+
 

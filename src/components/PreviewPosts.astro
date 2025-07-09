@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
+import HeaderLink from "./HeaderLink.astro";
 
 type Posts = Awaited<ReturnType<typeof getCollection>>;
 
@@ -31,8 +32,8 @@ const sortedPosts = [...posts].sort((a, b) => {
 <section
     class="w-full flex flex-col items-center max-w-[1200px] mt-20 min-h-screen text-light-text dark:text-dark-text"
 >
-    { remove_h1 ? <h2 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h2>:
-    <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1> }
+    { remove_h1 ? <h2 class="text-3xl font-bold mb-6 text-center scroll-animation">{title.toUpperCase()}</h2>:
+    <h1 class="text-3xl font-bold mb-6 text-center scroll-animation">{title.toUpperCase()}</h1> }
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
         {
             sortedPosts.length === 0 && (
@@ -43,8 +44,8 @@ const sortedPosts = [...posts].sort((a, b) => {
         }
         {
             sortedPosts.map((post: any) => (
-                <article class="group">
-                    <a
+                <article class="group scroll-animation">
+                    <HeaderLink
                         class="flex flex-col  gap-3 items-center" aria-label={`Read more about ${post.data.title}`}
                         href={`/${post.collection}/` + post.id}
                     >
@@ -106,7 +107,7 @@ const sortedPosts = [...posts].sort((a, b) => {
                             })
                             }
                         </div>
-                    </a>
+                    </HeaderLink>
                 </article>
             ))
         }
