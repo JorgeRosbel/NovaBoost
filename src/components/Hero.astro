@@ -28,34 +28,44 @@ const { h1, h2, button_1, button_2, backgroundImage } = Astro.props as Props;
 before:min-h-screen before:w-full before:bg-black/60 before:absolute before:z-10"
 >
     <div class="w-full max-w-4/5 md:max-w-[900px] z-30 relative">
-        <h1 class="text-light-bg text-3xl md:text-5xl lg:text-7xl font-bold mb-4
-         text-center md:text-left">
+        <h1
+            class="text-light-bg text-3xl md:text-5xl lg:text-7xl font-bold mb-4
+         text-center md:text-left"
+        >
             {h1}
         </h1>
 
-        <h2 class="text-light-bg opacity-85 text-lg md:text-xl lg:text-3xl font-semibold 
-        mb-8 text-center md:text-left">
+        <h2
+            class="text-light-bg opacity-85 text-lg md:text-xl lg:text-3xl font-semibold
+        mb-8 text-center md:text-left"
+        >
             {h2}
         </h2>
 
-       <div class="w-full flex-col md:flex-row flex gap-8 items-center justify-center md:justify-start">
-    
-        <button class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer
-         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[100px]">
-            <HeaderLink href={button_1.href}>
-                {button_1.label}
-            </HeaderLink>
-        </button>
-
-        <button class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer
-         transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[100px]">
+        <div
+            class="w-full flex-col md:flex-row flex gap-8 items-center justify-center md:justify-start"
+        >
             <HeaderLink href={button_2?.href}>
-                {button_2?.label}
+                <button
+                    class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer h-15
+                    transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[150px] inline-flex"
+                >
+                {button_1.label}
+                </button>
             </HeaderLink>
-        </button>
 
+               <HeaderLink href={button_2?.href}>
+                <button
+                    class="bg-buttons-bg/10 border-[2px] border-buttons-bg text-buttons-bg px-6 py-3 rounded-lg cursor-pointer h-15
+                    transition-colors duration-200 text-md md:text-lg font-semibold hover:bg-buttons-bg/20 min-w-[150px] inline-flex"
+                >
+                {button_2?.label}
+                </button>
+            </HeaderLink>
 
-       
-        
+            
+
+         
+        </div>
     </div>
 </section>
