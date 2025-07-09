@@ -1,0 +1,86 @@
+---
+import { z } from 'astro/zod';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PreviewPosts from "../../components/PreviewPosts.astro";
+import PaginationPost from '../../components/PaginationPost.astro';
+import { SITE_TITLE, SITE_LANG } from "../../config/site.consts";
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
+import { getAllPosts } from '../../utils/get_all_posts';
+
+/////////////////////////////////////////////////////////////////
+// 1) Generación de rutas estáticas (build time)
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 6;
+  // Trae todos los posts
+  const all = await getAllPosts();
+
+  // Agrupa por colección
+  const byCollection = new Map<string, typeof all[0][]>();
+  all.forEach(post => {
+    const col = post.collection;
+    if (!byCollection.has(col)) byCollection.set(col, []);
+    byCollection.get(col)!.push(post);
+  });
+
+  // Para cada colección, calcula cuántas páginas y genera paths
+  const paths: { params: { collection: string; page: string } }[] = [];
+  for (const [col, posts] of byCollection.entries()) {
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    for (let i = 1; i <= totalPages; i++) {
+      paths.push({
+        params: { collection: col, page: String(i) },
+      });
+    }
+  }
+  return paths;
+}
+
+/////////////////////////////////////////////////////////////////
+// 2) Frontmatter: validación de params, orden y paginación
+const POSTS_PER_PAGE = 6;
+
+// Valida y parsea parámetros
+const paramsSchema = z.object({
+  collection: z.string(),
+  page: z
+    .string()
+    .regex(/^[1-9]\d*$/, 'Debe ser un número positivo')
+    .transform(Number),
+});
+const { collection, page } = paramsSchema.parse(Astro.params);
+
+// Obtiene, ordena y filtra
+const allPosts = (await getAllPosts()).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const postsInCollection = allPosts.filter(p => p.collection === collection);
+
+// Calcula la página actual y recorta
+const totalPages = Math.ceil(postsInCollection.length / POSTS_PER_PAGE);
+const start = (page - 1) * POSTS_PER_PAGE;
+const pagePosts = postsInCollection.slice(start, start + POSTS_PER_PAGE);
+---
+
+<!doctype html>
+<html lang={SITE_LANG}>
+  <head>
+    <BaseHead
+      title={`${SITE_TITLE} | ${collection} – Page ${page}`}
+      description="Super nice description"
+    />
+  </head>
+  <body>
+    <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+    <main class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg">
+      <PreviewPosts posts={pagePosts} title={collection} />
+      <PaginationPost
+        schemaName={collection}
+        page={page}
+        totalPages={totalPages}
+      />
+    </main>
+    <Footer />
+  </body>
+</html>

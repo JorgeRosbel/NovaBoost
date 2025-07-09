@@ -12,30 +12,6 @@ if (!schemaName) {
 }
 
 
-const slugTemplate = `---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
-
-export async function getStaticPaths() {
-	const posts = await getCollection('${schemaName}');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<'${schemaName}'>;
-
-const post = Astro.props;
-const { Content } = await render(post);
----
-
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
-
-`
-
 let updatedContent = ""
 
 // Template for the schema configuration
@@ -152,10 +128,6 @@ export const collections = {
   console.log(`✅ Collections actualizado con: ${currentCollections.join(', ')}`);
 
 
-  
-    
-  
-
   // Write the updated content back to the file
   fs.writeFileSync(configPath, updatedContent);
   
@@ -165,95 +137,10 @@ export const collections = {
     fs.mkdirSync(contentDir, { recursive: true });
   }
 
-  const pagePath = join(process.cwd(), 'src/pages', schemaName);
 
-  if (!fs.existsSync(pagePath)) {
-    fs.mkdirSync(pagePath, { recursive: true });
-  }
-  fs.writeFileSync(join(pagePath, '[...slug].astro'), slugTemplate);
-
-
- 
-
-  const html_index_blog = `---
-  import { z } from 'astro/zod';
-  import BaseHead from "../../components/BaseHead.astro";
-  import Header from "../../components/Header.astro";
-  import Footer from "../../components/Footer.astro";
-  import PreviewPosts from "../../components/PreviewPosts.astro";
-  import { SITE_TITLE, SITE_LANG  } from "../../config/site.consts";
-  import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
-  import { getCollection } from "astro:content";
-  import PaginationPost from '../../components/PaginationPost.astro';
-
-  const POSTS_PER_PAGE = 6;
-
-  // 1) Obtener y ordenar todos los posts de "${schemaName}"
-  const allPosts = (await getCollection("${schemaName}")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-
-  // 2) Indicarle a Astro qué rutas generar
-  export async function getStaticPaths() {
-      const POSTS_PER_PAGE = 6;
-      const allPosts = (await getCollection("${schemaName}")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  );
-      const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-    return Array.from({ length: totalPages }, (_, i) => ({
-        params: { page: String(i + 1) }
-      }))
-
-    
-  }
-
-  // 3) Validar y parsear el parámetro page
-  const paramsSchema = z.object({
-    page: z
-      .string()
-      .regex(/^[1-9]\d*$/, 'Debe ser un número positivo')
-      .transform(Number)
-  });
-  const { page } = paramsSchema.parse(Astro.params);
-
-  // 4) Slice de los posts para esta página
-  const start = (page - 1) * POSTS_PER_PAGE;
-  const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
-  ---
-  <!doctype html>
-  <html lang={SITE_LANG}>
-    <head>
-      <BaseHead
-        title={SITE_TITLE + " | ${schemaName}" + "Page" + " " + page} 
-        description="Super nice description"
-      />
-    </head>
-    <body>
-      <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
-      <main class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg">
-        <PreviewPosts posts={pagePosts} title="${schemaName}" />
-         <PaginationPost
-            schemaName="${schemaName}"
-            page={page}
-            totalPages={totalPages} />
-      </main>
-      <Footer />
-    </body>
-  </html>
-  `
-
- fs.writeFileSync(join(pagePath, '[...page].astro'), html_index_blog);
-
-
-
-
-
-  
   console.log(`✅ Successfully created ${schemaName} schema and updated content.config.ts`);
   console.log(`✅ Created directory: src/content/${schemaName}`);
-  console.log(`✅ Created directory: src/pages/${schemaName}`);
+
 
 } catch (error) {
   console.error('Error:', error);
