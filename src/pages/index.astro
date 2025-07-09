@@ -1,13 +1,21 @@
 ---
+// Components
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import LatestPosts from '../components/LatestPosts.astro';
+import InfoBaner from '../components/InfoBaner.astro';
+import PrimaryTopics from "../components/PrimaryTopics.astro"
+
+
+// Consts
 import {SITE_TITLE, SITE_DESCRIPTION, SITE_LANG} from "../config/site.consts"
 import { HERO_CONFIG } from '../config/hero.consts';
 import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../config/header.consts';
-import LatestPosts from '../components/LatestPosts.astro';
 import { LATESTS_POSTS_TITLE, AMOUNT} from '../config/latestPosts.consts'
+import { INFO_TEXT, INFO_BG} from "../config/info.consts"
+import {TOPICS_LIST , TOPICS_TITLE } from "../config/topics.consts"
 ---
 
 <!doctype html>
@@ -26,6 +34,8 @@ import { LATESTS_POSTS_TITLE, AMOUNT} from '../config/latestPosts.consts'
 				button_2={HERO_CONFIG.button_2} />
 			
 			<LatestPosts amount={AMOUNT} title={LATESTS_POSTS_TITLE} />
+			<InfoBaner text={INFO_TEXT} backgroundImage={INFO_BG} />
+			<PrimaryTopics topics={TOPICS_LIST} title={TOPICS_TITLE} />
 		</main>
 	</body>
 </html>

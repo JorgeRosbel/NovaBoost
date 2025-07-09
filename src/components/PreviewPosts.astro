@@ -8,6 +8,7 @@ type Posts = Awaited<ReturnType<typeof getCollection>>;
 interface Props {
     posts: Posts;
     title: string;
+    remove_h1?:boolean
 }
 
 const slugify = (s: string) =>
@@ -16,7 +17,7 @@ const slugify = (s: string) =>
         .replace(/\s+/g, "-")
         .replace(/[^\w-]/g, "");
 
-const { posts, title }: Props = Astro.props;
+const { posts, title,remove_h1 }: Props = Astro.props;
 
 
 const sortedPosts = [...posts].sort((a, b) => {
@@ -30,7 +31,8 @@ const sortedPosts = [...posts].sort((a, b) => {
 <section
     class="w-full flex flex-col items-center max-w-[1200px] mt-20 min-h-screen text-light-text dark:text-dark-text"
 >
-    <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1>
+    { remove_h1 ? <h2 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h2>:
+    <h1 class="text-3xl font-bold mb-6 text-center">{title.toUpperCase()}</h1> }
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
         {
             sortedPosts.length === 0 && (
