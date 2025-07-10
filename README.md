@@ -5,14 +5,17 @@ A starter blog template built with **Astro 5** and **TailwindCSS**, optimized fo
 ![Descripción de la imagen](docs/Macbook-Air-streampng.com.png)
 
 ## Table of Contents
-
 * [Features](#features)
 * [Getting Started](docs/GETTING_STARTED.md)
 * [Usage](docs/USAGE.md)
     * [1. Reset your template](docs/USAGE.md#reset-your-template)
-    * [2. Navigate to the Project](#2-navigate-to-the-project)
-    * [3. Install Dependencies](#3-install-dependencies)
-    * [4. Run the Development Server](#4-run-the-development-server)
+    * [2. Create a collection](docs/USAGE.md#create-a-collection)
+    * [3. AI-Powered Post Generation](docs/USAGE.md#ai-powered-post-generation)
+    * [4. Available Commands](docs/USAGE.md#available-commands)
+    * [5. Customizing Template Content](docs/USAGE.md#customizing-template-content)
+* [PageSpeed Insights Results](#pagespeed-insights-results)
+
+   
 
 ---
 
@@ -26,3 +29,10 @@ A starter blog template built with **Astro 5** and **TailwindCSS**, optimized fo
 
 ---
 
+## PageSpeed Insights Results
+
+You can review the performance and optimization quality of the **NovaBoost** template by checking the PageSpeed Insights results below:
+
+👉 [NovaBoost Template Performance Report](https://pagespeed.web.dev/analysis/https-streampng-com/dssiigc8yv?form_factor=desktop)
+
+This can help you evaluate loading speed, SEO readiness, and best practices compliance before deploying your site.
