@@ -20,11 +20,7 @@ const json_ld = heroImage
 			"@type": "Article",
 			headline: title,
 			description: description,
-			datePublished: pubDate.toLocaleDateString("en-US", {
-				year: "numeric",
-				month: "long",
-				day: "numeric",
-			}),
+			datePublished: pubDate,
 			image: new URL(heroImage.src, Astro.site).href,
 			publisher: {
 				"@type": "Organization",
@@ -40,11 +36,7 @@ const json_ld = heroImage
 			"@type": "Article",
 			headline: title,
 			description: description,
-			datePublished: pubDate.toLocaleDateString("en-US", {
-				year: "numeric",
-				month: "long",
-				day: "numeric",
-			}),
+			datePublished: pubDate,
 			publisher: {
 				"@type": "Organization",
 				name: SITE_TITLE,
