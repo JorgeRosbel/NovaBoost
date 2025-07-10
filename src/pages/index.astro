@@ -20,6 +20,7 @@ import { INFO_TEXT, INFO_BG} from "../config/info.consts"
 import {TOPICS_LIST , TOPICS_TITLE } from "../config/topics.consts"
 import { FAQ_CONTENT } from '../config/faq,consts';
 import { CARD_CONTENT } from '../config/cards.consts';
+import { FOOTER_CONTENT } from '../config/footer.consts';
 ---
 
 <!doctype html>
@@ -42,8 +43,7 @@ import { CARD_CONTENT } from '../config/cards.consts';
 			<PrimaryTopics topics={TOPICS_LIST} title={TOPICS_TITLE} />
 			<FAQ {...FAQ_CONTENT}/>
 			<CardsContainer {...CARD_CONTENT} />
-
-			<Footer />
+			<Footer {...FOOTER_CONTENT}  />
 		</main>
 	</body>
 </html>

@@ -7,6 +7,7 @@ import { TITLE, MENU_LINKS, SUBMENU_LINKS } from "../config/header.consts";
 import { SITE_TITLE, SITE_LANG } from "../config/site.consts";
 
 import { getCollection } from "astro:content";
+import { FOOTER_CONTENT } from "../config/footer.consts";
 
 type Posts = Awaited<ReturnType<typeof getCollection>>[0]["data"];
 
@@ -130,6 +131,6 @@ const json_ld = heroImage
 				</div>
 			</article>
 		</main>
-		<Footer />
+		<Footer {...FOOTER_CONTENT} />
 	</body>
 </html>
