@@ -1,14 +1,41 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
+// general collection
+
+
+export const general = defineCollection({
+  loader: glob({ base: './src/content/general', pattern: '**/*.{md,mdx}' }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: image().optional(),
+    tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\/\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
+  }),
+});
 
 
 // Collections export
-// archaeology collection
+// astro_base collection
 
 
-export const archaeology = defineCollection({
-  loader: glob({ base: './src/content/archaeology', pattern: '**/*.{md,mdx}' }),
+export const astro_base = defineCollection({
+  loader: glob({ base: './src/content/astro_base', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -16,14 +43,27 @@ export const archaeology = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\/\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
   }),
 });
 
-// environmental collection
+// tailwindcss collection
 
 
-export const environmental = defineCollection({
-  loader: glob({ base: './src/content/environmental', pattern: '**/*.{md,mdx}' }),
+export const tailwindcss = defineCollection({
+  loader: glob({ base: './src/content/tailwindcss', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -31,14 +71,27 @@ export const environmental = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\/\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
   }),
 });
 
-// filtering collection
+// seo_performance collection
 
 
-export const filtering = defineCollection({
-  loader: glob({ base: './src/content/filtering', pattern: '**/*.{md,mdx}' }),
+export const seo_performance = defineCollection({
+  loader: glob({ base: './src/content/seo_performance', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -46,14 +99,27 @@ export const filtering = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\/\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
   }),
 });
 
-// geodesy collection
+// ai_content collection
 
 
-export const geodesy = defineCollection({
-  loader: glob({ base: './src/content/geodesy', pattern: '**/*.{md,mdx}' }),
+export const ai_content = defineCollection({
+  loader: glob({ base: './src/content/ai_content', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -61,220 +127,26 @@ export const geodesy = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
-  }),
-});
-
-// geoelectrics collection
-
-
-export const geoelectrics = defineCollection({
-  loader: glob({ base: './src/content/geoelectrics', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// gmtsar collection
-
-
-export const gmtsar = defineCollection({
-  loader: glob({ base: './src/content/gmtsar', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// gravimetry collection
-
-
-export const gravimetry = defineCollection({
-  loader: glob({ base: './src/content/gravimetry', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// inversion collection
-
-
-export const inversion = defineCollection({
-  loader: glob({ base: './src/content/inversion', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// magnetometry collection
-
-
-export const magnetometry = defineCollection({
-  loader: glob({ base: './src/content/magnetometry', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// mining collection
-
-
-export const mining = defineCollection({
-  loader: glob({ base: './src/content/mining', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// modeling collection
-
-
-export const modeling = defineCollection({
-  loader: glob({ base: './src/content/modeling', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// oasis collection
-
-
-export const oasis = defineCollection({
-  loader: glob({ base: './src/content/oasis', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// oil_gas collection
-
-
-export const oil_gas = defineCollection({
-  loader: glob({ base: './src/content/oil_gas', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// oq collection
-
-
-export const oq = defineCollection({
-  loader: glob({ base: './src/content/oq', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// petrel collection
-
-
-export const petrel = defineCollection({
-  loader: glob({ base: './src/content/petrel', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// seismology collection
-
-
-export const seismology = defineCollection({
-  loader: glob({ base: './src/content/seismology', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-// visualization collection
-
-
-export const visualization = defineCollection({
-  loader: glob({ base: './src/content/visualization', pattern: '**/*.{md,mdx}' }),
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: image().optional(),
-    tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\/\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
   }),
 });
 
 export const collections = {
-  visualization,
-  seismology,
-  petrel,
-  oq,
-  oil_gas,
-  oasis,
-  modeling,
-  mining,
-  magnetometry,
-  inversion,
-  gravimetry,
-  gmtsar,
-  geoelectrics,
-  geodesy,
-  filtering,
-  environmental,
-  archaeology,
+  ai_content,
+  seo_performance,
+  tailwindcss,
+  astro_base,
+  general,
 };

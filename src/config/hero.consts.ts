@@ -5,16 +5,16 @@
 import HeroImage from '../assets/hero.webp';
 import type { Props } from "../components/Hero.astro"
 
-export const HERO_CONFIG:Props  = {
+export const HERO_CONFIG: Props = {
   backgroundImage: HeroImage,
-  h1: "Inside the Planet: Cutting‑Edge Insights in Geophysics",
-  h2: "How seismic waves, gravity surveys, and magnetics reveal our planet’s secrets",
+  h1: "NovaBoost: Ignite Your Stellar Blog",
+  h2: "A blazing‑fast Astro 5.10.2 & TailwindCSS template, SEO‑optimized and AI‑powered for effortless content creation",
   button_1: {
-    href: "/#LATESTS-POSTS",
-    label: "Explore Geophysics",
+    href: "/#",
+    label: "Call to Action 1",
   },
   button_2: {
-    href: "/applications",
-    label: "Methods & Applications",
+    href: "/#",
+    label: "Call to Action 2",
   },
 };

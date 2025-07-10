@@ -1,21 +1,9 @@
 export const collections = [
-  "archaeology",
-  "environmental",
-  "filtering",
-  "geodesy",
-  "geoelectrics",
-  "gmtsar",
-  "gravimetry",
-  "inversion",
-  "magnetometry",
-  "mining",
-  "modeling",
-  "oasis",
-  "oil_gas",
-  "oq",
-  "petrel",
-  "seismology",
-  "visualization",
+    "general",
+  "astro_base",
+  "tailwindcss",
+  "seo_performance",
+  "ai_content",
   ] as const;
 
   export type CollectionName = typeof collections[number];

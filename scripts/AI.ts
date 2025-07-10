@@ -140,6 +140,9 @@ description: "${response.description}"
 pubDate: "${getDate()}"
 heroImage: "../../assets/post_placeholder.png"
 tags: [${response.tags.slice(0,3).map(tg => '"' + tg.toLocaleLowerCase() + '"')}]
+affiliateBlock:
+  text: "Get this product with a 10% discount🤑!"
+  affiliateLink: "https://tu-affiliate.com/?ref=NOVABOOST"
 ---
 
 

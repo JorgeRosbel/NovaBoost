@@ -10,20 +10,20 @@ async function emptyDir(dir: string) {
   );
 }
 
-export async function resetPages(dir: string): Promise<void> {
-  const entries = await readdir(dir);
+// export async function resetPages(dir: string): Promise<void> {
+//   const entries = await readdir(dir);
 
-  await Promise.all(entries.map(async (entry) => {
-    const fullPath = join(dir, entry);
-    const stat = await lstat(fullPath);
+//   await Promise.all(entries.map(async (entry) => {
+//     const fullPath = join(dir, entry);
+//     const stat = await lstat(fullPath);
 
-    // Sólo directorios distintos de "tags"
-    if (stat.isDirectory() && entry !== 'tags') {
-      await rm(fullPath, { recursive: true, force: true });
-      console.log(`🗑️  Borrada carpeta: ${fullPath}`);
-    }
-  }));
-}
+//     // Sólo directorios distintos de "tags"
+//     if (stat.isDirectory() && entry !== 'tags') {
+//       await rm(fullPath, { recursive: true, force: true });
+//       console.log(`🗑️  Borrada carpeta: ${fullPath}`);
+//     }
+//   }));
+// }
 
 
 const base_content_config =`import { glob } from 'astro/loaders';
@@ -44,7 +44,7 @@ try{
     emptyDir(join(process.cwd(), 'src/content'));
     console.log('✅Content directory cleared.');
 
-    // Reset the collections.ts file
+    // Reset the content.config.ts file
     fs.writeFileSync(content_config_path , base_content_config );
     console.log('✅Content config file reset.');
 
@@ -52,8 +52,8 @@ try{
     fs.writeFileSync(collections_path , base_collections );
     console.log('✅Collections file reset.');
 
-    // Reset the pages directory
-    resetPages(join(process.cwd(), 'src/pages'));
+    // // Reset the pages directory
+    // resetPages(join(process.cwd(), 'src/pages'));
 
 }catch (error) {
   console.error('Error:', error);

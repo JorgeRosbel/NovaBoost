@@ -8,10 +8,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "create-collection": "tsx scripts/createSchema.ts",
-    "print-routes": "tsx scripts/check_routes.ts",
-    "create-all-schemas": "bash scripts/create_all_schemas.bash",
     "reset-template": "tsx scripts/reset_template.ts",
-    "create-post": "tsx scripts/AI.ts"
+    "create-post": "tsx scripts/AI.ts",
+    "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

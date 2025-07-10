@@ -1,0 +1,49 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+import { type CollectionName, collections } from '../../collections';
+// Define aquí tus colecciones disponibles
+
+
+// Generación de rutas estáticas para cada colección y slug
+export async function getStaticPaths() {
+  const paths: { params: { collection: string; slug: string } }[] = [];
+
+  for (const collection of collections) {
+    const posts = await getCollection(collection);
+    for (const post of posts) {
+      paths.push({
+        params: {
+          collection,
+          slug: post.id,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+// Tipo de props según la colección
+type Props = CollectionEntry<CollectionName>;
+
+// Extrae params de la URL
+const { collection, slug } = Astro.params as {
+  collection: CollectionName;
+  slug: string;
+};
+
+// Obtén el post de la colección correspondiente
+const posts = await getCollection(collection);
+const post = posts.find((p) => p.id === slug);
+if (!post) {
+  throw new Error(`Post '${slug}' not found in collection '${collection}'`);
+}
+
+// Renderiza el contenido MDX/MD
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data}>
+  <Content />
+</BlogPost>
