@@ -10,6 +10,7 @@
     "create-collection": "tsx scripts/createSchema.ts",
     "reset-template": "tsx scripts/reset_template.ts",
     "create-post": "tsx scripts/AI.ts",
+    "get-routes": "tsx scripts/get_routes.ts",
     "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --"
   },
   "dependencies": {

@@ -1,13 +1,17 @@
-#!/usr/bin/env node
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+
+import { join } from 'path';
 import fs from 'fs';
 
 // Get the schema name from command line arguments
 const schemaName = process.argv[2];
 
+const alphanumericUnderscoreRegex = /^[a-zA-Z0-9_]+$/;
+
 if (!schemaName) {
   console.error('Please provide a schema name. Example: npm run create-schema -- reviews');
+  process.exit(1);
+} else if (!alphanumericUnderscoreRegex.test(schemaName)) {
+  console.error('Schema name can only contain alphanumeric characters and underscores (_).');
   process.exit(1);
 }
 
