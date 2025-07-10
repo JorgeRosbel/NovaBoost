@@ -139,16 +139,19 @@ This automation helps streamline your content creation workflow and speeds up bl
 
 ## Available Commands
 
-Here is a table summarizing the main CLI commands available in **NovaBoost**, including both standard and custom scripts:
+Here is a table summarizing the main commands available in **NovaBoost**, including both standard and custom scripts:
 
-| Command                               | Description                                                            |
-| ------------------------------------- | ---------------------------------------------------------------------- |
-| `npm run dev`                         | Starts the development server with live reload.                        |
-| `npm run build`                       | Builds the project for production.                                     |
-| `npm run preview`                     | Previews the production build locally.                                 |
-| `npm run reset-template`              | Clears all demo content and resets the project to a clean state. ⚠️    |
-| `npm run create-collection -- <name>` | Creates a new content collection and registers it automatically.       |
-| `npm run create-post`                 | Launches the AI-powered post generator using prompts from your config. |
+| Command                                                                | Description                                                                |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `npm run dev`                                                          | Starts the development server with live reload.                            |
+| `npm run build`                                                        | Builds the project for production.                                         |
+| `npm run preview`                                                      | Previews the production build locally.                                     |
+| `npm run reset-template`                                               | Clears all demo content and resets the project to a clean state. ⚠️        |
+| `npm run create-collection -- <name>`                                  | Creates a new content collection and registers it automatically.           |
+| `npm run create-post`                                                  | Launches the AI-powered post generator using prompts from your config.     |
+| `npm run create-multiple -- <collection1> <collection2> <collection3>` | Creates multiple collections in one go (Bash only).                        |
+| `npm run get-routes`                                                   | Displays the routes for all created collections, for use in header config. |
+
 
 > ⚠️ **Note:** Use `reset-template` carefully as it deletes all current collections and posts.
 
