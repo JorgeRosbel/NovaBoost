@@ -8,7 +8,7 @@ const schemaName = process.argv[2];
 const alphanumericUnderscoreRegex = /^[a-zA-Z0-9_]+$/;
 
 if (!schemaName) {
-  console.error('Please provide a schema name. Example: npm run create-schema -- reviews');
+  console.error('Please provide a schema name. Example: npm run create-collection -- reviews');
   process.exit(1);
 } else if (!alphanumericUnderscoreRegex.test(schemaName)) {
   console.error('Schema name can only contain alphanumeric characters and underscores (_).');
@@ -165,10 +165,15 @@ export const collections = {
     fs.mkdirSync(contentDir, { recursive: true });
   }
 
+  const RESET = "\x1b[0m";
+  const BLUE  = "\x1b[34m";
+  const GREEN = "\x1b[32m";
+  const RED   = "\x1b[31m";
 
-  console.log(`✅ Successfully created ${schemaName} schema and updated content.config.ts`);
-  console.log(`✅ Created directory: src/content/${schemaName}`);
-  console.log(`✅ Collections updated with: ${currentCollections.join(', ')}`);
+
+  console.log(`${GREEN}Successfully created ${schemaName} schema and updated content.config.ts${RESET}`);
+  console.log(`${GREEN}Created directory: src/content/${schemaName}${RESET}`);
+  console.log(`${GREEN}Collections updated with: ${currentCollections.join(', ')}${RESET}`);
 
 
 } catch (error) {
