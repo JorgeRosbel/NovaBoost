@@ -5,13 +5,13 @@ Follow these steps to get up and running:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/JorgeRosbel/free-astro-blog.git
+git clone https://github.com/JorgeRosbel/NovaBoost.git
 ```
 
 ### 2. Navigate to the Project
 
 ```bash
-cd free-astro-blog
+cd NovaBoost
 ```
 
 ### 3. Install Dependencies
