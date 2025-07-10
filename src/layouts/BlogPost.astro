@@ -10,7 +10,7 @@ import { getCollection } from "astro:content";
 
 type Posts = Awaited<ReturnType<typeof getCollection>>[0]["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } =
+const { title, description, pubDate, updatedDate,affiliateBlock, heroImage } =
 	Astro.props as Posts;
 
 const json_ld = heroImage
@@ -111,6 +111,22 @@ const json_ld = heroImage
 						<hr />
 					</div>
 					<slot />
+					{
+						affiliateBlock && (
+							<div class="mt-10">
+								<a title={affiliateBlock.text} 
+								href={affiliateBlock.affiliateLink} 
+								target="_blank" 
+								rel="nofollow noopener noreferrer"
+								aria-label="affiliate link"
+								class="text-2xl text-center inline-flex dark:text-buttons-bg opacity-80 transition-all 
+								duration-200 hover:opacity-100 cursor-pointer bg-dark-surface text-dark-text 
+								py-2 px-4 dark:bg-buttons-bg/20 rounded border dark:border-buttons-bg no-underline">
+									<strong>{affiliateBlock.text}</strong>
+								</a>
+							</div>
+						)
+					}
 				</div>
 			</article>
 		</main>

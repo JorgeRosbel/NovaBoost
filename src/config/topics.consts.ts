@@ -1,8 +1,8 @@
 export const TOPICS_LIST = [
-  "Methods: Covers research techniques and systematic approaches for investigating and solving problems. ",
-  "Applications: Explores real‑world use cases and implementations across industries to demonstrate practical value.",
-  "Software: Reviews and compares tools, libraries, and platforms that support development and deployment.",
-  "Data Processing: Involves ingesting, cleaning, transforming, and storing data efficiently to enable reliable analysis."
+  "Observation: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+  "Hypothesis: Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+  "Experimentation: Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.",
+  "Analysis: Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent."
 ];
 
 

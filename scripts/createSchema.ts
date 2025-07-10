@@ -15,6 +15,24 @@ if (!schemaName) {
 let updatedContent = ""
 
 // Template for the schema configuration
+// const schemaTemplate = `
+
+// export const ${schemaName} = defineCollection({
+//   loader: glob({ base: './src/content/${schemaName}', pattern: '**/*.{md,mdx}' }),
+//   schema: ({ image }) => z.object({
+//     title: z.string(),
+//     description: z.string(),
+//     pubDate: z.coerce.date(),
+//     updatedDate: z.coerce.date().optional(),
+//     heroImage: image().optional(),
+//     tags: z.array(z.string()).optional(),
+
+
+//   }),
+// });
+// `;
+
+
 const schemaTemplate = `
 
 export const ${schemaName} = defineCollection({
@@ -26,16 +44,24 @@ export const ${schemaName} = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
+    affiliateBlock: z
+      .object({
+        text: z
+          .string()
+          .min(1, { message: 'El texto de afiliado no puede estar vacío.' })
+          .max(500, { message: 'El texto de afiliado puede tener hasta 500 caracteres.' }),
+        affiliateLink: z
+          .string()
+          .url({ message: 'Debe ser una URL válida.' })
+          .regex(/^https?:\\/\\/.+/, { message: 'El enlace debe usar http:// o https://.' })
+          .optional(),
+      })
+      .optional(),
   }),
 });
 `;
 
 
-
-
-// Get the current directory in ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Path to the content config file
 const configPath = join(process.cwd(), 'src/content.config.ts');
@@ -125,9 +151,7 @@ export const collections = {
   // 5. Sobrescribir el archivo
   fs.writeFileSync(collectionPath, newFileContent, 'utf-8');
 
-  console.log(`✅ Collections actualizado con: ${currentCollections.join(', ')}`);
-
-
+  
   // Write the updated content back to the file
   fs.writeFileSync(configPath, updatedContent);
   
@@ -140,6 +164,7 @@ export const collections = {
 
   console.log(`✅ Successfully created ${schemaName} schema and updated content.config.ts`);
   console.log(`✅ Created directory: src/content/${schemaName}`);
+  console.log(`✅ Collections updated with: ${currentCollections.join(', ')}`);
 
 
 } catch (error) {

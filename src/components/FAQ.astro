@@ -1,0 +1,42 @@
+---
+interface Props {
+    title: string;
+    elements: { question: string; answer: string }[];
+}
+
+const { title, elements } = Astro.props as Props;
+
+// Construimos el JSON‑LD
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: elements.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+        },
+    })),
+};
+---
+
+<section
+    class="w-full flex flex-col gap-5 mb-8 items-center justify-center py-3 scroll-animation text-light-text dark:text-dark-text px-8 md:px-2"
+>
+    <h2 class="text-3xl font-bold uppercase text-center">{title}</h2>
+
+    {
+        elements.map((item) => (
+            <details class="w-full max-w-[1200px] scroll-animation">
+                <summary class="cursor-pointer scroll-animation text-2xl">
+                    <strong>{item.question}</strong>
+                </summary>
+                <p class="py-2 px-3 text-2xl bg-dark-surface/2 rounded text-light-text/80 dark:text-dark-text/80">
+                    {item.answer}
+                </p>
+            </details>
+        ))
+    }
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd, null, 2)}></script>

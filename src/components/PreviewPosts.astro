@@ -34,7 +34,7 @@ const sortedPosts = [...posts].sort((a, b) => {
 >
     { remove_h1 ? <h2 class="text-3xl font-bold mb-6 text-center scroll-animation">{title.toUpperCase()}</h2>:
     <h1 class="text-3xl font-bold mb-6 text-center scroll-animation">{title.toUpperCase()}</h1> }
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[900px] px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full  px-4">
         {
             sortedPosts.length === 0 && (
                 <li class="col-span-full text-center">
