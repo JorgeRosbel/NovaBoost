@@ -11,7 +11,8 @@
     "reset-template": "tsx scripts/reset_template.ts",
     "create-post": "tsx scripts/AI.ts",
     "get-routes": "tsx scripts/get_routes.ts",
-    "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --"
+    "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --",
+    "remove":"tsx scripts/remove.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

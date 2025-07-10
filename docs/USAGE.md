@@ -151,6 +151,8 @@ Here is a table summarizing the main commands available in **NovaBoost**, includ
 | `npm run create-post`                                                  | Launches the AI-powered post generator using prompts from your config.     |
 | `npm run create-multiple -- <collection1> <collection2> <collection3>` | Creates multiple collections in one go (Bash only).                        |
 | `npm run get-routes`                                                   | Displays the routes for all created collections, for use in header config. |
+| `npm run remove -- <collection_name>`                                  | Completely removes a content collection from the project.                  |
+
 
 
 > ⚠️ **Note:** Use `reset-template` carefully as it deletes all current collections and posts.

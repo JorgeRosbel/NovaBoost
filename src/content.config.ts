@@ -143,6 +143,15 @@ export const ai_content = defineCollection({
   }),
 });
 
+// prueba collection
+
+
+// prueba collection
+
+
+// prueba collection
+
+
 export const collections = {
   ai_content,
   seo_performance,
