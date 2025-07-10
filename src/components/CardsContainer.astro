@@ -21,7 +21,7 @@ const { title, cards } = Astro.props as Props;
         {
             cards.map((card) => (
                 <article class="flex scroll-animation justify-start flex-col gap-3 dark:bg-dark-surface
-                 p-4 bg-slate-50 rounded border border-light-text/10 dark:border-dark-text/30 shadow-[0px_0px_6px_rgba(0,0,0,0.1)]">
+                 p-4 bg-slate-50/20 rounded border border-light-text/10 dark:border-dark-text/30 shadow-[0px_0px_6px_rgba(0,0,0,0.1)]">
                     <p class="font-semibold text-[1.4rem] text-light-text dark:text-dark-text">{card.title}</p>
                     <p class="text-[1.2rem] text-light-text/70 dark:text-dark-text/70 text-start">
                         {card.text}

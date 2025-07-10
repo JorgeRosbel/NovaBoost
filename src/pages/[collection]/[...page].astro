@@ -8,6 +8,7 @@ import PaginationPost from '../../components/PaginationPost.astro';
 import { SITE_TITLE, SITE_LANG, SITE_DESCRIPTION } from "../../config/site.consts";
 import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
 import { getAllPosts } from '../../utils/get_all_posts';
+import { FOOTER_CONTENT } from '../../config/footer.consts';
 
 /////////////////////////////////////////////////////////////////
 // 1) Generación de rutas estáticas (build time)
@@ -81,6 +82,6 @@ const pagePosts = postsInCollection.slice(start, start + POSTS_PER_PAGE);
         totalPages={totalPages}
       />
     </main>
-    <Footer />
+    <Footer {...FOOTER_CONTENT} />
   </body>
 </html>

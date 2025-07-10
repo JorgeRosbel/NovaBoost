@@ -7,6 +7,7 @@ import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../../config/header.consts"
 import Header from "../../../components/Header.astro";
 import PreviewPosts from "../../../components/PreviewPosts.astro";
 import Footer from "../../../components/Footer.astro";
+import { FOOTER_CONTENT } from "../../../config/footer.consts";
 
 
 // utils/slugify.ts
@@ -75,6 +76,6 @@ const filteredPosts = allPosts.filter((post) =>
         <PreviewPosts posts={filteredPosts} title={currentTag} />
          
       </main>
-      <Footer />
+      <Footer {...FOOTER_CONTENT} />
     </body>
   </html>

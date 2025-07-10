@@ -1,74 +1,73 @@
+---
+// src/components/Footer.astro
+export interface FooterLink {
+  text: string;
+  href: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+}
+
+export interface FooterProps {
+  brandName: string;
+  brandDescription: string;
+  rssLink?: string;
+  legalLinks: FooterLink[];
+  contactLinks: FooterLink[];
+  copyrightName: string;
+}
+
+const {
+  brandName,
+  brandDescription,
+  rssLink,
+  legalLinks,
+  contactLinks,
+  copyrightName,
+} = Astro.props as FooterProps;
+---
+
 <footer
-	class="bg-dark-surface text-gray-300 py-10 border-t border-gray-700 w-full"
+  class="bg-slate-50 text-light-text py-10 w-full dark:bg-dark-surface dark:text-dark-text"
 >
-	<div
-		class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8 max-w-[1000px]"
-	>
-		<!-- Branding -->
-		<div>
-			<h2 class="text-xl font-bold text-white">🌍 Geophysics Blog</h2>
-			<p class="mt-2 text-sm text-gray-400">
-				Explorando el subsuelo con ciencia y tecnología.
-			</p>
-		</div>
+  <div
+    class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8 max-w-[1000px]"
+  >
+    <div>
+      <h2 class="text-xl font-bold">{brandName}</h2>
+      <p class="mt-2 text-sm">
+        {brandDescription}
+      </p>
+    </div>
 
-		<a href="/rss.xml" class="hover:text-white transition font-bold">RSS</a>
+    {rssLink && <a href={rssLink} class="transition font-bold">RSS</a>}
 
-		
-		<div>
-			<h3 class="text-sm font-semibold text-white uppercase mb-3">
-				Legal
-			</h3>
-			<ul class="space-y-2 text-sm">
-				<li>
-					<a href="/aviso-legal" class="hover:text-white transition"
-						>Aviso legal</a>
-				</li>
-				<li>
-					<a
-						href="/politica-privacidad"
-						class="hover:text-white transition"
-						>Política de privacidad</a>
-				</li>
-				<li>
-					<a
-						href="/politica-cookies"
-						class="hover:text-white transition"
-						>Política de cookies</a>
-				</li>
-			</ul>
-		</div>
+    <div>
+      <h3 class="text-sm font-semibold uppercase mb-3">Legal</h3>
+      <ul class="space-y-2 text-sm">
+        {legalLinks.map((link) => (
+          <li>
+            <a href={link.href} class="transition" target={link.target}>
+              {link.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-		<!-- Contacto / Redes -->
-		<div>
-			<h3 class="text-sm font-semibold text-white uppercase mb-3">
-				Contacto
-			</h3>
-			<ul class="space-y-2 text-sm">
-				<li>
-					<a
-						href="mailto:geophysics@example.com"
-						class="hover:text-white transition"
-						>geophysics@example.com</a>
-				</li>
-				<li>
-					<a
-						href="https://twitter.com/tu_usuario"
-						class="hover:text-white transition"
-						target="_blank">Twitter</a>
-				</li>
-				<li>
-					<a
-						href="https://github.com/tu_usuario"
-						class="hover:text-white transition"
-						target="_blank">GitHub</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+    <div>
+      <h3 class="text-sm font-semibold uppercase mb-3">Contact</h3>
+      <ul class="space-y-2 text-sm">
+        {contactLinks.map((link) => (
+          <li>
+            <a href={link.href} class="transition" target={link.target}>
+              {link.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
 
-	<!-- Línea final -->
-	<div class="mt-8 text-center text-xs text-gray-500">
-		© {new Date().getFullYear()} Geophysics Blog. Todos los derechos reservados.
-	</div>
+  <div class="mt-8 text-center text-xs ">
+    © {new Date().getFullYear()} {copyrightName}.
+  </div>
 </footer>
