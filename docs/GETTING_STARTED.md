@@ -2,25 +2,19 @@
 
 Follow these steps to get up and running:
 
-### 1. Clone the Repository
+### 1. Install template
 
 ```bash
-git clone https://github.com/JorgeRosbel/NovaBoost.git
+npm init astro@latest -- --template JorgeRosbel/NovaBoost
 ```
 
 ### 2. Navigate to the Project
 
 ```bash
-cd NovaBoost
+cd strong-star
 ```
 
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### 4. Run the Development Server
+### 3. Run the Development Server
 
 ```bash
 npm run dev
