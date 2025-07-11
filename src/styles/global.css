@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@tailwind utilities;
 
 @font-face {
 	font-family: 'Atkinson';
@@ -15,6 +16,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -36,7 +38,7 @@
 	--color-light-bg: #fff;
 	--color-light-text: #000;
 	--color-light-surface:#E0E0E0;
-	--color-buttons-bg:oklch(0.746 0.16 232.661);
+	--color-buttons-bg: #007BFF;
 	--color-buttons-text: #fff;
 	
 	 --color-dark-bg: #0B1D2A;
@@ -44,6 +46,12 @@
   --color-dark-surface: #15232E;
 }
 
+@layer utilities {
+  .family {
+    /* Aplica estilo normal de fuente + tu arbitrary font-family */
+    @apply font-normal [font-family:'Atkinson',Arial,sans-serif];
+  }
+}
 
 
 .menu-bar {
@@ -83,3 +91,5 @@ html{
     animation-range: entry 35% cover 40%;
     animation-fill-mode: both;
 } 
+
+

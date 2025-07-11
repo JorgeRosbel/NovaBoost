@@ -37,7 +37,7 @@ const { section_title, cards } = Astro.props as ImageTextCardProps;
                         decoding="async"
                     />
                     <div class="flex flex-col gap-3">
-                        <p class="font-semibold text-3xl text-light-text dark:text-dark-text">{card.title}</p>
+                        <p class="font-semibold text-3xl text-buttons-bg">{card.title}</p>
                         {card.items.map((item) => (
                             <p class="inline-flex gap-3 text-[1.4rem] text-light-text/80 dark:text-dark-text/80">{item}</p>
                         ))}

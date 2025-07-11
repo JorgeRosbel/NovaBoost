@@ -1,2 +1,2 @@
 export const LATESTS_POSTS_TITLE = "Latests Posts"
-export const AMOUNT = 4
+export const AMOUNT = 3
