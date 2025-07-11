@@ -179,6 +179,7 @@ Inside the `src/config/` directory, you'll find a series of clearly named `.cons
 * `latestPosts.consts.ts` – Placeholder for recent posts.
 * `site.consts.ts` – Global site data like name, slogan, and links.
 * `topics.consts.ts` – List of post categories or tags.
+* `imagecard.consts.ts` - List of imagen cards.
 
 > ✏️ Edit these files to change what’s displayed in each section of the website. It’s the fastest way to personalize the UI without modifying component code.
 

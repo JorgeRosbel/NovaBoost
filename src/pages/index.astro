@@ -9,6 +9,7 @@ import InfoBaner from '../components/InfoBaner.astro';
 import PrimaryTopics from "../components/PrimaryTopics.astro"
 import FAQ from '../components/FAQ.astro';
 import CardsContainer from '../components/CardsContainer.astro'
+import ImageTextCard from '../components/ImageTextCard.astro';
 
 
 // Consts
@@ -21,6 +22,8 @@ import {TOPICS_LIST , TOPICS_TITLE } from "../config/topics.consts"
 import { FAQ_CONTENT } from '../config/faq.consts';
 import { CARD_CONTENT } from '../config/cards.consts';
 import { FOOTER_CONTENT } from '../config/footer.consts';
+import {IMAGE_TEXT_CONTENT} from "../config/imagecard.consts"
+import type { ACTION_ERROR_CODES } from 'astro:actions';
 ---
 
 <!doctype html>
@@ -43,6 +46,7 @@ import { FOOTER_CONTENT } from '../config/footer.consts';
 			<PrimaryTopics topics={TOPICS_LIST} title={TOPICS_TITLE} />
 			<FAQ {...FAQ_CONTENT}/>
 			<CardsContainer {...CARD_CONTENT} />
+			<ImageTextCard {...IMAGE_TEXT_CONTENT} />
 			<Footer {...FOOTER_CONTENT}  />
 		</main>
 	</body>
