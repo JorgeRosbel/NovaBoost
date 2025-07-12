@@ -1,0 +1,61 @@
+name: Deploy to Hostinger via FTP
+
+on:
+  push:
+    branches: [ main ]  
+    paths-ignore:
+      - '**/.gitignore'
+      - '**/.gitattributes'
+      - '**/README.md'
+      - 'docs/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+  
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build app
+      run: npm run build
+
+    - name: List build files
+      run: ls -la dist/
+    
+    - name: Upload files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}       
+        username: ${{ secrets.FTP_USERNAME }}   
+        password: ${{ secrets.FTP_PASSWORD }} 
+        port: ${{ secrets.FTP_PORT }}
+        protocol: ftp 
+        server-dir: public_html/
+        local-dir: ./dist/
+
+    - name: Notify Discord
+      if: always()
+      uses: sarisia/actions-status-discord@v1
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        status: ${{ job.status }}
+        title: ${{ job.status == 'success' && '✅ Despliegue exitoso' || '❌ Error en el despliegue' }}
+        description: ${{ job.status == 'success' && 'El despliegue se completó correctamente' || 'Hubo un error durante el despliegue. Revisa los logs de GitHub Actions.' }}
+        color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
+        username: GitHub Actions
+        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
