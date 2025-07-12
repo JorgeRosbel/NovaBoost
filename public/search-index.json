@@ -72,6 +72,24 @@
     "path": "/seo_performance/mastering-image-optimization-for-web-performance/"
   },
   {
+    "title": "Unlocking NovaBoost: Architecture, Frontmatter, and JSON-LD for SEO Excellence",
+    "description": "Master NovaBoost's content organization, frontmatter, and JSON-LD for peak SEO performance.",
+    "pubDate": "2025-07-10",
+    "path": "/general/unlocking-novaboost-architecture-frontmatter-jsonld-seo/"
+  },
+  {
+    "title": "Supercharge Your UI: NovaBoost with Astro 5.10.2 and TailwindCSS",
+    "description": "Supercharge your UI with NovaBoost, Astro 5.10.2, and TailwindCSS. Learn setup, structure, & customization.",
+    "pubDate": "2025-07-10",
+    "path": "/general/supercharge-your-ui-novaboost-astro-tailwind/"
+  },
+  {
+    "title": "Introducing NovaBoost: Your Next-Gen Blog Platform Powered by Astro & AI",
+    "description": "Discover NovaBoost, a cutting-edge blog platform integrating Astro, TailwindCSS, SEO, and AI for powerful content.",
+    "pubDate": "2025-07-10",
+    "path": "/general/introducing-novaboost-your-next-gen-blog-platform/"
+  },
+  {
     "title": "Unleash Performance with NovaBoost: Powering Static Sites with Astro 5.10.2",
     "description": "Discover NovaBoost and how Astro 5.10.2 revolutionizes static site generation for peak performance.",
     "pubDate": "2025-07-10",
@@ -94,24 +112,6 @@
     "description": "Explanación of Astro Islands architecture and its benefits for NovaBoost performance.",
     "pubDate": "2025-07-10",
     "path": "/astro_base/astro-islands-architecture-novaboost-performance/"
-  },
-  {
-    "title": "Unlocking NovaBoost: Architecture, Frontmatter, and JSON-LD for SEO Excellence",
-    "description": "Master NovaBoost's content organization, frontmatter, and JSON-LD for peak SEO performance.",
-    "pubDate": "2025-07-10",
-    "path": "/general/unlocking-novaboost-architecture-frontmatter-jsonld-seo/"
-  },
-  {
-    "title": "Supercharge Your UI: NovaBoost with Astro 5.10.2 and TailwindCSS",
-    "description": "Supercharge your UI with NovaBoost, Astro 5.10.2, and TailwindCSS. Learn setup, structure, & customization.",
-    "pubDate": "2025-07-10",
-    "path": "/general/supercharge-your-ui-novaboost-astro-tailwind/"
-  },
-  {
-    "title": "Introducing NovaBoost: Your Next-Gen Blog Platform Powered by Astro & AI",
-    "description": "Discover NovaBoost, a cutting-edge blog platform integrating Astro, TailwindCSS, SEO, and AI for powerful content.",
-    "pubDate": "2025-07-10",
-    "path": "/general/introducing-novaboost-your-next-gen-blog-platform/"
   },
   {
     "title": "The Undeniable Pros of Lifelong Learning",

@@ -141,17 +141,19 @@ This automation helps streamline your content creation workflow and speeds up bl
 
 Here is a table summarizing the main commands available in **NovaBoost**, including both standard and custom scripts:
 
-| Command                                                                | Description                                                                |
-| ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `npm run dev`                                                          | Starts the development server with live reload.                            |
-| `npm run build`                                                        | Builds the project for production.                                         |
-| `npm run preview`                                                      | Previews the production build locally.                                     |
-| `npm run reset-template`                                               | Clears all demo content and resets the project to a clean state. ⚠️        |
-| `npm run create-collection -- <name>`                                  | Creates a new content collection and registers it automatically.           |
-| `npm run create-post`                                                  | Launches the AI-powered post generator using prompts from your config.     |
-| `npm run create-multiple -- <collection1> <collection2> <collection3>` | Creates multiple collections in one go (Bash only).                        |
-| `npm run get-routes`                                                   | Displays the routes for all created collections, for use in header config. |
-| `npm run remove -- <collection_name>`                                  | Completely removes a content collection from the project.                  |
+| Command                                                                | Description                                                                                                                 |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`                                                          | Starts the development server with live reload.                                                                             |
+| `npm run build`                                                        | Builds the project for production.                                                                                          |
+| `npm run preview`                                                      | Previews the production build locally.                                                                                      |
+| `npm run reset-template`                                               | Clears all demo content and resets the project to a clean state. ⚠️                                                         |
+| `npm run create-collection -- <name>`                                  | Creates a new content collection and registers it automatically.                                                            |
+| `npm run create-post`                                                  | Launches the AI-powered post generator using prompts from your config.                                                      |
+| `npm run create-multiple -- <collection1> <collection2> <collection3>` | Creates multiple collections in one go (Bash only).                                                                         |
+| `npm run get-routes`                                                   | Displays the routes for all created collections, for use in header config.                                                  |
+| `npm run remove -- <collection_name>`                                  | Completely removes a content collection from the project.                                                                   |
+| `npm run create-index`                                                 | Generates a `search-index.json` file for use in client-side search. ⚠️ Run this after adding a new post during development. |
+
 
 
 
