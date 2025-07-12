@@ -33,7 +33,7 @@ async function main() {
 
   await fs.writeFile(
     './public/search-index.json',
-    JSON.stringify(index, null, 2)
+    JSON.stringify(index)
   );
   console.log(`${GREEN}search-index.json generated with ${index.length} entries${RESET}`);
 }
