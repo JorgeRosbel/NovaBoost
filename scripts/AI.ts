@@ -52,12 +52,13 @@ const tasks = process.env.USER_PROMPT?.split(",") as string[]
 
 
 const availableModels = [
-  "gpt-4o-2024-08-06",   // 🧠 Precisión alta con zodResponseFormat
-  "gpt-4o-mini",         // ⚡ Más barato y rápido
-  "gpt-4",               // Más costoso, pero aún compatible
-  "gpt-3.5-turbo",       // Bueno para tareas simples
-  "gemini-2.5-flash",    // Si usas Gemini (Google)
-  "gemini-2.0-flash",    // Versión anterior
+    "gpt-4.1",
+    "gpt-4o-2024-08-06",   // 🧠 Precisión alta con zodResponseFormat
+    "gpt-4o-mini",         // ⚡ Más barato y rápido
+    "gpt-4",               // Más costoso, pero aún compatible
+    "gpt-3.5-turbo",       // Bueno para tareas simples
+    "gemini-2.5-flash",    // Si usas Gemini (Google)
+    "gemini-2.0-flash",    // Versión anterior
 ];
 
 const { selectedModel } = await inquirer.prompt([

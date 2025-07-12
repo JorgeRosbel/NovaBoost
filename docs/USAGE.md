@@ -105,14 +105,20 @@ If you haven’t provided an API key yet, the command will prompt you to enter i
 
 ### Step 3: Choose AI Model
 
+
 You will be presented with a selection menu to choose your preferred AI model:
 
-* `gpt-4o-2024-08-06` – 🧠 High precision with `zodResponseFormat`
-* `gpt-4o-mini` – ⚡ Faster and more affordable
-* `gpt-4` – More expensive, but robust
-* `gpt-3.5-turbo` – Great for simple tasks
-* `gemini-2.5-flash` – For Google Gemini users
-* `gemini-2.0-flash` – Older version of Gemini
+| Model               | Description                                                                                                                                              | `zodResponseFormat` Compatible |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `gpt-4.1`           | 🧠 The most capable GPT model, ideal for long‑form content generation and deep reasoning, with built‑in support for structured, schema‑compliant output. | ✅                              |
+| `gpt-4o-2024-08-06` | 🧠 High precision GPT‑4o variant tuned for structured outputs using `zodResponseFormat`.                                                                 | ✅                              |
+| `gpt-4o-mini`       | ⚡ A lighter, faster, and more affordable version of GPT‑4o, suitable for general tasks.                                                                  | ❓                              |
+| `gpt-4`             | 💡 Robust GPT‑4 model offering strong performance at the cost of higher latency and expense.                                                             | ❓                              |
+| `gpt-3.5-turbo`     | 🚀 Optimized for speed and cost, perfect for simple tasks and quick completions.                                                                         | ❓                              |
+| `gemini-2.5-flash`  | 🔍 Google Gemini model with enhanced flash capabilities for rapid responses.                                                                             | ✅                               |
+| `gemini-2.0-flash`  | 📦 Older Google Gemini release, suitable for basic workloads where cutting‑edge precision is not required.                                               | ❓                              |
+
+
 
 ### Step 4: Select a Collection
 
