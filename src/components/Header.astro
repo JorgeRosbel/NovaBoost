@@ -2,6 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import { Icon } from "astro-icon/components";
 import SubMenu from "./SubMenu.astro";
+import { Search } from "./Search";
 
 interface LinkItem {
 	href: string;
@@ -17,12 +18,13 @@ interface Props {
 	}[];
 }
 
+
 const { title, links, submenu } = Astro.props as Props;
 
 const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 ---
 <header
-	class="w-full h-14 dark:text-dark-text flex items-center justify-center px-3 bg-light-bg dark:bg-dark-surface fixed top-0 left-0 z-50 family"
+	class="w-full h-14 dark:text-dark-text flex items-center justify-center px-3 bg-slate-50 dark:bg-dark-surface fixed top-0 left-0 z-50 family"
 >
 	<div class="flex items-center justify-between gap-4 w-full max-w-[1200px]">
 		<a
@@ -32,6 +34,8 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 		>
 			<strong class="text-2xl font-semibold">{title}</strong>
 		</a>
+
+		
 
 		<input
 			id="menu-toggle-checkbox"
@@ -45,16 +49,22 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 
 		<div class="flex items-center justify-center gap-4">
 
+			<!-- <Search client:only="react" /> -->
+			 <Search client:load />
+
 			<button id="dark-toggle"  class="p-2 cursor-pointer" aria-label="Toggle light/dark theme">
 				<Icon name="mdi:weather-night" class="hidden dark:block text-2xl" />
 				<Icon name="mdi:weather-sunny" class="dark:hidden text-2xl" />
 			</button>
-			
-			
+
 			<label class="text-3xl cursor-pointer" for="menu-toggle-checkbox" aria-label="Toggle main menu visibility">
 				<Icon name="mdi:menu" aria-hidden="true" />
 			</label>
+
+			
 		</div>
+
+		
 
 		<nav
 			id={navId}
