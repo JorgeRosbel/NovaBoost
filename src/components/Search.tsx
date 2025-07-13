@@ -86,7 +86,7 @@ export function useSearch(content: string) {
   const [error, setError] = useState<string | null>(null);
 
   // debounce para no disparar la búsqueda en cada pulsación
-  const text = useDebounce(content, 2000);
+  const text = useDebounce(content, 1000);
 
   
   useEffect(() => {
@@ -106,7 +106,6 @@ export function useSearch(content: string) {
         const fuse = new Fuse<ISearch>(searchIndex, { threshold: 0.4,  keys: ['title', 'description', 'pubDate'],ignoreLocation: true, // permite que el match esté en cualquier parte del string
   useExtendedSearch: true, });
         const out = fuse.search(text).map(res => res.item);
-     
         setResults(out);
         out.length === 0 && setError("There are no results")
 
