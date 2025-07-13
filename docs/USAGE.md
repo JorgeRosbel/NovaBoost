@@ -172,24 +172,28 @@ These commands streamline the setup, development, and content creation process w
 
 NovaBoost offers a highly flexible structure for content customization. You can easily adjust text, layout, and styles to match your brand or project.
 
-### Configuration Files (`src/config/`)
+### Content-Driven Landing Page Configuration with .md
 
-Inside the `src/config/` directory, you'll find a series of clearly named `.consts.ts` files. These files hold the data used in various components throughout the template. You can edit these to change the content without touching the layout or component logic.
+All the content for the landing page is now centralized in a Markdown file located at:
 
-**Available Files:**
+```
+src/config/LANDING.md
+```
 
-* `cards.consts.ts` – Content for featured cards.
-* `faq.consts.ts` – Frequently Asked Questions.
-* `footer.consts.ts` – Footer links and information.
-* `header.consts.ts` – Header navigation and text.
-* `hero.consts.ts` – Hero section title and description.
-* `info.consts.ts` – Info blocks for homepage or sections.
-* `latestPosts.consts.ts` – Placeholder for recent posts.
-* `site.consts.ts` – Global site data like name, slogan, and links.
-* `topics.consts.ts` – List of post categories or tags.
-* `imagecard.consts.ts` - List of imagen cards.
+This `.md` file includes a structured frontmatter block that defines all the key sections of the landing page, such as:
 
-> ✏️ Edit these files to change what’s displayed in each section of the website. It’s the fastest way to personalize the UI without modifying component code.
+* Hero section (headline, subheadline, background image, buttons)
+* Navigation menu and categories
+* Featured content and banners
+* FAQs and image-text cards
+* Footer links and branding
+
+Using this setup, content updates for the landing page can be made directly in the `.md` file without touching the source code. This simplifies content management and allows non-developers to contribute easily.
+
+All fields from the frontmatter are programmatically imported and rendered inside the landing page layout, enabling a clean separation of content and presentation.
+
+> **Note:** The `.md` file should maintain proper YAML formatting to ensure all content renders correctly in the UI.
+
 
 ### Styling (`src/styles/`)
 
