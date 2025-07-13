@@ -1,4 +1,6 @@
-export const TITLE = '🌟 NovaBoost';
+import * as Core from "./LANDING.md"
+
+export const TITLE = Core.frontmatter.header.title;
 
 
 // Define the links for the main navigation menu
@@ -6,10 +8,7 @@ export const TITLE = '🌟 NovaBoost';
 // You can add or remove links as needed
 // The `href` should be the path to the page, and `label` is the text that will be displayed in the menu.
 
-export const MENU_LINKS = [
-	{ href: '/', label: 'Home' }
-];
-
+export const MENU_LINKS = Core.frontmatter.header.simple_link_list
 // Define the submenu links 
 // Each submenu has a title and an array of links
 // The `submenu_title` is the title of the submenu, and `links` is an array of objects
@@ -59,15 +58,4 @@ export const MENU_LINKS = [
  * with the pagination system!
  */
 
-export const SUBMENU_LINKS = [
-  {
-    submenu_title: 'Categories',
-    links: [
-      { href: '/general/1', label: '🌐General' },
-      { href: '/astro_base/1', label: '🚀Astro & Base' },
-      { href: '/tailwindcss/1', label: '🎨TailwindCSS' },
-      { href: '/seo_performance/1', label: '⚡SEO & Performance' },
-      { href: '/ai_content/1', label: '🤖AI & Content' },
-    ],
-  }
-];
+export const SUBMENU_LINKS = Core.frontmatter.header.submenu_links

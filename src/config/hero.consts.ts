@@ -2,19 +2,20 @@
 // This object contains the configuration for the Hero component
 // It includes the background image, main heading (h1), subheading (h2),
 // and two buttons with their respective links and labels.
-import HeroImage from '../assets/hero.webp';
+
+
 import type { Props } from "../components/Hero.astro"
 
+
+import * as Core from "./LANDING.md"
+const images = import.meta.glob('../assets/**/*.{jpg,jpeg,png,webp}', { eager: true });
+const bg = images[`../assets/${Core.frontmatter.hero.backgroundImage}`] as { default: ImageMetadata };
+
+
 export const HERO_CONFIG: Props = {
-  backgroundImage: HeroImage,
-  h1: "NovaBoost: Ignite Your Stellar Blog",
-  h2: "A blazing‑fast Astro 5.10.2 & TailwindCSS template, SEO‑optimized and AI‑powered for effortless content creation",
-  button_1: {
-    href: "/#",
-    label: "Call to Action 1",
-  },
-  button_2: {
-    href: "/#",
-    label: "Call to Action 2",
-  },
+  backgroundImage: bg.default,
+  h1: Core.frontmatter.hero.h1,
+  h2: Core.frontmatter.hero.h2 ,
+  button_1: Core.frontmatter.hero.button_1[0],
+  button_2: Core.frontmatter.hero.button_2[0],
 };

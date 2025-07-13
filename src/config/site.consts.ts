@@ -1,4 +1,6 @@
-export const SITE_TITLE = '🌟 NovaBoost';
-export const SITE_DESCRIPTION = '🌟 NovaBoost: Free Astro 5 & TailwindCSS blog template—SEO‑optimized, with JSON‑LD and optional AI post generation.';
-export const SITE_LANG = "en"
-export const SITE = "https://streampng.com"
+import * as Core from "./LANDING.md"
+
+export const SITE_TITLE = Core.frontmatter.site_options.title;
+export const SITE_DESCRIPTION = Core.frontmatter.site_options.description;
+export const SITE_LANG = Core.frontmatter.site_options.lang
+export const SITE = Core.frontmatter.site_options.site_url
