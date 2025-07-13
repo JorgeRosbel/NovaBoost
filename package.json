@@ -1,15 +1,15 @@
 {
   "name": "free-blog",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "build": "npm run create-index && astro build",
-    "preview": "astro preview",
+    "preview": "npm run create-index && astro preview",
     "astro": "astro",
     "create-collection": "tsx scripts/createSchema.ts",
     "reset-template": "tsx scripts/reset_template.ts",
-    "create-post": "tsx scripts/AI.ts",
+    "create-post": "tsx scripts/AI.ts && tsx scripts/create_index.ts",
     "get-routes": "tsx scripts/get_routes.ts",
     "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --",
     "remove": "tsx scripts/remove.ts",
