@@ -23,7 +23,9 @@ import { FAQ_CONTENT } from '../config/faq.consts';
 import { CARD_CONTENT } from '../config/cards.consts';
 import { FOOTER_CONTENT } from '../config/footer.consts';
 import {IMAGE_TEXT_CONTENT} from "../config/imagecard.consts"
-import type { ACTION_ERROR_CODES } from 'astro:actions';
+
+
+
 ---
 
 <!doctype html>
@@ -40,7 +42,6 @@ import type { ACTION_ERROR_CODES } from 'astro:actions';
 				backgroundImage={HERO_CONFIG.backgroundImage}
 				button_1={HERO_CONFIG.button_1}
 				button_2={HERO_CONFIG.button_2} />
-			
 			<LatestPosts amount={AMOUNT} title={LATESTS_POSTS_TITLE} />
 			<InfoBaner text={INFO_TEXT} backgroundImage={INFO_BG} />
 			<PrimaryTopics topics={TOPICS_LIST} title={TOPICS_TITLE} />

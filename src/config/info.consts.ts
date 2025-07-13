@@ -1,5 +1,10 @@
-import BG from "../assets/blog-placeholder-1.jpg"
+import * as Core from "./LANDING.md"
 
-export const INFO_BG = BG
+const {  image, text } = Core.frontmatter.banner
 
-export const INFO_TEXT = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas esse odit soluta, id dolorum nam reiciendis expedita ex minima voluptatem."
+const images = import.meta.glob('../assets/**/*.{jpg,jpeg,png,webp}', { eager: true });
+const bg = images[`../assets/${image}`] as { default: ImageMetadata };
+
+export const INFO_BG = bg.default
+
+export const INFO_TEXT = text
