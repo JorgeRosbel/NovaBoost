@@ -57,9 +57,8 @@ const sortedPosts = [...posts].sort((a, b) => {
                                     class="group-hover:scale-105 transition-all duration-200"
                                     src={post.data.heroImage}
                                     alt={post.data.title}
-                                    densities={[1, 2]}
-                                    width={400}
-                                    height={400}
+                                    widths={[300, 400, 600, 720, 800]}
+								    sizes="(max-width: 480px) 100vw, (max-width: 720px) 50vw, (max-width: 1024px) 33vw, 400px"
                                     format="webp"
                                     quality={75}
                                     loading="lazy"

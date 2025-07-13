@@ -65,16 +65,15 @@ const json_ld = heroImage
 					{
 						heroImage && (
 							<Image
-								densities={[1, 2]}
-								width={400}
-								height={400}
 								alt={title}
 								src={heroImage}
+								widths={[300, 400, 600, 720, 800]}
+								sizes="(max-width: 480px) 100vw, (max-width: 720px) 50vw, (max-width: 1024px) 33vw, 400px"
 								format="webp"
 								quality={75}
 								loading="lazy"
 								decoding="async"
-							/>
+								/>
 						)
 					}
 				</div>
