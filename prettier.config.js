@@ -1,7 +1,4 @@
 // prettier.config.js
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const astroPlugin = require("prettier-plugin-astro");
 
 /** @type {import("prettier").Options} */
 export default {
@@ -13,7 +10,8 @@ export default {
   trailingComma: "es5",
   bracketSpacing: true,
   arrowParens: "avoid",
-  plugins: [astroPlugin],
+  // Aquí es donde cambia: usa el nombre del módulo como string
+  plugins: ["prettier-plugin-astro"],
   overrides: [
     {
       files: "*.astro",
