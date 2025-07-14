@@ -17,8 +17,14 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,tsx,astro}\"",
     "check": "prettier --check \"**/*.{js,ts,tsx,astro}\"",
-    "prepare": "husky install"
+    "husky:install": "husky install"
   },
+  "lint-staged": {
+   "*.{js,ts,tsx,astro}": [
+    "eslint",
+     "prettier --write"
+   ]
+},
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
@@ -52,6 +58,7 @@
     "html-to-text": "^9.0.5",
     "husky": "^9.1.7",
     "inquirer": "^12.7.0",
+    "lint-staged": "^16.1.2",
     "openai": "^5.8.2",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
