@@ -23,8 +23,8 @@
    "*.{js,ts,tsx,astro}": [
     "eslint",
      "prettier --write"
-   ]
-},
+  ]},
+  "lint-staged:options": { "allowEmpty": true },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
