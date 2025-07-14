@@ -28,7 +28,25 @@ Feel free to suggest features or improvements! Include:
 
 ## 🔧 Development Setup
 
-To get started locally:
+### 📥 1. Contributing to This Project
+
+If you'd like to contribute to NovaBoost (e.g. open pull requests), please fork the repository first. Then clone your forked version:
+
+```bash
+git fork https://github.com/JorgeRosbel/NovaBoost.git  # via GitHub UI
+git clone https://github.com/YOUR_USERNAME/NovaBoost.git
+cd NovaBoost
+npm install
+npm run husky:install
+npm run dev
+```
+---
+
+> Replace `npm` with your package manager if different.
+
+### 🧪 2. Using NovaBoost as a Starter Project
+
+If you're building your **own project** using NovaBoost as a template, simply clone the repo directly:
 
 ```bash
 git clone https://github.com/JorgeRosbel/NovaBoost.git
@@ -38,7 +56,13 @@ npm run husky:install
 npm run dev
 ```
 
-> Replace `pnpm` with your package manager if different.
+> ⚠️ Remember: To use Husky (for pre-commit hooks), you must first run `git init` in your local project directory if it's not already a Git repository.
+
+> Replace `npm` with your package manager if different.
+
+Enjoy building with NovaBoost! 🚀
+
+
 
 ## ✨ Pull Request Guidelines
 
