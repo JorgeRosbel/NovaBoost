@@ -73,7 +73,7 @@ const configPath = join(process.cwd(), 'src/content.config.ts');
 
 try {
   // Read the current config file
-  let content = fs.readFileSync(configPath, 'utf-8');
+  const content = fs.readFileSync(configPath, 'utf-8');
   
   // Check if the schema already exists
   if (content.includes(`export const ${schemaName} =`)) {
@@ -166,9 +166,8 @@ export const collections = {
   }
 
   const RESET = "\x1b[0m";
-  const BLUE  = "\x1b[34m";
   const GREEN = "\x1b[32m";
-  const RED   = "\x1b[31m";
+ 
 
 
   console.log(`${GREEN}Successfully created ${schemaName} schema and updated content.config.ts${RESET}`);

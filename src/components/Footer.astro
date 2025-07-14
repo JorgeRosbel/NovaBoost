@@ -26,26 +26,26 @@ const {
 ---
 
 <footer
-  class="bg-slate-50 text-light-text py-10 w-full dark:bg-dark-surface dark:text-dark-text family"
+  className="bg-slate-50 text-light-text py-10 w-full dark:bg-dark-surface dark:text-dark-text family"
 >
   <div
-    class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8 max-w-[1000px]"
+    className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8 max-w-[1000px]"
   >
     <div>
-      <h2 class="text-xl font-bold">{brandName}</h2>
-      <p class="mt-2 text-sm">
+      <h2 className="text-xl font-bold">{brandName}</h2>
+      <p className="mt-2 text-sm">
         {brandDescription}
       </p>
     </div>
 
-    {rssLink && <a href={rssLink} class="transition font-bold">RSS</a>}
+    {rssLink && <a href={rssLink} className="transition font-bold">RSS</a>}
 
     <div>
-      <h3 class="text-sm font-semibold uppercase mb-3">Legal</h3>
-      <ul class="space-y-2 text-sm">
+      <h3 className="text-sm font-semibold uppercase mb-3">Legal</h3>
+      <ul className="space-y-2 text-sm">
         {legalLinks.map((link) => (
           <li>
-            <a href={link.href} class="transition" target={link.target}>
+            <a href={link.href} className="transition" target={link.target}>
               {link.text}
             </a>
           </li>
@@ -54,11 +54,11 @@ const {
     </div>
 
     <div>
-      <h3 class="text-sm font-semibold uppercase mb-3">Contact</h3>
-      <ul class="space-y-2 text-sm">
+      <h3 className="text-sm font-semibold uppercase mb-3">Contact</h3>
+      <ul className="space-y-2 text-sm">
         {contactLinks.map((link) => (
           <li>
-            <a href={link.href} class="transition" target={link.target}>
+            <a href={link.href} className="transition" target={link.target}>
               {link.text}
             </a>
           </li>
@@ -67,7 +67,7 @@ const {
     </div>
   </div>
 
-  <div class="mt-8 text-center text-xs ">
+  <div className="mt-8 text-center text-xs ">
     © {new Date().getFullYear()} {copyrightName}.
   </div>
 </footer>

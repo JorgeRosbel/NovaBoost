@@ -5,7 +5,6 @@ import { collections, type CollectionName } from '../src/collections';
 const target = process.argv[2] as CollectionName;
 
 const RESET = "\x1b[0m";
-const BLUE  = "\x1b[34m";
 const GREEN = "\x1b[32m";
 const RED   = "\x1b[31m";
 
