@@ -15,30 +15,30 @@ const jsonLd = {
 };
 ---
 
-<section className="w-full min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-dark-bg">
+<section class="w-full min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-dark-bg">
     <h2
-        className="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
+        class="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
     >
         {title}
     </h2>
-    <ul className="py-4 px-4 flex flex-col gap-3 max-w-[1200px]">
+    <ul class="py-4 px-4 flex flex-col gap-3 max-w-[1200px]">
         {
             topics.map((topic, index) => (
-                <li className="flex items-start justify-start gap-5 text-3xl scroll-animation">
-                    <div className="flex flex-col items-center">
+                <li class="flex items-start justify-start gap-5 text-3xl scroll-animation">
+                    <div class="flex flex-col items-center">
                         <span
-                            className="p-2 font-semibold bg-buttons-bg text-dark-text 
+                            class="p-2 font-semibold bg-buttons-bg text-dark-text 
                 rounded-full h-10 w-10 flex items-center justify-center dark:bg-buttons-bg/30 dark:text-buttons-bg "
                         >
                             {index + 1}
                         </span>
                         <span
-                            className={`font-bold ${topics.length - 1 === index && "hidden"} text-buttons-bg dark:text-buttons-bg/30`}
+                            class={`font-bold ${topics.length - 1 === index && "hidden"} text-buttons-bg dark:text-buttons-bg/30`}
                         >
                             |
                         </span>
                     </div>
-                    <p className="font-[400] text-light-text dark:text-dark-text opacity-85">
+                    <p class="font-[400] text-light-text dark:text-dark-text opacity-85">
                         {topic}
                     </p>
                 </li>

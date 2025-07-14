@@ -7,26 +7,26 @@ interface Props { submenu_title: string; links: LinkItem[] }
 
 const { submenu_title, links } = Astro.props as Props
 ---
-<li className="w-full text-center">
-  <details className="group w-full flex flex-col items-center justify-center">
+<li class="w-full text-center">
+  <details class="group w-full flex flex-col items-center justify-center">
     <summary 
-      className="cursor-pointer list-none flex w-[80%] text-center rounded py-2 bg-light-surface/15
+      class="cursor-pointer list-none flex w-[80%] text-center rounded py-2 bg-light-surface/15
 						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-light-surface/30 dark:hover:bg-light-bg/10"
     >
-      <span className="flex-1 text-center font-semibold">
+      <span class="flex-1 text-center font-semibold">
         {submenu_title}
       </span>
       <span 
-        className="transition-transform duration-200 group-open:rotate-180"
+        class="transition-transform duration-200 group-open:rotate-180"
         aria-hidden="true"
       >
         <Icon name="mdi:chevron-down" width={24} height={24} />
       </span>
     </summary>
 
-    <ul className="mt-1  space-y-3   w-[280px] border-l border-l-light-text/30 dark:border-l-dark-text/30">
+    <ul class="mt-1  space-y-3   w-[280px] border-l border-l-light-text/30 dark:border-l-dark-text/30">
       {links.map(link => (
-        <li className="text-left w-full py-2 opacity-75  border-l-[3px] 
+        <li class="text-left w-full py-2 opacity-75  border-l-[3px] 
         border-l-transparent hover:border-l-light-text dark:hover:border-l-dark-text
           hover:opacity-100 transition-all duration-200" >
           <HeaderLink  href={link.href} class="ml-4">

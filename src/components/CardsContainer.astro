@@ -11,27 +11,27 @@ interface Props {
 const { title, cards } = Astro.props as Props;
 ---
 
-<section className="flex flex-col items-center justify-center w-full px-4 mb-10">
+<section class="flex flex-col items-center justify-center w-full px-4 mb-10">
     <h2
-        className="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
+        class="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
     >
         {title}
     </h2>
-    <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
             cards.map((card) => (
-                <article className="flex scroll-animation justify-start flex-col gap-3 dark:bg-dark-surface
+                <article class="flex scroll-animation justify-start flex-col gap-3 dark:bg-dark-surface
                  p-4 bg-slate-50/20 rounded border border-light-text/10 dark:border-dark-text/30 shadow-[0px_0px_6px_rgba(0,0,0,0.1)]">
-                    <p className="font-semibold text-[1.4rem] text-light-text dark:text-dark-text">{card.title}</p>
-                    <p className="text-[1.2rem] text-light-text/70 dark:text-dark-text/70 text-start">
+                    <p class="font-semibold text-[1.4rem] text-light-text dark:text-dark-text">{card.title}</p>
+                    <p class="text-[1.2rem] text-light-text/70 dark:text-dark-text/70 text-start">
                         {card.text}
                     </p>
 
                     {card.button && (
-                        <div className="w-full flex items-end justify-center mt-3 h-full">
+                        <div class="w-full flex items-end justify-center mt-3 h-full">
                             <a href={card.button.path}>
                                 <button
-                                    className="bg-buttons-bg/90 hover:bg-buttons-bg dark:hover:bg-buttons-bg/30  text-white px-2 py-1 h-10 min-w-40 rounded cursor-pointer
+                                    class="bg-buttons-bg/90 hover:bg-buttons-bg dark:hover:bg-buttons-bg/30  text-white px-2 py-1 h-10 min-w-40 rounded cursor-pointer
                         transition-all duration-200 dark:bg-buttons-bg/10 dark:border dark:border-buttons-bg dark:text-buttons-bg"
                                 >
                                     {card.button.text}
