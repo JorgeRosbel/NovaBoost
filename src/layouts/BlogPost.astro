@@ -58,10 +58,10 @@ const json_ld = heroImage
 	<body>
 		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
 		<main
-			className="flex text-light-text dark:text-dark-text flex-col items-center justify-center w-full min-h-screen px-4 py-8 bg-light-bg dark:bg-dark-bg"
+			class="flex text-light-text dark:text-dark-text flex-col items-center justify-center w-full min-h-screen px-4 py-8 bg-light-bg dark:bg-dark-bg"
 		>
-			<article className="w-full max-w-[900px] prose dark:prose-invert">
-				<div className="hero-image w-full flex justify-center mb-6 max-w-[500px] items-center">
+			<article class="w-full max-w-[900px] prose dark:prose-invert">
+				<div class="hero-image w-full flex justify-center mb-6 max-w-[500px] items-center">
 					{
 						heroImage && (
 							<Image
@@ -80,7 +80,7 @@ const json_ld = heroImage
 				<div>
 					<div>
 						<div>
-							<time dateTime={pubDate.toISOString()}>
+							<time datetime={pubDate.toISOString()}>
 								Published on{" "}
 								{pubDate.toLocaleDateString("en-US", {
 								year: "numeric",
@@ -90,7 +90,7 @@ const json_ld = heroImage
 							</time>
 
 							{updatedDate && (
-								<time dateTime={updatedDate.toISOString()}>
+								<time datetime={updatedDate.toISOString()}>
 								Last updated{" "}
 								{updatedDate.toLocaleDateString("en-US", {
 									year: "numeric",
@@ -105,13 +105,13 @@ const json_ld = heroImage
 					<slot />
 					{
 						affiliateBlock && (
-							<div className="mt-10">
+							<div class="mt-10">
 								<a title={affiliateBlock.text} 
 								href={affiliateBlock.affiliateLink} 
 								target="_blank" 
 								rel="nofollow noopener noreferrer"
 								aria-label="affiliate link"
-								className="text-2xl text-center inline-flex dark:text-buttons-bg opacity-80 transition-all 
+								class="text-2xl text-center inline-flex dark:text-buttons-bg opacity-80 transition-all 
 								duration-200 hover:opacity-100 cursor-pointer bg-dark-surface text-dark-text 
 								py-2 px-4 dark:bg-buttons-bg/20 rounded border dark:border-buttons-bg no-underline">
 									<strong>{affiliateBlock.text}</strong>

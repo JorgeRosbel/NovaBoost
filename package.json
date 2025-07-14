@@ -14,7 +14,7 @@
     "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --",
     "remove": "tsx scripts/remove.ts",
     "create-index": "tsx scripts/create_index.ts",
-    "lint": "eslint . --fix"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
