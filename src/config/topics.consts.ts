@@ -1,7 +1,7 @@
-import * as Core from "./LANDING.md"
+import * as Core from './LANDING.md';
 
-const {  title, topics } = Core.frontmatter.primary_topics
+const { title, topics } = Core.frontmatter.primary_topics;
 
-export const TOPICS_LIST = topics
+export const TOPICS_LIST = topics;
 
-export const TOPICS_TITLE = title
+export const TOPICS_TITLE = title;

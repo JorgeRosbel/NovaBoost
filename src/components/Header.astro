@@ -1,112 +1,94 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { Icon } from "astro-icon/components";
-import SubMenu from "./SubMenu.astro";
-import { Search } from "./Search";
+import HeaderLink from './HeaderLink.astro';
+import { Icon } from 'astro-icon/components';
+import SubMenu from './SubMenu.astro';
+import { Search } from './Search';
 
 interface LinkItem {
-	href: string;
-	label: string;
+  href: string;
+  label: string;
 }
 
 interface Props {
-	title: string;
-	links: LinkItem[];
-	submenu?: {
-		submenu_title: string;
-		links: LinkItem[];
-	}[];
+  title: string;
+  links: LinkItem[];
+  submenu?: {
+    submenu_title: string;
+    links: LinkItem[];
+  }[];
 }
-
 
 const { title, links, submenu } = Astro.props as Props;
 
 const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 ---
+
 <header
-	class="w-full h-14 dark:text-dark-text flex items-center justify-center px-3 bg-slate-50 dark:bg-dark-surface fixed top-0 left-0 z-50 family"
+  class="w-full h-14 dark:text-dark-text flex items-center justify-center px-3 bg-slate-50 dark:bg-dark-surface fixed top-0 left-0 z-50 family"
 >
-	<div class="flex items-center justify-between gap-4 w-full max-w-[1200px]">
-		<a
-			href="/"
-			aria-label={`Ir a la página de inicio de ${title}`}
-			title={`Página de inicio de ${title}`}
-		>
-			<strong class="text-2xl font-semibold">{title}</strong>
-		</a>
+  <div class="flex items-center justify-between gap-4 w-full max-w-[1200px]">
+    <a
+      href="/"
+      aria-label={`Ir a la página de inicio de ${title}`}
+      title={`Página de inicio de ${title}`}
+    >
+      <strong class="text-2xl font-semibold">{title}</strong>
+    </a>
 
-		
+    <input
+      id="menu-toggle-checkbox"
+      type="checkbox"
+      class="peer cursor-pointer hidden h-[2rem] w-[2rem] absolute top-1/2 right-0 -translate-y-1/2 z-20"
+      aria-label="Toggle main menu visibility"
+      aria-controls={navId}
+      aria-expanded="false"
+    />
 
-		<input
-			id="menu-toggle-checkbox"
-			type="checkbox"
-			class="peer cursor-pointer hidden  h-[2rem] w-[2rem] absolute top-1/2 right-0 -translate-y-1/2 z-20"
-			aria-label="Toggle main menu visibility"
-			aria-controls={navId}
-			aria-expanded="false"
-		/>
+    <div class="flex items-center justify-center gap-4">
+      <!-- <Search client:only="react" /> -->
+      <Search client:load />
 
+      <button id="dark-toggle" class="p-2 cursor-pointer" aria-label="Toggle light/dark theme">
+        <Icon name="mdi:weather-night" class="hidden dark:block text-2xl" />
+        <Icon name="mdi:weather-sunny" class="dark:hidden text-2xl" />
+      </button>
 
-		<div class="flex items-center justify-center gap-4">
+      <label
+        class="text-3xl cursor-pointer"
+        for="menu-toggle-checkbox"
+        aria-label="Toggle main menu visibility"
+      >
+        <Icon name="mdi:menu" aria-hidden="true" />
+      </label>
+    </div>
 
-			<!-- <Search client:only="react" /> -->
-			 <Search client:load />
-
-			<button id="dark-toggle"  class="p-2 cursor-pointer" aria-label="Toggle light/dark theme">
-				<Icon name="mdi:weather-night" class="hidden dark:block text-2xl" />
-				<Icon name="mdi:weather-sunny" class="dark:hidden text-2xl" />
-			</button>
-
-			<label class="text-3xl cursor-pointer" for="menu-toggle-checkbox" aria-label="Toggle main menu visibility">
-				<Icon name="mdi:menu" aria-hidden="true" />
-			</label>
-
-			
-		</div>
-
-		
-
-		<nav
-			id={navId}
-			class="bg-light-bg dark:bg-dark-surface absolute w-[340px] top-full right-0 hidden
+    <nav
+      id={navId}
+      class="bg-light-bg dark:bg-dark-surface absolute w-[340px] top-full right-0 hidden
 			peer-checked:flex items-center justify-center border-l border-l-light-text/30
 			dark:border-l-dark-text/30 z-50"
-			aria-label="Main site navigation"
-		>
-			<ul
-				class="flex flex-col w-full items-center justify-start gap-4 min-h-[calc(100vh-40px)] max-h-[calc(100vh-40px)]
+      aria-label="Main site navigation"
+    >
+      <ul
+        class="flex flex-col w-full items-center justify-start gap-4 min-h-[calc(100vh-40px)] max-h-[calc(100vh-40px)]
 			overflow-y-scroll overflow-x-hidden pb-3 menu-bar"
-			>
-				{
-					links.map((link) => (
-						<li class="w-[80%] text-center rounded py-2 bg-light-surface/15
-						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-light-surface/30 dark:hover:bg-light-bg/10">
-							<HeaderLink
-								class="font-semibold"
-								href={link.href}
-								aria-label={`Ir a ${link.label}`}
-							>
-								{link.label}
-							</HeaderLink>
-						</li>
-					))
-				}
+      >
+        {
+          links.map(link => (
+            <li
+              class="w-[80%] text-center rounded py-2 bg-light-surface/15
+						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-light-surface/30 dark:hover:bg-light-bg/10"
+            >
+              <HeaderLink class="font-semibold" href={link.href} aria-label={`Ir a ${link.label}`}>
+                {link.label}
+              </HeaderLink>
+            </li>
+          ))
+        }
 
-				<!-- create submenu -->
-				{
-					submenu?.map((sub) => (
-						<SubMenu
-							submenu_title={sub.submenu_title}
-							links={sub.links}
-						/>
-					))
-				}
-		
-			</ul>
-		</nav>
-	</div>
+        <!-- create submenu -->
+        {submenu?.map(sub => <SubMenu submenu_title={sub.submenu_title} links={sub.links} />)}
+      </ul>
+    </nav>
+  </div>
 </header>
-
-
-
-

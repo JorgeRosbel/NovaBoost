@@ -1,4 +1,3 @@
-
 import { join } from 'path';
 import fs from 'fs';
 
@@ -15,8 +14,7 @@ if (!schemaName) {
   process.exit(1);
 }
 
-
-let updatedContent = ""
+let updatedContent = '';
 
 // Template for the schema configuration
 // const schemaTemplate = `
@@ -31,11 +29,9 @@ let updatedContent = ""
 //     heroImage: image().optional(),
 //     tags: z.array(z.string()).optional(),
 
-
 //   }),
 // });
 // `;
-
 
 const schemaTemplate = `
 
@@ -65,25 +61,22 @@ export const ${schemaName} = defineCollection({
 });
 `;
 
-
-
 // Path to the content config file
 const configPath = join(process.cwd(), 'src/content.config.ts');
-
 
 try {
   // Read the current config file
   const content = fs.readFileSync(configPath, 'utf-8');
-  
+
   // Check if the schema already exists
   if (content.includes(`export const ${schemaName} =`)) {
     console.log(`Schema '${schemaName}' already exists in content.config.ts`);
     process.exit(0);
   }
-  
+
   // Check if this is a fresh config file with just imports
   const isFreshConfig = !content.includes('export const collections');
-  
+
   // Add the schema template
   if (isFreshConfig) {
     // For fresh config, create the complete structure
@@ -103,24 +96,23 @@ export const collections = {
     if (exportIndex === -1) {
       throw new Error('Could not find collections export in content.config.ts');
     }
-    
+
     updatedContent = [
       content.slice(0, exportIndex),
       `// ${schemaName} collection\n${schemaTemplate}\n`,
-      content.slice(exportIndex)
+      content.slice(exportIndex),
     ].join('');
-    
+
     // Update the collections object to include the new schema
     const collectionsPattern = /collections = \{/;
     if (!collectionsPattern.test(updatedContent)) {
       throw new Error('Could not find collections object in content.config.ts');
     }
-    
+
     updatedContent = updatedContent.replace(
       collectionsPattern,
       `collections = {\n  ${schemaName},`
     );
-
   }
 
   const collectionPath = join(process.cwd(), 'src/collections.ts');
@@ -155,26 +147,23 @@ export const collections = {
   // 5. Sobrescribir el archivo
   fs.writeFileSync(collectionPath, newFileContent, 'utf-8');
 
-  
   // Write the updated content back to the file
   fs.writeFileSync(configPath, updatedContent);
-  
+
   // Create the content directory if it doesn't exist
   const contentDir = join(process.cwd(), 'src/content', schemaName);
   if (!fs.existsSync(contentDir)) {
     fs.mkdirSync(contentDir, { recursive: true });
   }
 
-  const RESET = "\x1b[0m";
-  const GREEN = "\x1b[32m";
- 
+  const RESET = '\x1b[0m';
+  const GREEN = '\x1b[32m';
 
-
-  console.log(`${GREEN}Successfully created ${schemaName} schema and updated content.config.ts${RESET}`);
+  console.log(
+    `${GREEN}Successfully created ${schemaName} schema and updated content.config.ts${RESET}`
+  );
   console.log(`${GREEN}Created directory: src/content/${schemaName}${RESET}`);
   console.log(`${GREEN}Collections updated with: ${currentCollections.join(', ')}${RESET}`);
-
-
 } catch (error) {
   console.error('Error:', error);
   process.exit(1);

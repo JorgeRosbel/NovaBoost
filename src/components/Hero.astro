@@ -1,72 +1,68 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import HeaderLink from './HeaderLink.astro';
 
 type TButtonLink = {
-    href: `/${string}`;
-    label: string;
+  href: `/${string}`;
+  label: string;
 };
 
 export interface Props {
-    backgroundImage: ImageMetadata;
-    h1: string;
-    h2: string;
-    button_1: TButtonLink;
-    button_2: TButtonLink;
+  backgroundImage: ImageMetadata;
+  h1: string;
+  h2: string;
+  button_1: TButtonLink;
+  button_2: TButtonLink;
 }
 
 const { h1, h2, button_1, button_2, backgroundImage } = Astro.props as Props;
 ---
 
 <section
-    style={{
-        backgroundImage: `url('${backgroundImage.src}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-    }}
-    class="w-full min-h-screen flex items-center justify-center relative before:inset-0
+  style={{
+    backgroundImage: `url('${backgroundImage.src}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+  class="w-full min-h-screen flex items-center justify-center relative before:inset-0
 before:min-h-screen before:w-full before:bg-black/60 before:absolute before:z-10"
 >
-    <div class="w-full max-w-4/5 md:max-w-[900px] z-30 relative">
-        <h1
-            class="text-light-bg text-3xl md:text-5xl lg:text-7xl font-bold mb-4
+  <div class="w-full max-w-4/5 md:max-w-[900px] z-30 relative">
+    <h1
+      class="text-light-bg text-3xl md:text-5xl lg:text-7xl font-bold mb-4
          text-center md:text-left"
-        >
-            {h1}
-        </h1>
+    >
+      {h1}
+    </h1>
 
-        <h2
-            class="text-light-bg opacity-85 text-lg md:text-xl lg:text-3xl font-semibold
+    <h2
+      class="text-light-bg opacity-85 text-lg md:text-xl lg:text-3xl font-semibold
         mb-8 text-center md:text-left"
+    >
+      {h2}
+    </h2>
+
+    <div
+      class="w-full flex-col md:flex-row flex gap-8 items-center justify-center md:justify-start"
+    >
+      <HeaderLink href={button_1.href}>
+        <button
+          class="bg-buttons-bg border-[2px] border-white text-white px-6 py-3 rounded-4xl cursor-pointer h-15
+                    transition-all duration-200 text-md md:text-lg font-semibold min-w-[150px] inline-flex text-center
+                    items-center justify-center hover:shadow-[0_0_10px_rgba(255,255,255,0.3)]"
         >
-            {h2}
-        </h2>
+          {button_1.label}
+        </button>
+      </HeaderLink>
 
-        <div
-            class="w-full flex-col md:flex-row flex gap-8 items-center justify-center md:justify-start"
+      <HeaderLink href={button_2?.href}>
+        <button
+          class="bg-buttons-bg border-[2px] border-white text-white px-6 py-3 rounded-4xl cursor-pointer h-15 hover:shadow-[0_0_10px_rgba(255,255,255,0.3)]
+                    transition-colors duration-200 text-md md:text-lg font-semibold min-w-[150px] inline-flex items-center justify-center"
         >
-            <HeaderLink href={button_1.href}>
-                <button
-                    class="bg-buttons-bg border-[2px] border-white text-white px-6 py-3 rounded-4xl cursor-pointer h-15
-                    transition-all duration-200 text-md md:text-lg font-semibold min-w-[150px] inline-flex text-center 
-                    items-center justify-center hover:shadow-[0_0_10px_rgba(255,255,255,0.3)] "
-                >
-                {button_1.label}
-                </button>
-            </HeaderLink>
-
-               <HeaderLink href={button_2?.href}>
-                <button
-                    class="bg-buttons-bg border-[2px] border-white text-white px-6 py-3 rounded-4xl  cursor-pointer h-15 hover:shadow-[0_0_10px_rgba(255,255,255,0.3)]
-                    transition-colors duration-200 text-md md:text-lg font-semibold min-w-[150px] inline-flex  items-center justify-center"
-                >
-                {button_2?.label}
-                </button>
-            </HeaderLink>
-
-            
-
-         
-        </div>
+          {button_2?.label}
+        </button>
+      </HeaderLink>
     </div>
+  </div>
 </section>

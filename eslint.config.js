@@ -13,6 +13,7 @@ export default [
   ...compat.extends(
     "plugin:@typescript-eslint/recommended",
     "plugin:astro/recommended", 
+    "prettier"
   ),
   { rules: { /* … */ } }
 ];

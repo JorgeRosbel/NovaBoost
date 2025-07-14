@@ -4,7 +4,6 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import { type CollectionName, collections } from '../../collections';
 // Define aquí tus colecciones disponibles
 
-
 // Generación de rutas estáticas para cada colección y slug
 export async function getStaticPaths() {
   const paths: { params: { collection: string; slug: string } }[] = [];
@@ -24,7 +23,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-
 // Extrae params de la URL
 const { collection, slug } = Astro.params as {
   collection: CollectionName;
@@ -33,7 +31,7 @@ const { collection, slug } = Astro.params as {
 
 // Obtén el post de la colección correspondiente
 const posts = await getCollection(collection);
-const post = posts.find((p) => p.id === slug);
+const post = posts.find(p => p.id === slug);
 if (!post) {
   throw new Error(`Post '${slug}' not found in collection '${collection}'`);
 }

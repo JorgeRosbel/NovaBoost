@@ -1,11 +1,9 @@
 export const collections = [
-    "general",
-  "astro_base",
-  "tailwindcss",
-  "seo_performance",
-  "ai_content",
+  'general',
+  'astro_base',
+  'tailwindcss',
+  'seo_performance',
+  'ai_content',
+] as const;
 
-  ] as const;
-
-  export type CollectionName = typeof collections[number];
-  
+export type CollectionName = (typeof collections)[number];

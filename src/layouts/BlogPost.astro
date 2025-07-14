@@ -1,127 +1,133 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { Image } from "astro:assets";
-import { TITLE, MENU_LINKS, SUBMENU_LINKS } from "../config/header.consts";
-import { SITE_TITLE, SITE_LANG } from "../config/site.consts";
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import { TITLE, MENU_LINKS, SUBMENU_LINKS } from '../config/header.consts';
+import { SITE_TITLE, SITE_LANG } from '../config/site.consts';
 
-import { getCollection } from "astro:content";
-import { FOOTER_CONTENT } from "../config/footer.consts";
+import { getCollection } from 'astro:content';
+import { FOOTER_CONTENT } from '../config/footer.consts';
 
-type Posts = Awaited<ReturnType<typeof getCollection>>[0]["data"];
+type Posts = Awaited<ReturnType<typeof getCollection>>[0]['data'];
 
-const { title, description, pubDate, updatedDate,affiliateBlock, heroImage } =
-	Astro.props as Posts;
+const { title, description, pubDate, updatedDate, affiliateBlock, heroImage } =
+  Astro.props as Posts;
 
 const json_ld = heroImage
-	? {
-			"@context": "https://schema.org",
-			"@type": "Article",
-			headline: title,
-			description: description,
-			datePublished: pubDate,
-			image: new URL(heroImage.src, Astro.site).href,
-			publisher: {
-				"@type": "Organization",
-				name: SITE_TITLE,
-				logo: {
-					"@type": "ImageObject",
-					url: new URL("/logo.png", Astro.site).href,
-				},
-			},
-		}
-	: {
-			"@context": "https://schema.org",
-			"@type": "Article",
-			headline: title,
-			description: description,
-			datePublished: pubDate,
-			publisher: {
-				"@type": "Organization",
-				name: SITE_TITLE,
-				logo: {
-					"@type": "ImageObject",
-					url: new URL("/logo.png", Astro.site).href,
-				},
-			},
-		};
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description: description,
+      datePublished: pubDate,
+      image: new URL(heroImage.src, Astro.site).href,
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_TITLE,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/logo.png', Astro.site).href,
+        },
+      },
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description: description,
+      datePublished: pubDate,
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_TITLE,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/logo.png', Astro.site).href,
+        },
+      },
+    };
 ---
 
 <html lang={SITE_LANG}>
-	<head>
-		<BaseHead title={title} description={description} />
+  <head>
+    <BaseHead title={title} description={description} />
 
-		<script type="application/ld+json" set:html={JSON.stringify(json_ld)} />
-	</head>
+    <script type="application/ld+json" set:html={JSON.stringify(json_ld)} />
+  </head>
 
-	<body>
-		<Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
-		<main
-			class="flex text-light-text dark:text-dark-text flex-col items-center justify-center w-full min-h-screen px-4 py-8 bg-light-bg dark:bg-dark-bg"
-		>
-			<article class="w-full max-w-[900px] prose dark:prose-invert">
-				<div class="hero-image w-full flex justify-center mb-6 max-w-[500px] items-center">
-					{
-						heroImage && (
-							<Image
-								alt={title}
-								src={heroImage}
-								widths={[300, 400, 600, 720, 800]}
-								sizes="(max-width: 480px) 100vw, (max-width: 720px) 50vw, (max-width: 1024px) 33vw, 400px"
-								format="webp"
-								quality={75}
-								loading="lazy"
-								decoding="async"
-								/>
-						)
-					}
-				</div>
-				<div>
-					<div>
-						<div>
-							<time datetime={pubDate.toISOString()}>
-								Published on{" "}
-								{pubDate.toLocaleDateString("en-US", {
-								year: "numeric",
-								month: "long",
-								day: "numeric",
-								})}
-							</time>
+  <body>
+    <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+    <main
+      class="flex text-light-text dark:text-dark-text flex-col items-center justify-center w-full min-h-screen px-4 py-8 bg-light-bg dark:bg-dark-bg"
+    >
+      <article class="w-full max-w-[900px] prose dark:prose-invert">
+        <div class="hero-image w-full flex justify-center mb-6 max-w-[500px] items-center">
+          {
+            heroImage && (
+              <Image
+                alt={title}
+                src={heroImage}
+                widths={[300, 400, 600, 720, 800]}
+                sizes="(max-width: 480px) 100vw, (max-width: 720px) 50vw, (max-width: 1024px) 33vw, 400px"
+                format="webp"
+                quality={75}
+                loading="lazy"
+                decoding="async"
+              />
+            )
+          }
+        </div>
+        <div>
+          <div>
+            <div>
+              <time datetime={pubDate.toISOString()}>
+                Published on{' '}
+                {
+                  pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })
+                }
+              </time>
 
-							{updatedDate && (
-								<time datetime={updatedDate.toISOString()}>
-								Last updated{" "}
-								{updatedDate.toLocaleDateString("en-US", {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})}
-								</time>
-							)}
-						</div>
-						<hr />
-					</div>
-					<slot />
-					{
-						affiliateBlock && (
-							<div class="mt-10">
-								<a title={affiliateBlock.text} 
-								href={affiliateBlock.affiliateLink} 
-								target="_blank" 
-								rel="nofollow noopener noreferrer"
-								aria-label="affiliate link"
-								class="text-2xl text-center inline-flex dark:text-buttons-bg opacity-80 transition-all 
+              {
+                updatedDate && (
+                  <time datetime={updatedDate.toISOString()}>
+                    Last updated{' '}
+                    {updatedDate.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                )
+              }
+            </div>
+            <hr />
+          </div>
+          <slot />
+          {
+            affiliateBlock && (
+              <div class="mt-10">
+                <a
+                  title={affiliateBlock.text}
+                  href={affiliateBlock.affiliateLink}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="affiliate link"
+                  class="text-2xl text-center inline-flex dark:text-buttons-bg opacity-80 transition-all 
 								duration-200 hover:opacity-100 cursor-pointer bg-dark-surface text-dark-text 
-								py-2 px-4 dark:bg-buttons-bg/20 rounded border dark:border-buttons-bg no-underline">
-									<strong>{affiliateBlock.text}</strong>
-								</a>
-							</div>
-						)
-					}
-				</div>
-			</article>
-		</main>
-		<Footer {...FOOTER_CONTENT} />
-	</body>
+								py-2 px-4 dark:bg-buttons-bg/20 rounded border dark:border-buttons-bg no-underline"
+                >
+                  <strong>{affiliateBlock.text}</strong>
+                </a>
+              </div>
+            )
+          }
+        </div>
+      </article>
+    </main>
+    <Footer {...FOOTER_CONTENT} />
+  </body>
 </html>
