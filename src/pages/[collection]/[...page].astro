@@ -1,12 +1,12 @@
 ---
 import { z } from 'astro/zod';
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import PreviewPosts from "../../components/PreviewPosts.astro";
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PreviewPosts from '../../components/PreviewPosts.astro';
 import PaginationPost from '../../components/PaginationPost.astro';
-import { SITE_TITLE, SITE_LANG, SITE_DESCRIPTION } from "../../config/site.consts";
-import { MENU_LINKS, SUBMENU_LINKS, TITLE } from "../../config/header.consts";
+import { SITE_TITLE, SITE_LANG, SITE_DESCRIPTION } from '../../config/site.consts';
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../../config/header.consts';
 import { getAllPosts } from '../../utils/get_all_posts';
 import { FOOTER_CONTENT } from '../../config/footer.consts';
 
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   const all = await getAllPosts();
 
   // Agrupa por colección
-  const byCollection = new Map<string, typeof all[0][]>();
+  const byCollection = new Map<string, (typeof all)[0][]>();
   all.forEach(post => {
     const col = post.collection;
     if (!byCollection.has(col)) byCollection.set(col, []);
@@ -74,13 +74,11 @@ const pagePosts = postsInCollection.slice(start, start + POSTS_PER_PAGE);
   </head>
   <body>
     <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
-    <main class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg">
+    <main
+      class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg"
+    >
       <PreviewPosts posts={pagePosts} title={collection} />
-      <PaginationPost
-        schemaName={collection}
-        page={page}
-        totalPages={totalPages}
-      />
+      <PaginationPost schemaName={collection} page={page} totalPages={totalPages} />
     </main>
     <Footer {...FOOTER_CONTENT} />
   </body>

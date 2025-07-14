@@ -1,4 +1,3 @@
-import * as Core from "./LANDING.md"
+import * as Core from './LANDING.md';
 
-
-export const CARD_CONTENT = Core.frontmatter.featured
+export const CARD_CONTENT = Core.frontmatter.featured;

@@ -1,39 +1,38 @@
 ---
-
 interface Props {
-    schemaName: string;
-    page: number;
-    totalPages: number;
+  schemaName: string;
+  page: number;
+  totalPages: number;
 }
 
-const { page, totalPages,schemaName }: Props = Astro.props;
-
+const { page, totalPages, schemaName }: Props = Astro.props;
 ---
 
-
 <nav class="flex gap-4 mt-8 pb-4">
-    {
-        page > 1 && (
-            <a
-                href={`/${schemaName}/${page - 1}`} aria-label="next page"
-                class="px-4 py-2 text-light-text dark:text-dark-text border 
+  {
+    page > 1 && (
+      <a
+        href={`/${schemaName}/${page - 1}`}
+        aria-label="next page"
+        class="px-4 py-2 text-light-text dark:text-dark-text border 
             rounded hover:bg-gray-100 dark:bg-buttons-bg/30 dark:hover:bg-buttons-bg/50
              dark:hover:text-white"
-            >
-                « Previous
-            </a>
-        )
-    }
-    {
-        page < totalPages && (
-            <a
-                href={`/${schemaName}/${page + 1}`} aria-label="prev page"
-                class="px-4 py-2 text-light-text dark:text-dark-text border 
+      >
+        « Previous
+      </a>
+    )
+  }
+  {
+    page < totalPages && (
+      <a
+        href={`/${schemaName}/${page + 1}`}
+        aria-label="prev page"
+        class="px-4 py-2 text-light-text dark:text-dark-text border 
             rounded hover:bg-gray-100 dark:bg-buttons-bg/30 dark:hover:bg-buttons-bg/50
              dark:hover:text-white"
-            >
-                Next »
-            </a>
-        )
-    }
+      >
+        Next »
+      </a>
+    )
+  }
 </nav>

@@ -1,51 +1,50 @@
 ---
-import { Image } from "astro:assets";
-import { type ImageMetadata } from "astro";
+import { Image } from 'astro:assets';
+import { type ImageMetadata } from 'astro';
 
 export interface ImageTextCardProps {
-    section_title: string;
-    cards: { title: string; items: string[]; image: ImageMetadata }[];
+  section_title: string;
+  cards: { title: string; items: string[]; image: ImageMetadata }[];
 }
 
 const { section_title, cards } = Astro.props as ImageTextCardProps;
 ---
 
 <section
-    class="w-full flex flex-col items-center justify-center px-5m my-10 bg-slate-50 dark:bg-dark-surface"
+  class="w-full flex flex-col items-center justify-center px-5m my-10 bg-slate-50 dark:bg-dark-surface"
 >
-    <h2
-        class="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
-    >
-        {section_title}
-    </h2>
+  <h2
+    class="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
+  >
+    {section_title}
+  </h2>
 
-    <div class="w-full max-w-[1200px] flex flex-col gap-10">
-        {
-            cards.map((card) => (
-                <article class="gap-4 scroll-animation w-full px-4 grid grid-cols-1 place-items-center lg:grid-cols-2 lg:place-items-start">
-                    {
-                       <Image
-                        class="rounded"
-                        src={card.image}
-                        alt="image"
-                        densities={[1, 2]}
-                        width={600}
-                        height={600}
-                        format="webp"
-                        quality={75}
-                        loading="lazy"
-                        decoding="async"
-                    />
-                    <div class="flex flex-col gap-3">
-                        <p class="font-semibold text-3xl text-buttons-bg">{card.title}</p>
-                        {card.items.map((item) => (
-                            <p class="inline-flex gap-3 text-[1.4rem] text-light-text/80 dark:text-dark-text/80">{item}</p>
-                        ))}
-                    </div>
-                    }
-                    
-                </article>
-            ))
-        }
-    </div>
+  <div class="w-full max-w-[1200px] flex flex-col gap-10">
+    {
+      cards.map(card => (
+        <article class="gap-4 scroll-animation w-full px-4 grid grid-cols-1 place-items-center lg:grid-cols-2 lg:place-items-start">
+          <Image
+            class="rounded"
+            src={card.image}
+            alt="image"
+            densities={[1, 2]}
+            width={600}
+            height={600}
+            format="webp"
+            quality={75}
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="flex flex-col gap-3">
+            <p class="font-semibold text-3xl text-buttons-bg">{card.title}</p>
+            {card.items.map(item => (
+              <p class="inline-flex gap-3 text-[1.4rem] text-light-text/80 dark:text-dark-text/80">
+                {item}
+              </p>
+            ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
 </section>

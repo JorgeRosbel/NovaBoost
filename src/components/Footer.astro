@@ -15,14 +15,8 @@ export interface FooterProps {
   copyrightName: string;
 }
 
-const {
-  brandName,
-  brandDescription,
-  rssLink,
-  legalLinks,
-  contactLinks,
-  copyrightName,
-} = Astro.props as FooterProps;
+const { brandName, brandDescription, rssLink, legalLinks, contactLinks, copyrightName } =
+  Astro.props as FooterProps;
 ---
 
 <footer
@@ -38,36 +32,47 @@ const {
       </p>
     </div>
 
-    {rssLink && <a href={rssLink} class="transition font-bold">RSS</a>}
+    {
+      rssLink && (
+        <a href={rssLink} class="transition font-bold">
+          RSS
+        </a>
+      )
+    }
 
     <div>
       <h3 class="text-sm font-semibold uppercase mb-3">Legal</h3>
       <ul class="space-y-2 text-sm">
-        {legalLinks.map((link) => (
-          <li>
-            <a href={link.href} class="transition" target={link.target}>
-              {link.text}
-            </a>
-          </li>
-        ))}
+        {
+          legalLinks.map(link => (
+            <li>
+              <a href={link.href} class="transition" target={link.target}>
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <div>
       <h3 class="text-sm font-semibold uppercase mb-3">Contact</h3>
       <ul class="space-y-2 text-sm">
-        {contactLinks.map((link) => (
-          <li>
-            <a href={link.href} class="transition" target={link.target}>
-              {link.text}
-            </a>
-          </li>
-        ))}
+        {
+          contactLinks.map(link => (
+            <li>
+              <a href={link.href} class="transition" target={link.target}>
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
 
-  <div class="mt-8 text-center text-xs ">
-    © {new Date().getFullYear()} {copyrightName}.
+  <div class="mt-8 text-center text-xs">
+    © {new Date().getFullYear()}
+    {copyrightName}.
   </div>
 </footer>

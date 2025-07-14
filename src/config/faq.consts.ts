@@ -1,3 +1,3 @@
-import * as Core from "./LANDING.md"
+import * as Core from './LANDING.md';
 
-export const FAQ_CONTENT = Core.frontmatter.faq
+export const FAQ_CONTENT = Core.frontmatter.faq;
