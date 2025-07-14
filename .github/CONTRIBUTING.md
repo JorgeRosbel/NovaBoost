@@ -31,10 +31,11 @@ Feel free to suggest features or improvements! Include:
 To get started locally:
 
 ```bash
-git clone https://github.com/JorgeRosbel/free-astro-blog.git
-cd free-astro-blog
-pnpm install
-pnpm dev
+git clone https://github.com/JorgeRosbel/NovaBoost.git
+cd NovaBoost
+npm install
+npm run husky:install
+npm run dev
 ```
 
 > Replace `pnpm` with your package manager if different.
@@ -49,4 +50,4 @@ pnpm dev
 
 ## 📄 License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](./LICENSE).
+By contributing, you agree that your contributions will be licensed under the [MIT License](../LICENSE.md).
