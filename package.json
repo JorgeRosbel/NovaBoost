@@ -16,8 +16,7 @@
     "create-index": "tsx scripts/create_index.ts",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,tsx,astro}\"",
-    "check": "prettier --check \"**/*.{js,ts,tsx,astro}\"",
-    "prepare": "husky install"
+    "check": "prettier --check \"**/*.{js,ts,tsx,astro}\""
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
