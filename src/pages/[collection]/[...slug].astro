@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { type CollectionName, collections } from '../../collections';
 // Define aquí tus colecciones disponibles
@@ -24,8 +24,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-// Tipo de props según la colección
-type Props = CollectionEntry<CollectionName>;
 
 // Extrae params de la URL
 const { collection, slug } = Astro.params as {

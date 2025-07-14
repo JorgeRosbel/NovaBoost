@@ -19,7 +19,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description,image = FallbackImage } = Astro.props;
+const { title, description,image = FallbackImage } = Astro.props as Props;
 ---
 
 <!-- Global Metadata -->

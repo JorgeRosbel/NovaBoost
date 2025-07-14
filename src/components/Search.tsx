@@ -107,10 +107,10 @@ export function useSearch(content: string) {
   useExtendedSearch: true, });
         const out = fuse.search(text).map(res => res.item);
         setResults(out);
-        out.length === 0 && setError("There are no results")
-
+        if(out.length === 0) { setError("There are no results") }
       } catch (err) {
         setError("Failed");
+        console.error(err)
       } finally {
         setLoading(false);
       }

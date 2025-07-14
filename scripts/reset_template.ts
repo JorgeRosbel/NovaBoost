@@ -1,7 +1,7 @@
 
 import { join} from 'path';
 import fs from 'fs';
-import { readdir, rm, lstat } from 'fs/promises';
+import { readdir, rm } from 'fs/promises';
 
 async function emptyDir(dir: string) {
   const entries = await readdir(dir);
