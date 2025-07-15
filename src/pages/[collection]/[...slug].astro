@@ -2,9 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { type CollectionName, collections } from '../../collections';
-// Define aquí tus colecciones disponibles
 
-// Generación de rutas estáticas para cada colección y slug
 export async function getStaticPaths() {
   const paths: { params: { collection: string; slug: string } }[] = [];
 
@@ -23,7 +21,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-// Extrae params de la URL
 const { collection, slug } = Astro.params as {
   collection: CollectionName;
   slug: string;
@@ -40,6 +37,6 @@ if (!post) {
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
+<BlogPost post={post.data} collection={collection} slug={slug}>
   <Content />
 </BlogPost>
