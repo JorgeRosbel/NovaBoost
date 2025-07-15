@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import { TITLE, MENU_LINKS, SUBMENU_LINKS } from '../config/header.consts';
 import { SITE_TITLE, SITE_LANG } from '../config/site.consts';
+import { Icon } from 'astro-icon/components';
 
 import { getCollection } from 'astro:content';
 import { FOOTER_CONTENT } from '../config/footer.consts';
@@ -112,8 +113,28 @@ const json_ld = heroImage
                   </time>
                 )
               }
+              <div
+                class="flex items-center justify-start gap-3 opacity-80 w-full border-b border-b-light-text/20 dark:border-b-dark-text/20 mb-3 py-2 lg:py-0"
+              >
+                <a
+                  aria-label="Home"
+                  class="opacity-80 transition-all duration-200 hover:opacity-100 hover:text-buttons-bg"
+                  href="/"
+                >
+                  <Icon name="mdi:home" size={24} /></a
+                >
+                <span>/</span>
+                <a
+                  aria-label={collection}
+                  class="no-underline opacity-80 font-[500] transition-all duration-200 hover:opacity-100 hover:text-buttons-bg"
+                  href={`/${collection}/1`}
+                >
+                  {collection}
+                </a>
+                <span>/</span>
+                <p class="font-[700] hidden md:block">{slug}</p>
+              </div>
             </div>
-            <hr />
           </div>
           <slot />
           {
