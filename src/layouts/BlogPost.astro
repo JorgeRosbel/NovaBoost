@@ -8,11 +8,20 @@ import { SITE_TITLE, SITE_LANG } from '../config/site.consts';
 
 import { getCollection } from 'astro:content';
 import { FOOTER_CONTENT } from '../config/footer.consts';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import { type CollectionName } from '../collections';
 
 type Posts = Awaited<ReturnType<typeof getCollection>>[0]['data'];
 
-const { title, description, pubDate, updatedDate, affiliateBlock, heroImage } =
-  Astro.props as Posts;
+interface Props {
+  post: Posts;
+  collection: CollectionName;
+  slug: string;
+}
+
+const { post, collection, slug } = Astro.props as Props;
+
+const { title, description, pubDate, updatedDate, affiliateBlock, heroImage } = post;
 
 const json_ld = heroImage
   ? {
@@ -127,6 +136,8 @@ const json_ld = heroImage
           }
         </div>
       </article>
+
+      <RelatedPosts post_title={title} collection={collection} slug={slug} />
     </main>
     <Footer {...FOOTER_CONTENT} />
   </body>

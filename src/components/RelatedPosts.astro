@@ -1,0 +1,56 @@
+---
+import { getAllPosts } from '../utils/get_all_posts';
+import PreviewPosts from './PreviewPosts.astro';
+import { type CollectionName } from '../collections';
+
+type Posts = Awaited<ReturnType<typeof getAllPosts>>;
+
+interface Props {
+  post_title: string;
+  collection: CollectionName;
+  slug: string;
+}
+
+const { post_title, collection, slug } = Astro.props as Props;
+
+export const relatedPostsScore = (posts: Posts, categoy: string, slug: string) => {
+  const options = posts
+    .map(post => {
+      if (post.data.tags) {
+        return post.data.tags;
+      } else {
+        return '';
+      }
+    })
+    .filter(v => v !== '');
+
+  const current_tags = posts.find(post => post.id === slug)?.data.tags ?? [];
+
+  const scores = options
+    .map(tags => tags.filter(tag => current_tags.includes(tag)))
+    .map((v, i) => ({ index: i, arr: v }))
+    .filter(v => v.arr.length !== 0)
+    .map(v => {
+      const index = v.index;
+      const items = v.arr;
+
+      if (posts[index].collection === categoy) {
+        return { score: items.length + 1, content: posts[index] };
+      }
+
+      return { score: items.length, content: posts[index] };
+    })
+    .sort((a, b) => b.score - a.score);
+  return scores;
+};
+
+const posts = await getAllPosts();
+
+const related = relatedPostsScore(posts, collection, slug);
+const related_posts = related
+  .map(v => v.content)
+  .filter(v => v.data.title !== post_title)
+  .slice(0, 3);
+---
+
+<PreviewPosts posts={related_posts} title="🔍 Discover More Articles" remove_h1={true} />
