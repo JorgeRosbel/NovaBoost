@@ -2,6 +2,7 @@
 import { getAllPosts } from '../utils/get_all_posts';
 import PreviewPosts from './PreviewPosts.astro';
 import { type CollectionName } from '../collections';
+import * as Core from '../config/LANDING.md';
 
 type Posts = Awaited<ReturnType<typeof getAllPosts>>;
 
@@ -53,4 +54,4 @@ const related_posts = related
   .slice(0, 3);
 ---
 
-<PreviewPosts posts={related_posts} title="🔍 Discover More Articles" remove_h1={true} />
+<PreviewPosts posts={related_posts} title={Core.frontmatter.related_posts.title} remove_h1={true} />
