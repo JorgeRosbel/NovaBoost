@@ -173,7 +173,8 @@ statistics:
   total_posts_text: "Total Blog Posts"
   total_cat_text: "Total Categories"
 
-
+related_posts:
+  title: "🔍 DISCOVER MORE ARTICLES"
 
 footer:
   brandName: "🌟NovaBoost"
