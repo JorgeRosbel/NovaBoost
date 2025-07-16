@@ -22,21 +22,27 @@ const faqJsonLd = {
 ---
 
 <section
-  class="w-full flex flex-col gap-5 mb-8 items-center justify-center py-3 scroll-animation text-light-text dark:text-dark-text px-8 md:px-2"
+  class="w-full flex flex-col gap-5 my-8 items-center justify-center py-3 scroll-animation text-light-text dark:text-dark-text px-8 md:px-2"
 >
   <h2 class="text-3xl font-bold uppercase text-center">{title}</h2>
 
-  {
-    elements.map(item => (
-      <details class="w-full max-w-[1200px] scroll-animation px-5 border-b border-b-light-text/10 dark:border-b-dark-text/10 pb-1">
-        <summary class="cursor-pointer scroll-animation text-2xl text-buttons-bg">
-          <strong>{item.question}</strong>
-        </summary>
-        <p class="py-2 px-3 text-2xl bg-dark-surface/2 rounded text-light-text/80 dark:text-dark-text/80">
-          {item.answer}
-        </p>
-      </details>
-    ))
-  }
+  <div
+    class="w-full max-w-[1200px] flex flex-col items-center justify-center gap-3 border border-light-text/20 rounded-xl p-3 dark:border-dark-text/20"
+  >
+    {
+      elements.map((item, index) => (
+        <details
+          class={`w-full max-w-[1200px]  ${index !== elements.length - 1 && 'border-b border-b-light-text/20 dark:border-b-dark-text/20'} `}
+        >
+          <summary class="cursor-pointer text-2xl text-buttons-bg">
+            <strong>{item.question}</strong>
+          </summary>
+          <p class="px-3 text-2xl bg-dark-surface/2 rounded text-light-text/80 dark:text-dark-text/80">
+            {item.answer}
+          </p>
+        </details>
+      ))
+    }
+  </div>
 </section>
 <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd, null, 2)} />

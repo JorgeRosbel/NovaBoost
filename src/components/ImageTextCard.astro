@@ -21,10 +21,10 @@ const { section_title, cards } = Astro.props as ImageTextCardProps;
 
   <div class="w-full max-w-[1200px] flex flex-col gap-10">
     {
-      cards.map(card => (
+      cards.map((card, index) => (
         <article class="gap-4 scroll-animation w-full px-4 grid grid-cols-1 place-items-center lg:grid-cols-2 lg:place-items-start">
           <Image
-            class="rounded"
+            class={`rounded order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}
             src={card.image}
             alt="image"
             densities={[1, 2]}
@@ -35,7 +35,9 @@ const { section_title, cards } = Astro.props as ImageTextCardProps;
             loading="lazy"
             decoding="async"
           />
-          <div class="flex flex-col gap-3">
+          <div
+            class={`flex flex-col gap-3 order-2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}
+          >
             <p class="font-semibold text-3xl text-buttons-bg">{card.title}</p>
             {card.items.map(item => (
               <p class="inline-flex gap-3 text-[1.4rem] text-light-text/80 dark:text-dark-text/80">

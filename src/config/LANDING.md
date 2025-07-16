@@ -166,6 +166,14 @@ imageText:
 
 
 
+statistics:
+  title: "Blog Insights & Metrics"
+  text: >
+    Discover how active our geophysics blog is — from the total number of insightful posts to the variety of categories we cover. Stay informed with our latest publishing stats.
+  total_posts_text: "Total Blog Posts"
+  total_cat_text: "Total Categories"
+
+
 
 footer:
   brandName: "🌟NovaBoost"
