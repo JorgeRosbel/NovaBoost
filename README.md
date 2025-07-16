@@ -28,7 +28,7 @@ A starter blog template built with **Astro 5** and **TailwindCSS**, optimized fo
 * **AI Post Generation**: Optional integration for drafting posts using AI commands.
 * **Client-side Search**: Built-in fuzzy search powered by Fuse.js with a prebuilt JSON index.
 * **Pagination Support**: Automatically generated paginated routes for large content collections.
-
+* **AI-friendly**: Adds a `/llms.txt` file to help AI models identify and interact with site content.
 ---
 
 ## PageSpeed Insights Results
