@@ -26,24 +26,24 @@ const { title, text, total_posts_text, total_cat_text } = Astro.props as Props;
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 p-2">
-    <div class="flex flex-col items-center justify-center scroll-animation p-3">
+    <dl class="flex flex-col items-center justify-center scroll-animation p-3">
       <dd class="text-8xl font-bold text-buttons-bg">{total_posts}</dd>
       <dt class="text-lg font-medium uppercase inline-flex items-center justify-center gap-2">
         <Icon name="mdi:file-document-multiple-outline" class="w-4 h-4" />
         {total_posts_text}
       </dt>
-    </div>
-    <div
+    </dl>
+
+    <dl
       class="scroll-animation border-t border-t-light-text/20 dark:border-t-dark-text/20
-     dark:border-l-dark-text/20 md:border-t-0 md:border-l md:border-l-light-text/20 flex
-     flex-col items-center justify-center p-3"
+              dark:border-l-dark-text/20 md:border-t-0 md:border-l md:border-l-light-text/20
+              flex flex-col items-center justify-center p-3"
     >
       <dd class="text-8xl font-bold text-buttons-bg">{total_cat}</dd>
-
       <dt class="text-lg font-medium uppercase inline-flex items-center justify-center gap-2">
         <Icon name="mdi:format-list-bulleted-type" class="w-6 h-6" />
         {total_cat_text}
       </dt>
-    </div>
+    </dl>
   </div>
 </section>
