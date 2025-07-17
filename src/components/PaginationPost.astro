@@ -38,47 +38,47 @@ const { page, totalPages, schemaName, base }: Props = Astro.props;
   }
 </nav> -->
 <nav class="gap-4 mt-8 pb-4 flex items-center justify-between">
-  <button
-    disabled={!(page > 1)}
-    aria-label="prev page"
-    class="disabled:cursor-not-allowed disabled:opacity-50 p-3
-   bg-buttons-bg min-w-[80px] rounded text-light-bg cursor-pointer"
-  >
-    {
-      page > 1 ? (
-        <a
-          href={!base ? `/${schemaName}/${page - 1}` : `/${base}/${schemaName}/${page - 1}`}
-          class="h-30 w-full py-3 px-4"
-          aria-label="prev page"
-        >
-          Prev
-        </a>
-      ) : (
-        'Prev'
-      )
-    }
-  </button>
+  {
+    page > 1 ? (
+      <a
+        href={!base ? `/${schemaName}/${page - 1}` : `/${base}/${schemaName}/${page - 1}`}
+        class="min-w-[80px] min-h-[48px] p-3 text-center font-semibold bg-buttons-bg rounded text-light-bg cursor-pointer"
+        aria-label="prev page"
+      >
+        Prev
+      </a>
+    ) : (
+      <button
+        disabled
+        aria-label="prev page"
+        class="disabled:cursor-not-allowed disabled:opacity-80 p-3 font-semibold
+      bg-buttons-bg min-w-[80px] min-h-[48px]  rounded text-light-bg cursor-pointer"
+      >
+        Prev
+      </button>
+    )
+  }
 
   <p class="font-semibold text-2xl text-buttons-bg">{page}/{totalPages}</p>
 
-  <button
-    aria-label="next page"
-    disabled={!(page < totalPages)}
-    class="disabled:cursor-not-allowed disabled:opacity-50 p-3
-   bg-buttons-bg min-w-[80px] rounded text-light-bg cursor-pointer"
-  >
-    {
-      page < totalPages ? (
-        <a
-          href={!base ? `/${schemaName}/${page + 1}` : `/${base}/${schemaName}/${page + 1}`}
-          class="h-30 w-full py-3 px-4"
-          aria-label="next page"
-        >
-          Next
-        </a>
-      ) : (
-        'Next'
-      )
-    }
-  </button>
+  {
+    page < totalPages ? (
+      <a
+        href={!base ? `/${schemaName}/${page + 1}` : `/${base}/${schemaName}/${page + 1}`}
+        class="min-w-[80px] min-h-[48px] p-3 text-center font-semibold bg-buttons-bg rounded text-light-bg cursor-pointer"
+        aria-label="next page"
+      >
+        Next
+      </a>
+    ) : (
+      <button
+        aria-label="next page"
+        disabled={!(page < totalPages)}
+        class="disabled:cursor-not-allowed disabled:opacity-80 p-3
+   bg-buttons-bg min-w-[80px] min-h-[48px]  rounded text-light-bg cursor-pointer"
+      >
+        Next
+      </button>
+    )
+  }
 </nav>
