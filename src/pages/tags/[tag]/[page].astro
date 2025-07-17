@@ -1,0 +1,175 @@
+---
+import { z } from 'astro/zod';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PreviewPosts from '../../../components/PreviewPosts.astro';
+import PaginationPost from '../../../components/PaginationPost.astro';
+import { SITE_TITLE, SITE_LANG, SITE_DESCRIPTION } from '../../../config/site.consts';
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../../../config/header.consts';
+import { getAllPosts } from '../../../utils/get_all_posts';
+import { FOOTER_CONTENT } from '../../../config/footer.consts';
+
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '');
+
+/////////////////////////////////////////////////////////////////
+// 1) Generación de rutas estáticas (build time)
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 6;
+  const all = await getAllPosts();
+
+  // 1) Agrupa posts por tag
+  const byTag = new Map<string, typeof all>();
+  all.forEach(post => {
+    post.data.tags?.forEach(tag => {
+      if (!byTag.has(tag)) byTag.set(tag, []);
+      byTag.get(tag)!.push(post);
+    });
+  });
+
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '');
+
+  // 2) Genera las rutas para cada combinación tag–página
+  const paths: { params: { tag: string; page: string } }[] = [];
+  for (const [tag, posts] of byTag.entries()) {
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    for (let i = 1; i <= totalPages; i++) {
+      paths.push({
+        params: { tag: slugify(tag), page: String(i) },
+      });
+    }
+  }
+
+  return paths;
+}
+
+/////////////////////////////////////////////////////////////////
+// 2) Frontmatter: validación de params, orden y paginación
+const POSTS_PER_PAGE = 6;
+
+// Valida y parsea parámetros
+const paramsSchema = z.object({
+  tag: z.string(),
+  page: z
+    .string()
+    .regex(/^[1-9]\d*$/, 'Debe ser un número positivo')
+    .transform(Number),
+});
+const { tag, page } = paramsSchema.parse(Astro.params);
+
+// Obtiene, ordena y filtra
+const allPosts = (await getAllPosts()).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const postsInCollection = allPosts.filter(p => p.data.tags?.map(v => slugify(v))?.includes(tag));
+
+// Calcula la página actual y recorta
+const totalPages = Math.ceil(postsInCollection.length / POSTS_PER_PAGE);
+const start = (page - 1) * POSTS_PER_PAGE;
+const pagePosts = postsInCollection.slice(start, start + POSTS_PER_PAGE);
+---
+
+<!doctype html>
+<html lang={SITE_LANG}>
+  <head>
+    <BaseHead title={`${SITE_TITLE} | ${tag} – Page ${page}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+    <main
+      class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg"
+    >
+      <PreviewPosts posts={pagePosts} title={`tag - ${tag}`} />
+      <PaginationPost base="tags" schemaName={tag} page={page} totalPages={totalPages} />
+    </main>
+    <Footer {...FOOTER_CONTENT} />
+  </body>
+</html>
+
+<!-- ---
+import { collections, type CollectionName } from '../../../collections';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import { SITE_TITLE, SITE_LANG } from '../../../config/site.consts';
+import { MENU_LINKS, SUBMENU_LINKS, TITLE } from '../../../config/header.consts';
+import Header from '../../../components/Header.astro';
+import PreviewPosts from '../../../components/PreviewPosts.astro';
+import Footer from '../../../components/Footer.astro';
+import { FOOTER_CONTENT } from '../../../config/footer.consts';
+
+// utils/slugify.ts
+export function slugify(s: string) {
+  return s
+    .normalize('NFD') // descompone acentos
+    .replace(/[\u0300-\u036f]/g, '') // quita marcas diacríticas
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '');
+}
+
+const postsByCollection = await Promise.all(
+  collections.map(async (collection: CollectionName) => {
+    return await getCollection(collection);
+  })
+);
+
+// 2) Lo aplanas a un solo array de posts:
+const allPosts = postsByCollection.flat();
+
+export async function getStaticPaths() {
+  const tagSet = new Set<string>();
+  const allPosts = await Promise.all(
+    collections.map(async (collection: CollectionName) => {
+      return await getCollection(collection);
+    })
+  );
+
+  const POST = allPosts.flat();
+
+  for (const post of POST) {
+    post.data.tag?.forEach(t => {
+      tagSet.add(slugify(t));
+    });
+  }
+
+  const paths = Array.from(tagSet).map(tag => ({
+    params: { tag },
+  }));
+
+  return paths;
+}
+
+const currentTag = Astro.params.tag;
+
+const filteredPosts = allPosts.filter(post =>
+  post.data.tag?.some(tag => slugify(tag) === currentTag)
+);
+---
+
+<!doctype html>
+<html lang={SITE_LANG}>
+  <head>
+    <BaseHead
+      title={SITE_TITLE + ' | ' + currentTag}
+      description=`Explora los posts relacionados con el tag ${currentTag}.`
+    />
+  </head>
+  <body>
+    <Header title={TITLE} links={MENU_LINKS} submenu={SUBMENU_LINKS} />
+    <main
+      class="flex flex-col items-center justify-center min-h-screen bg-light-bg dark:bg-dark-bg"
+    >
+      <PreviewPosts posts={filteredPosts} title={currentTag} />
+    </main>
+    <Footer {...FOOTER_CONTENT} />
+  </body>
+</html> -->
+--

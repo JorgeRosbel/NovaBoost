@@ -3,12 +3,13 @@ interface Props {
   schemaName: string;
   page: number;
   totalPages: number;
+  base?: string;
 }
 
-const { page, totalPages, schemaName }: Props = Astro.props;
+const { page, totalPages, schemaName, base }: Props = Astro.props;
 ---
 
-<nav class="flex gap-4 mt-8 pb-4">
+<!-- <nav class="flex gap-4 mt-8 pb-4">
   {
     page > 1 && (
       <a
@@ -35,4 +36,49 @@ const { page, totalPages, schemaName }: Props = Astro.props;
       </a>
     )
   }
+</nav> -->
+<nav class="gap-4 mt-8 pb-4 flex items-center justify-between">
+  <button
+    disabled={!(page > 1)}
+    aria-label="prev page"
+    class="disabled:cursor-not-allowed disabled:opacity-50 p-3
+   bg-buttons-bg min-w-[80px] rounded text-light-bg cursor-pointer"
+  >
+    {
+      page > 1 ? (
+        <a
+          href={!base ? `/${schemaName}/${page - 1}` : `/${base}/${schemaName}/${page - 1}`}
+          class="h-30 w-full py-3 px-4"
+          aria-label="prev page"
+        >
+          Prev
+        </a>
+      ) : (
+        'Prev'
+      )
+    }
+  </button>
+
+  <p class="font-semibold text-2xl text-buttons-bg">{page}/{totalPages}</p>
+
+  <button
+    aria-label="next page"
+    disabled={!(page < totalPages)}
+    class="disabled:cursor-not-allowed disabled:opacity-50 p-3
+   bg-buttons-bg min-w-[80px] rounded text-light-bg cursor-pointer"
+  >
+    {
+      page < totalPages ? (
+        <a
+          href={!base ? `/${schemaName}/${page + 1}` : `/${base}/${schemaName}/${page + 1}`}
+          class="h-30 w-full py-3 px-4"
+          aria-label="next page"
+        >
+          Next
+        </a>
+      ) : (
+        'Next'
+      )
+    }
+  </button>
 </nav>
