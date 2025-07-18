@@ -2,7 +2,7 @@
 title: "Supercharge Your UI: NovaBoost with Astro 5.10.2 and TailwindCSS"
 description: "Supercharge your UI with NovaBoost, Astro 5.10.2, and TailwindCSS. Learn setup, structure, & customization."
 pubDate: "2025-07-10"
-heroImage: "../../assets/post_placeholder.png"
+heroImage: "../../assets/post_3.jpg"
 tags: ["novaboost","astro","tailwindcss"]
 affiliateBlock:
   text: "Get this product with a 10% discount!"

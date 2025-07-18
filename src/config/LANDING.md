@@ -27,10 +27,20 @@ header:
           label: '🤖AI & Content'
     
 
+about:
+  image: "about.jpg"
+  title: "About us"
+  subtitle: "Lorem ipsum dolor sit"
+  text: >
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro totam facere error nostrum
+    tempora recusandae est, quisquam aliquid eligendi culpa explicabo sunt repellat sequi quis
+    et quam ducimus enim iste.
+  action_text: "Lorem ipsum dolor"
+  tel: "600 123 456"
+
 
 
 hero:
-  backgroundImage: 'hero.webp'
   h1: 'NovaBoost: Ignite Your Stellar Blog'
   h2: 'A blazing‑fast Astro 5.10.2 & TailwindCSS template, SEO‑optimized and AI‑powered for effortless content creation'
   button_1:
@@ -46,22 +56,21 @@ latests_posts:
 
 
 
-banner:
-  image: 'blog-placeholder-1.jpg'
-  text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas esse odit soluta, id dolorum nam reiciendis expedita ex minima voluptatem.'
-
-
-
 
 primary_topics:
   title: 'Primary topics'
+  extra_text: >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
   topics:
-    - 'Observation: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.'
-    - 'Hypothesis: Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.'
-    - 'Experimentation: Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.'
-    - 'Analysis: Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent.'
-    - 'Format: The landing page uses the Inter typeface for clean readability and modern design across all devices.'
-
+    - title: "Observation"
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero."
+    - title: "Hypothesis"
+      text: "Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet."
+    - title: "Experimentation"
+      text: "Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta."
+    - title: "Analysis"
+      text: "Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent."
+    
 
 
 faq:
@@ -132,37 +141,40 @@ featured:
 
 
 imageText:
-  section_title: "Lorem Ipsum Section"
+  section_title: "Why Choose NovaBoost?"
   cards:
     - image: "1.png"
-      title: "Lorem Ipsum Card 1"
+      title: "Lightning-Fast Performance"
+      description: >
+        Built on Astro 5.10.2, NovaBoost delivers exceptional speed and performance. Our optimized architecture ensures your blog loads instantly, keeping your readers engaged.
       items:
-        - "✅Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        - "✅Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        - "✅Ut enim ad minim veniam, quis nostrud exercitation ullamco."
-        - "✅Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
-        - "✅Excepteur sint occaecat cupidatat non proident."
-        - "✅Sunt in culpa qui officia deserunt mollit anim id est laborum."
+        - "Static site generation for maximum speed"
+        - "Optimized image loading and compression"
+        - "Minimal JavaScript footprint"
+        - "Scripts npm"
+
 
     - image: "2.png"
-      title: "Lorem Ipsum Card 2"
+      title: "AI-Powered Content Creation"
+      description: >
+        Harness the power of artificial intelligence to streamline your content creation process. From ideation to publication, our AI tools help you create compelling blog posts faster than ever.
       items:
-        - "✅Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
-        - "✅Excepteur sint occaecat cupidatat non proident."
-        - "✅Sunt in culpa qui officia deserunt mollit anim id est laborum."
-        - "✅Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
-        - "✅Excepteur sint occaecat cupidatat non proident."
-        - "✅Sunt in culpa qui officia deserunt mollit anim id est laborum."
+        - "Intelligent content suggestions"
+        - "Automated SEO optimization"
+        - "Content performance analytics"
+        - "Grammar and style checking"
+
 
     - image: "3.png"
-      title: "Lorem Ipsum Card 3"
+      title: "Professional Design System"
+      description: >
+        Built with TailwindCSS, NovaBoost offers a comprehensive design system that ensures consistency across your entire blog while maintaining the flexibility to customize every aspect.
       items:
-        - "✅Curabitur pretium tincidunt lacus. Nulla gravida orci a odio."
-        - "✅Nullam varius, turpis et commodo pharetra."
-        - "✅Est eros bibendum elit, nec luctus magna felis sollicitudin mauris."
-        - "✅Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
-        - "✅Excepteur sint occaecat cupidatat non proident."
-        - "✅Sunt in culpa qui officia deserunt mollit anim id est laborum."
+        - "Responsive design out of the box"
+        - "Customizable color schemes"
+        - "Typography scale optimization"
+        - "Component included"
+
 
 
 

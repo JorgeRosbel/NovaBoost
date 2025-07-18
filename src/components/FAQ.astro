@@ -22,22 +22,22 @@ const faqJsonLd = {
 ---
 
 <section
-  class="w-full flex flex-col gap-5 my-8 items-center justify-center py-3 scroll-animation text-light-text dark:text-dark-text px-8 md:px-2"
+  class="w-full flex flex-col gap-5 my-8 items-center justify-center py-3 scroll-animation text-light-text dark:text-dark-text px-4"
 >
   <h2 class="text-3xl font-bold uppercase text-center">{title}</h2>
 
-  <div
-    class="w-full max-w-[1200px] flex flex-col items-center justify-center gap-3 border border-light-text/20 rounded-xl p-3 dark:border-dark-text/20"
-  >
+  <div class="w-full max-w-[1200px] flex flex-col items-center justify-center gap-3">
     {
-      elements.map((item, index) => (
+      elements.map(item => (
         <details
-          class={`w-full max-w-[1200px]  ${index !== elements.length - 1 && 'border-b border-b-light-text/20 dark:border-b-dark-text/20'} `}
+          class={`w-full max-w-[1200px] border border-light-surface rounded-[1rem] dark:border-light-surface/40
+            open:border-buttons-bg open:text-light-bg text-light-text dark:text-dark-text
+            shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] overflow-hidden open:bg-buttons-bg transition-all duration-300 dark:open:bg-buttons-bg/40`}
         >
-          <summary class="cursor-pointer text-2xl text-buttons-bg">
-            <strong>{item.question}</strong>
+          <summary class="cursor-pointer text-[1rem] md:text-[1.3rem] px-3 py-2 border-b border-b-light-surface dark:border-b-light-surface/30">
+            <span>{item.question}</span>
           </summary>
-          <p class="px-3 text-2xl bg-dark-surface/2 rounded text-light-text/80 dark:text-dark-text/80">
+          <p class="px-3 text-[1.1rem]   text-light-text/70 dark:text-dark-text/80 py-3  bg-light-bg/95 dark:bg-dark-bg/80">
             {item.answer}
           </p>
         </details>

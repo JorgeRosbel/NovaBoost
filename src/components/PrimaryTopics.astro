@@ -1,10 +1,11 @@
 ---
 interface Props {
   title: string;
-  topics: string[];
+  extra_text: string;
+  topics: { title: string; text: string }[];
 }
 
-const { title, topics } = Astro.props as Props;
+const { title, topics, extra_text } = Astro.props as Props;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -16,36 +17,38 @@ const jsonLd = {
 ---
 
 <section
-  class="w-full min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-dark-bg"
+  class="w-full flex flex-col items-center justify-center dark:bg-dark-bg gap-10 bg-light-bg"
 >
   <h2
-    class="text-3xl my-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
+    class="text-3xl mt-10 font-bold uppercase text-light-text dark:text-dark-text scroll-animation"
   >
     {title}
   </h2>
 
-  <ul class="py-4 px-4 flex flex-col gap-3 max-w-[1200px]">
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 w-full max-w-[1200px] px-3">
     {
       topics.map((topic, index) => (
-        <li class="flex items-start justify-start gap-5 text-3xl scroll-animation">
-          <div class="flex flex-col items-center">
-            <span
-              class="p-2 font-semibold bg-buttons-bg text-dark-text 
-                rounded-full h-10 w-10 flex items-center justify-center dark:bg-buttons-bg/30 dark:text-buttons-bg "
-            >
-              {index + 1}
-            </span>
-            <span
-              class={`font-bold ${topics.length - 1 === index && 'hidden'} text-buttons-bg dark:text-buttons-bg/30`}
-            >
-              |
-            </span>
-          </div>
-          <p class="font-[400] text-light-text dark:text-dark-text opacity-85">{topic}</p>
-        </li>
+        <article
+          class="p-5 transition-all duration-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] text-light-text dark:text-dark-text
+          hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-[4px] scroll-animation bg-light-bg dark:bg-dark-surface/30
+         border rounded-xl border-light-surface dark:border-light-surface/40 flex items-center justify-start flex-col gap-3"
+        >
+          <p class="text-buttons-bg text-3xl font-semibold">{index + 1}</p>
+          <p
+            class="w-full text-start font-semibold text-[1rem] relative before:absolute before:left-0 before:w-[20%] before:h-[2px]
+          before:bg-buttons-bg before:max-w-[30px] before:bottom-[-4px]"
+          >
+            {topic.title}
+          </p>
+          <p class="opacity-70">{topic.text}</p>
+        </article>
       ))
     }
-  </ul>
+  </div>
+
+  <p class="my-7 max-w-[600px] text-center px-3 text-light-text/70 dark:text-dark-text/70">
+    {extra_text}
+  </p>
 
   <!-- JSON‑LD inline en Astro -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd, null, 2)} />

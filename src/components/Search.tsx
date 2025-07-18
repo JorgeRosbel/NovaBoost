@@ -8,6 +8,7 @@ interface ISearch {
   description: string;
   pubDate: string;
   path: string;
+  image: string;
 }
 
 interface IModal {
@@ -50,12 +51,17 @@ const Results: React.FC<{ data: ISearch[] }> = ({ data }) => {
         {data.map((item, index) => (
           <a href={`${item.path}`} key={index}>
             <div className="w-full p-2 bg-white rounded group dark:bg-dark-surface dark:border dark:border-dark-text/10">
-              <p
-                className="group-hover:text-buttons-bg transition-all duration-200 font-semibold text-xl 
-                            border-b border-b-light-text/30 pb-1 dark:border-b-dark-text/30 text-light-text dark:text-dark-text"
-              >
-                {item.title}
-              </p>
+              <div className="flex items-center justify-center gap-3 border-b border-b-light-text/30 pb-1 dark:border-b-dark-text/30 py-2">
+                <div className="w-[100px] h-[100px] overflow-hidden flex items-center justify-center rounded">
+                  <img src={item.image} alt="heroImage" width="100%" height="100%" />
+                </div>
+                <p
+                  className="group-hover:text-buttons-bg transition-all duration-200 font-semibold text-xl flex-1
+                             text-light-text dark:text-dark-text"
+                >
+                  {item.title}
+                </p>
+              </div>
               <p className="inline-flex w-full items-center justify-start gap-1 py-1 text-light-text/60 dark:text-dark-text/60 ">
                 <span className="text-[0.9rem] p-0">{item.pubDate}</span>
               </p>
@@ -132,7 +138,7 @@ const Modal: React.FC<IModal> = ({ handleVisible }) => {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 min-h-screen bg-slate-100 dark:bg-dark-bg w-full z-50 py-6 px-6 overflow-hidden lg:w-[600px] lg:h-[80vh]`}
+        className={`fixed top-0 left-0 min-h-screen header-gradient-light header-gradient-dark w-full z-50 py-6 px-6 overflow-hidden lg:w-[600px] lg:h-[80vh]`}
       >
         <div className="flex items-center justify-between relative">
           <input
@@ -175,19 +181,12 @@ export const Search: React.FC = () => {
       <button
         aria-label="Buscar"
         onClick={handleModal}
-        className="flex relative  bg-light-bg dark:bg-dark-bg items-center z-0 justify-between gap-2 py-2 px-3 border border-light-text/30 hover:border-light-text
+        className="flex relative  bg-light-bg dark:bg-dark-bg/30 items-center z-0 justify-between gap-2 py-2 px-3 border border-light-text/30 hover:border-light-text
              dark:border-dark-text/80 rounded w-min md:w-[240px] transition-all duration-200 cursor-pointer dark:hover:border-dark-text"
       >
         <div className="flex items-center justify-center gap-1">
           <CiSearch className="text-[1.2rem]" />
-          <span className="text-light-text/70 dark:text-dark-text/70 hidden md:block">Search</span>
-        </div>
-        <div
-          className="bg-slate-100 dark:bg-dark-surface px-1 rounded
-                border border-light-text/20 hidden md:block
-                 dark:border dark:border-dark-text/20"
-        >
-          <span className="text-[0.8rem] text-light-text/70 dark:text-dark-text/70">Ctrl K</span>
+          <span className="text-ligth-text/70 dark:text-dark-text/70 hidden md:block">Search</span>
         </div>
       </button>
 
