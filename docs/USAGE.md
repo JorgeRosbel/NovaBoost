@@ -193,6 +193,68 @@ All fields from the frontmatter are programmatically imported and rendered insid
 
 > **Note:** The `.md` file should maintain proper YAML formatting to ensure all content renders correctly in the UI.
 
+### Site Options
+
+```yaml
+site_options:
+  title: '🌟 NovaBoost'
+  description: '🌟 NovaBoost: Free Astro 5 & TailwindCSS blog template—SEO-optimized, with JSON-LD and optional AI post generation.'
+  lang: 'en'
+  site_url: 'https://example.com'
+```
+
+### Header:
+Note that the category `slug` only allows alphanumeric characters, including the underscore.
+
+```yaml
+header:
+  title: '🌟 NovaBoost'
+  simple_link_list:
+    - href: '/'
+      label: 'Home' #(In this case, it’s not a link to a category, so we do Not use /1)
+  submenu_links:
+    - submenu_title: 'Categories'
+      links:
+        - href: '/general/1' #(If it’s a link to a category, it should be followed by /1.)
+          label: '🌐General'
+        - href: '/astro_base/1'
+          label: '🚀Astro & Base'
+        - href: '/tailwindcss/1'
+          label: '🎨TailwindCSS'
+        - href: '/seo_performance/1'
+          label: '⚡SEO & Performance'
+        - href: '/ai_content/1'
+          label: '🤖AI & Content'
+```
+
+### Hero
+```yaml
+hero:
+  h1: 'NovaBoost: Ignite Your Stellar Blog'
+  h2: 'A blazing‑fast Astro 5.10.2 & TailwindCSS template, SEO‑optimized and AI‑powered for effortless content creation'
+  button_1:
+    - href: '/#'
+      label: 'Action 1'
+  button_2: # (Optional)
+    - href: '/#'
+      label: 'Action 2'
+
+```
+
+### About
+
+```yaml
+about:
+  image: "about.jpg" #(We only include the image name with its extension.)
+  title: "About us"
+  subtitle: "Lorem ipsum dolor sit"
+  text: >
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro totam facere error nostrum
+    tempora recusandae est, quisquam aliquid eligendi culpa explicabo sunt repellat sequi quis
+    et quam ducimus enim iste.
+  action_text: "Lorem ipsum dolor"
+  tel: "600 123 456" #(optional)
+```
 
 ### Styling (`src/styles/`)
 
