@@ -13,7 +13,6 @@
     "get-routes": "tsx scripts/get_routes.ts",
     "create-multiple": "bash -c 'for col in \"$@\"; do npm run create-collection -- \"$col\"; done' --",
     "remove": "tsx scripts/remove.ts",
-    "create-index": "tsx scripts/create_index.ts",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,tsx,astro}\"",
     "check": "prettier --check \"**/*.{js,ts,tsx,astro}\"",

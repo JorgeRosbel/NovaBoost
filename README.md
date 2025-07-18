@@ -4,6 +4,12 @@ A starter blog template built with **Astro 5** and **TailwindCSS**, optimized fo
 
 ![Descripción de la imagen](docs/Macbook-Air-streampng.com.png)
 
+![stars](https://img.shields.io/github/stars/JorgeRosbel/NovaBoost.svg)
+![forks](https://img.shields.io/github/forks/JorgeRosbel/NovaBoost.svg)
+![tag](https://img.shields.io/github/tag/JorgeRosbel/NovaBoost.svg)
+![release](https://img.shields.io/github/release/JorgeRosbel/NovaBoost.svg)
+![issues](https://img.shields.io/github/issues/JorgeRosbel/NovaBoost.svg)
+
 ## Table of Contents
 * [Features](#features)
 * [Getting Started](docs/GETTING_STARTED.md)
