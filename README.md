@@ -44,3 +44,8 @@ You can review the performance and optimization quality of the **NovaBoost** tem
 👉 [NovaBoost Template Performance Report](https://pagespeed.web.dev/analysis/https-streampng-com/dssiigc8yv?form_factor=desktop)
 
 This can help you evaluate loading speed, SEO readiness, and best practices compliance before deploying your site.
+
+
+_Love this Astro starter template? Support the project by buying me a coffee ☕️_  
+[![Ko‑fi](https://img.shields.io/badge/☕️-Buy_me_a_coffee-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/jorgerosbel)
+
