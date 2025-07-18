@@ -28,7 +28,7 @@ const sortedPosts = [...posts].sort((a, b) => {
 ---
 
 <section
-  class="w-full flex flex-col items-center max-w-[1200px] mt-20 min-h-screen text-light-text dark:text-dark-text family"
+  class="w-full flex flex-col items-center max-w-[1400px] mt-20 min-h-screen text-light-text dark:text-dark-text family"
 >
   {
     remove_h1 ? (
@@ -48,8 +48,8 @@ const sortedPosts = [...posts].sort((a, b) => {
     {
       sortedPosts.map(post => (
         <article
-          class="group scroll-animation border border-light-text/30 rounded p-3 
-                flex flex-col bg-slate-50 dark:bg-dark-surface dark:border-dark-text/30
+          class="group scroll-animation border border-light-surface rounded-xl overflow-hidden 
+                flex flex-col bg-slate-50 dark:bg-dark-surface/50 dark:border-dark-text/30 transition-all duration-200 hover:translate-y-[-15px]
                 shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:shadow-[0_0_10px_rgba(255,255,255,0.2)]"
         >
           <HeaderLink
@@ -58,7 +58,7 @@ const sortedPosts = [...posts].sort((a, b) => {
             href={`/${post.collection}/` + post.id}
           >
             {post.data.heroImage && (
-              <div class="overflow-hidden rounded">
+              <div class="overflow-hidden h-[300px]  ">
                 <Image
                   class="group-hover:scale-105 transition-all duration-200"
                   src={post.data.heroImage}
@@ -72,7 +72,7 @@ const sortedPosts = [...posts].sort((a, b) => {
                 />
               </div>
             )}
-            <div class="w-full flex flex-col gap-2 max-w-[400px]">
+            <div class="w-full flex flex-col gap-3 max-w-[400px] px-3 mt-4">
               <h2
                 class="font-semibold text-xl transition-all duration-200
                             group-hover:text-blue-600  dark:group-hover:text-buttons-bg"
@@ -94,16 +94,16 @@ const sortedPosts = [...posts].sort((a, b) => {
                 <span class="opacity-90 font-[500]">•</span>
                 <p class="text-sm opacity-90 font-[500]">{post.collection.toLowerCase()}</p>
               </div>
-              <h3 class="opacity-80 text-[0.9rem]">{post.data.description}</h3>
+              <h3 class="opacity-50 dark:opacity-80 text-[1.03rem]">{post.data.description}</h3>
             </div>
-            <div class="flex flex-wrap items-end justify-center py-2 gap-1 w-full h-full">
+            <div class="flex flex-wrap items-end justify-center py-4 gap-1 w-full h-full">
               {post.data.tags &&
                 post.data.tags.map((tag: string) => {
                   const tagSlug = slugify(tag);
                   return (
                     <a
-                      class="px-2 py-1 text-xs rounded bg-blue-100 hover:bg-blue-200
-                                        dark:bg-buttons-bg/30 dark:hover:bg-buttons-bg/50"
+                      class="px-3 py-1 text-[0.75rem] text-light-text/80 dark:text-dark-text/80 rounded-[20px] bg-light-surface  hover:bg-buttons-bg
+                       font-[500] transition-all duration-200 hover:text-light-bg dark:bg-dark-surface"
                       href={`/tags/${tagSlug}/1`}
                     >
                       {tag}

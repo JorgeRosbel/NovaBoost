@@ -2,7 +2,7 @@
 title: "Unlocking NovaBoost: Architecture, Frontmatter, and JSON-LD for SEO Excellence"
 description: "Master NovaBoost's content organization, frontmatter, and JSON-LD for peak SEO performance."
 pubDate: "2025-07-10"
-heroImage: "../../assets/post_placeholder.png"
+heroImage: "../../assets/post_2.jpg"
 tags: ["novaboost","seo","contentmanagement"]
 affiliateBlock:
   text: "Get this product with a 10% discount!"

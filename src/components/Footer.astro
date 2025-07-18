@@ -20,7 +20,7 @@ const { brandName, brandDescription, rssLink, legalLinks, contactLinks, copyrigh
 ---
 
 <footer
-  class="bg-slate-50 text-light-text py-10 w-full dark:bg-dark-surface dark:text-dark-text family"
+  class="header-gradient-light header-gradient-dark text-light-text py-10 w-full dark:text-dark-text family flex flex-col items-center justify-center gap-5"
 >
   <div
     class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8 max-w-[1000px]"
@@ -71,7 +71,9 @@ const { brandName, brandDescription, rssLink, legalLinks, contactLinks, copyrigh
     </div>
   </div>
 
-  <div class="mt-8 text-center text-xs">
+  <hr class="w-[80%] max-w-[1200px] opacity-15" />
+
+  <div class="mt-2 text-center text-xs">
     © {new Date().getFullYear()}
     {copyrightName}.
   </div>

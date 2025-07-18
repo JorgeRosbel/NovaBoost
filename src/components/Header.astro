@@ -24,7 +24,7 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 ---
 
 <header
-  class="w-full h-14 dark:text-dark-text flex items-center justify-center px-3 bg-slate-50 dark:bg-dark-surface fixed top-0 left-0 z-50 family"
+  class="w-full h-14 text-light-text dark:text-dark-text flex items-center justify-center px-3 header-gradient-light header-gradient-dark fixed top-0 left-0 z-50 family"
 >
   <div class="flex items-center justify-between gap-4 w-full max-w-[1200px]">
     <a
@@ -64,7 +64,7 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
 
     <nav
       id={navId}
-      class="bg-light-bg dark:bg-dark-surface absolute w-[340px] top-full right-0 hidden
+      class="bg-light-surface dark:bg-dark-surface absolute w-[340px] top-full right-0 hidden
 			peer-checked:flex items-center justify-center border-l border-l-light-text/30
 			dark:border-l-dark-text/30 z-50"
       aria-label="Main site navigation"
@@ -77,7 +77,7 @@ const navId = `main-navigation-${Math.random().toString(36).substring(7)}`;
           links.map(link => (
             <li
               class="w-[80%] text-center rounded py-2 bg-light-surface/15
-						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-light-surface/30 dark:hover:bg-light-bg/10"
+						 transition-all duration-200 dark:bg-dark-bg/50 hover:bg-white/30 dark:hover:bg-light-bg/10"
             >
               <HeaderLink class="font-semibold" href={link.href} aria-label={`Ir a ${link.label}`}>
                 {link.label}

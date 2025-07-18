@@ -4,8 +4,8 @@
   "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run lint && npm run create-index && astro build",
-    "preview": "npm run create-index && astro preview",
+    "build": "npm run lint && astro build",
+    "preview": "astro preview",
     "astro": "astro",
     "create-collection": "tsx scripts/createSchema.ts",
     "reset-template": "tsx scripts/reset_template.ts",

@@ -2,7 +2,7 @@
 title: "Introducing NovaBoost: Your Next-Gen Blog Platform Powered by Astro & AI"
 description: "Discover NovaBoost, a cutting-edge blog platform integrating Astro, TailwindCSS, SEO, and AI for powerful content."
 pubDate: "2025-07-10"
-heroImage: "../../assets/post_placeholder.png"
+heroImage: "../../assets/post_1.jpg"
 tags: ["novaboost","astro","tailwindcss"]
 affiliateBlock:
   text: "Get this product with a 10% discount!"

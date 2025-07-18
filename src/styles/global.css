@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
+	font-family: 'Inter';
+	src: url('/fonts/inter.ttf') format('ttf');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
-@font-face {
+/* @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
-}
+} */
 
 
 
@@ -35,23 +35,42 @@
 
 
 @theme {
-	--color-light-bg: #fff;
+	--color-light-bg: #fafafa;
 	--color-light-text: #000;
-	--color-light-surface:#E0E0E0;
+	--color-light-surface:#e2e8f0;
 	--color-buttons-bg: #007BFF;
 	--color-buttons-text: #fff;
 	
 	 --color-dark-bg: #0B1D2A;
   --color-dark-text: #E2E8F0;
-  --color-dark-surface: #15232E;
+  --color-dark-surface: #334155;
+  --color-search-bg:#334155
 }
 
 @layer utilities {
   .family {
     /* Aplica estilo normal de fuente + tu arbitrary font-family */
-    @apply font-normal [font-family:'Atkinson',Arial,sans-serif];
+    @apply font-normal [font-family:'Inter',Arial,sans-serif];
   }
+
+  .dark .header-gradient-dark {
+    @apply bg-gradient-to-br from-[#1e293b] to-[#334155] shadow-[0_2px_20px_rgba(0,0,0,0.1)] backdrop-blur-[10px] ;
+  }
+
+  .dark .hero-gradient-dark {
+  @apply bg-gradient-to-br from-[#1e293b] via-[#334155] to-[#475569];
+  }
+
+  .header-gradient-light {
+    @apply bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] shadow-[0_2px_20px_rgba(0,0,0,0.1)] backdrop-blur-[10px];
 }
+
+.hero-gradient-light  {
+    @apply bg-gradient-to-br from-[#f8fafc] via-[#e2e8f0] to-[#cbd5e1];
+}
+}
+
+
 
 
 .menu-bar {
