@@ -256,6 +256,51 @@ about:
   tel: "600 123 456" #(optional)
 ```
 
+
+### Featured
+
+```yaml
+featured:
+  title: "Featured Resources"
+  cards:
+    - title: "🧠 Lorem Ipsum Dolor"
+      text: >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis, lorem eu bibendum efficitur, sapien nulla vestibulum eros, at interdum massa nunc nec ante.
+      button: # (Optional)
+        text: "Learn More"
+        path: "#"
+```
+
+
+### Footer
+
+```yaml
+footer:
+  brandName: "🌟NovaBoost"
+  brandDescription: >
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+  rssLink: "/rss.xml"
+  legalLinks:
+    - text: "Legal Notice"
+      href: "/#"
+    - text: "Privacy Policy"
+      href: "/#"
+    - text: "Cookie Policy"
+      href: "/#"
+  contactLinks:
+    - text: "name@example.com"
+      href: "mailto:name@example.com"
+    - text: "Twitter"
+      href: "https://twitter.com/user"
+      target: "_blank" #(Optional)
+    - text: "GitHub"
+      href: "https://github.com/JorgeRosbel/NovaBoost"
+      target: "_blank" #(Optional)
+  copyrightName: >
+    Sed ut perspiciatis unde omnis iste natus error
+```
+
+
 ### Styling (`src/styles/`)
 
 To modify colors, fonts, and general styles, head over to the `src/styles/` directory. You’ll find the Tailwind configuration and base styles used across the site.
