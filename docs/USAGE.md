@@ -158,7 +158,6 @@ Here is a table summarizing the main commands available in **NovaBoost**, includ
 | `npm run create-multiple -- <collection1> <collection2> <collection3>` | Creates multiple collections in one go (Bash only).                                                                         |
 | `npm run get-routes`                                                   | Displays the routes for all created collections, for use in header config.                                                  |
 | `npm run remove -- <collection_name>`                                  | Completely removes a content collection from the project.                                                                   |
-| `npm run create-index`                                                 | Generates a `search-index.json` file for use in client-side search. ⚠️ Run this after adding a new post during development. |
 
 
 
